@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-28T14:32:26.506Z</updated>
+  <updated>2019-12-29T05:39:36.344Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2019/12/25/%E8%B0%A8%E6%AD%A4%E7%BA%AA%E5%BF%B5%E9%9C%9C%E6%98%9F/"/>
     <id>http://yoursite.com/2019/12/25/%E8%B0%A8%E6%AD%A4%E7%BA%AA%E5%BF%B5%E9%9C%9C%E6%98%9F/</id>
     <published>2019-12-25T01:58:00.000Z</published>
-    <updated>2019-12-28T14:32:26.506Z</updated>
+    <updated>2019-12-29T05:39:36.344Z</updated>
     
-    <content type="html"><![CDATA[<p>“…等我们自由了，我们会放声大哭，在荒野里在雪地里，在堆得满满的麦垛里放声大哭”</p><a id="more"></a><p>再见，白兔子。</p><p><img src="/img/post/2019.12.25/3.jpg" srcset="/img/loading.gif" alt=""></p><p>yj可以考虑下把霜星放进干员图鉴吗，其他的牺牲的干员（Ace、Scout！！）考虑一下吧。。</p><p><img src="/img/post/2019.12.25/2.gif" srcset="/img/loading.gif" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p>“…等我们自由了，我们会放声大哭，在荒野里在雪地里，在堆得满满的麦垛里放声大哭”</p><a id="more"></a><p>再见，白兔子。</p><p><img src="/img/post/2019.12.25/3.jpg" srcset="/img/loading.gif" alt=""></p><p>圣诞节啊，想起其他的牺牲的干员（Ace、Scout！！）。。</p><p><img src="/img/post/2019.12.25/2.gif" srcset="/img/loading.gif" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -31,6 +31,8 @@
     
     </summary>
     
+    
+      <category term="游戏内容相关" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3/"/>
     
     
       <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
@@ -44,7 +46,7 @@
     <link href="http://yoursite.com/2019/12/09/Hello%20World/"/>
     <id>http://yoursite.com/2019/12/09/Hello%20World/</id>
     <published>2019-12-09T09:50:00.000Z</published>
-    <updated>2019-12-28T14:27:30.139Z</updated>
+    <updated>2019-12-29T05:41:57.850Z</updated>
     
     <content type="html"><![CDATA[<p>某种意义上的“First Post”，留作纪念，就此保留。</p><a id="more"></a><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -55,8 +57,12 @@
     </summary>
     
     
+      <category term="技术学习" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+    
     
       <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="其他" scheme="http://yoursite.com/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
