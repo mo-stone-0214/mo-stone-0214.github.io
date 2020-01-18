@@ -1,54 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Mo_Stone&#39;s Base</title>
+  <title>The Base of .MoStone</title>
   
   <subtitle>我们，依旧在路上。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2019-12-29T05:39:36.344Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="/"/>
+  <updated>2020-01-18T12:10:05.682Z</updated>
+  <id>/</id>
   
   <author>
-    <name>Mo丶Stone</name>
+    <name>Mo_Stone</name>
     
   </author>
   
-  <generator uri="https://hexo.io/">Hexo</generator>
+  <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>谨此纪念霜星</title>
-    <link href="http://yoursite.com/2019/12/25/%E8%B0%A8%E6%AD%A4%E7%BA%AA%E5%BF%B5%E9%9C%9C%E6%98%9F/"/>
-    <id>http://yoursite.com/2019/12/25/%E8%B0%A8%E6%AD%A4%E7%BA%AA%E5%BF%B5%E9%9C%9C%E6%98%9F/</id>
+    <link href="/2019/12/25/%E8%B0%A8%E6%AD%A4%E7%BA%AA%E5%BF%B5%E9%9C%9C%E6%98%9F/"/>
+    <id>/2019/12/25/谨此纪念霜星/</id>
     <published>2019-12-25T01:58:00.000Z</published>
-    <updated>2019-12-29T05:39:36.344Z</updated>
-    
-    <content type="html"><![CDATA[<p>“…等我们自由了，我们会放声大哭，在荒野里在雪地里，在堆得满满的麦垛里放声大哭”</p><a id="more"></a><p>再见，白兔子。</p><p><img src="/img/post/2019.12.25/3.jpg" srcset="/img/loading.gif" alt=""></p><p>圣诞节啊，想起其他的牺牲的干员（Ace、Scout！！）。。</p><p><img src="/img/post/2019.12.25/2.gif" srcset="/img/loading.gif" alt=""></p>]]></content>
+    <updated>2020-01-18T12:10:05.682Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;“…等我们自由了，我们会放声大哭，在荒野里在雪地里，在堆得满满的麦垛里放声大哭”&lt;/p&gt;
+      再见，白兔子。
     
     </summary>
     
+      <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
-      <category term="游戏内容相关" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3/"/>
     
+      <category term="日常" scheme="/tags/%E6%97%A5%E5%B8%B8/"/>
     
-      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
-    
-      <category term="游戏内容相关" scheme="http://yoursite.com/tags/%E6%B8%B8%E6%88%8F%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3/"/>
+      <category term="游戏内容相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/12/09/Hello%20World/"/>
-    <id>http://yoursite.com/2019/12/09/Hello%20World/</id>
+    <link href="/2019/12/09/Hello%20World/"/>
+    <id>/2019/12/09/Hello World/</id>
     <published>2019-12-09T09:50:00.000Z</published>
     <updated>2019-12-29T05:41:57.850Z</updated>
-    
-    <content type="html"><![CDATA[<p>某种意义上的“First Post”，留作纪念，就此保留。</p><a id="more"></a><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     
@@ -56,13 +51,34 @@
     
     </summary>
     
+      <category term="技术学习" scheme="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="技术学习" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="技术" scheme="/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Theme-Sakura</title>
+    <link href="/2018/12/12/Hexo-Theme-Sakura/"/>
+    <id>/2018/12/12/Hexo-Theme-Sakura/</id>
+    <published>2018-12-12T14:16:01.000Z</published>
+    <updated>2019-11-16T09:29:49.000Z</updated>
+    
+    <summary type="html">
+    
+      hexo-sakura主题使用教程
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+      <category term="web" scheme="/tags/web/"/>
     
-      <category term="其他" scheme="http://yoursite.com/tags/%E5%85%B6%E4%BB%96/"/>
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
     
   </entry>
   
