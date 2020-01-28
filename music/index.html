@@ -48,7 +48,7 @@
   /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
-  var bg = "/images/cover/1.jpg,/images/cover/3.jpg,/images/cover/4.jpg,/images/cover/5.jpg,/images/cover/6.jpg,/images/cover/7.jpg,/images/cover/8.jpg".split(",");
+  var bg = "/images/cover/1.jpg,/images/cover/2.jpg,/images/cover/3.jpg,/images/cover/4.jpg,/images/cover/5.jpg,/images/cover/6.jpg,/images/cover/7.jpg".split(",");
   var bgindex = Math.floor(Math.random()*bg.length);
   if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
     alert('朋友，IE浏览器未适配哦~');
@@ -242,6 +242,13 @@
                         </a>
                       </li>
                     
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
                   </ul>
                 
               </li>
@@ -273,14 +280,17 @@
                         </a>
                       </li>
                     
-                      <li>
-                        <a href="/atom.xml">
-                          <i class="fa fa-rss faa-pulse" aria-hidden="true"></i>
-                          RSS
-                        </a>
-                      </li>
-                    
                   </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
                 
               </li>
             
@@ -295,7 +305,7 @@
   
     <div class="pattern-center ">
       <div class="pattern-attachment-img">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.4/img/banner/music.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="/images/cover/Music.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
       </div>
       <header class="pattern-header ">
         <h1 class="entry-title">
@@ -306,10 +316,10 @@
   <div id="content" class="site-content">
     <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
       
-<meting-js server="netease" type="playlist" id="2731690811" mutex="true">
+<meting-js server="netease" type="playlist" id="3199539136" mutex="true">
 </meting-js>
 
-<meting-js server="netease" type="playlist" id="419239189" mutex="true">
+<meting-js server="netease" type="playlist" id="3108482762" mutex="true">
 </meting-js>
 
       <!-- .entry-content -->
@@ -553,6 +563,13 @@ $(document).ready(function() {
                 </a>
               </li>
             
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
           </ul>
         
       </li>
@@ -584,14 +601,17 @@ $(document).ready(function() {
                 </a>
               </li>
             
-              <li>
-                <a href="/atom.xml">
-                  <i class="fa fa-rss faa-pulse" aria-hidden="true"></i>
-                  RSS
-                </a>
-              </li>
-            
           </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
         
       </li>
     
