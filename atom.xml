@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-01-31T13:09:40.537Z</updated>
+  <updated>2020-02-01T04:54:29.637Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于方舟近况的看法</title>
+    <link href="/2020/01/22/%E5%85%B3%E4%BA%8E%E6%96%B9%E8%88%9F%E8%BF%91%E5%86%B5%E7%9A%84%E7%9C%8B%E6%B3%95/"/>
+    <id>/2020/01/22/关于方舟近况的看法/</id>
+    <published>2020-01-22T11:42:00.000Z</published>
+    <updated>2020-02-01T04:54:29.637Z</updated>
+    
+    <summary type="html">
+    
+      有关20年春节活动争议。
+    
+    </summary>
+    
+      <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="游戏内容相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>谨此纪念霜星</title>
@@ -41,7 +61,7 @@
     <link href="/2019/12/09/Hello%20World/"/>
     <id>/2019/12/09/Hello World/</id>
     <published>2019-12-09T09:50:00.000Z</published>
-    <updated>2020-01-31T13:09:25.496Z</updated>
+    <updated>2020-01-31T13:33:03.773Z</updated>
     
     <summary type="html">
     
