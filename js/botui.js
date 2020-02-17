@@ -64,27 +64,27 @@ function bot_ui_ini() {
             }).then(function () {
                 botui.message.add({
                     delay: 1000,
-                    content: "之前对天文和机械感兴趣，但之后觉得信息管理与信息系统也不错。"
+                    content: "之前对机械和天文感兴趣，但之后觉得信息管理与信息系统也可以。"
                 }).then(function () {
                     botui.message.add({
                         delay: 1000,
-                        content: "正主要学习 Java ，偶尔搞一搞 HTML 、 CSS 、 JS。"
+                        content: "正主要学习 Java ，偶尔搞一搞 HTML 。"
                     }).then(function () {
                         botui.message.add({
                             delay: 1000,
-                            content: "空闲时间也喜欢玩各种游戏。"
+                            content: "空闲时间也喜欢玩各种游戏，包括手游和单机（主机没钱）。"
                         }).then(function () {
                             botui.message.add({
                                 delay: 1000,
-                                content: "对目前许多游戏不是特别满意，以及受到 New Game！ 的影响，"
+                                content: "（主要玩）担任wows魔法舰船指挥官，兼任舰c、b提督，失智博士，窑子指挥官。"
                             }).then(function () {
                                 botui.message.add({
                                     delay: 1000,
-                                    content: "所以业余时间在学习 Unity 以及 C# 相关知识。"
+                                    content: "受到 New Game！！ 的影响，业余时间在学习 Unity 以及 C# 相关知识。"
                                 }).then(function () {
                                 	botui.message.add({
                                         delay: 1000,
-                                        content: "希望有一天能够参与制作一款满意的游戏。"
+                                        content: "希望有一天能够参与制作一款自己满意的游戏。"
                                 	}).then(function (){
                                         selection_part()
                                     })
@@ -134,15 +134,15 @@ function bot_ui_ini() {
         why_base = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "因为玩的大多数游戏有一个类似于 Base 的基建系统。"
+                content: "因为在现实中对军事比较感兴趣。"
             }).then(function () {
                 botui.message.add({
                     delay: 1000,
-                    content: "而且在现实中对军事比较感兴趣。"
+                    content: "而且玩的大多数游戏有一个类似于 Base 的基建系统。"
                 }).then(function () {
                     botui.message.add({
                     delay: 1000,
-                    content: "希望我也能有一个基地————虽然现实中不太可能。"
+                    content: "所以就直接沿用了。"
                     }).then(function (a) {
                         selection_part()
                     })
@@ -152,7 +152,7 @@ function bot_ui_ini() {
         about_newgame = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "刚入坑时接触到的一部番剧，比较喜欢，到今天也在追同名漫画。"
+                content: "是我刚入坑时接触到的一部番剧，也是到今天在追同名漫画。"
             }).then(function () {
                 botui.message.add({
                     delay: 1000,
