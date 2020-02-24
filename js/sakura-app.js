@@ -1611,7 +1611,8 @@ $(function () {
   })
   console.log('%c Mashiro %c', 'background:#24272A; color:#ffffff', '', 'https://2heng.xin/')
   console.log('%c hojun %c', 'background:#24272A; color:#ffffff', '', 'https://www.hojun.cn/')
-  console.log('%c Github %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
+  console.log('%c hojun_Github_theme %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
+  console.log('%c MoStone_Github_theme  %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/mo-stone-0214/mo-stone-0214.github.io')
 })
 var isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1,
   isOpera = navigator.userAgent.toLowerCase().indexOf('opera') > -1,
