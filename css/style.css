@@ -720,13 +720,13 @@ audio:not([controls]) {
 a {
     background-color:transparent;
     text-decoration:none;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/ayuda.cur),auto
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/2.gif),url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/2.ani),auto
 }
 a:active,a:hover {
     outline:0
 }
 a:active {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/work.cur),alias
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/10.gif),url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/10.ani),alias
 }
 abbr[title] {
     border-bottom:1px dotted
@@ -847,7 +847,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 p {
     margin-bottom:1.5em;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/texto.cur),auto
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/11.cur),auto
 }
 dfn,cite,em,i {
     font-style:italic
@@ -863,7 +863,7 @@ blockquote:before {
     position:absolute;
     top:-25px;
     left:12px;
-    color:orange;
+    color:#6495ED   ;
     font-family:FontAwesome
 }
 blockquote:after {
@@ -872,7 +872,7 @@ blockquote:after {
     position:absolute;
     bottom:-25px;
     right:-5px;
-    color:orange;
+    color:#6495ED   ;
     font-family:FontAwesome
 }
 blockquote p {
@@ -933,7 +933,7 @@ html {
 body {
     background:#fff;
     background-attachment:fixed;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),auto
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/1.gif),url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/1.ani),auto
 }
 blockquote:before,blockquote:after,q:before,q:after {
     content:""
@@ -1021,14 +1021,14 @@ a {
     transition:color .2s ease-out,border .2s ease-out,opacity .2s ease-out
 }
 a:hover,a:focus,a:active {
-    color:orange
+    color:#6495ED   
 }
 a:focus {
     outline:0
 }
 a:hover,a:active {
     outline:0;
-    color:orange
+    color:#6495ED   
 }
 .site-top {
     width:100%;
@@ -1383,7 +1383,7 @@ a:hover,a:active {
     font-weight:400
 }
 .site-title a:hover {
-    color:orange
+    color:#6495ED   
 }
 .site-title img {
     height:40px;
@@ -1479,7 +1479,7 @@ a:hover,a:active {
     color:#666
 }
 .site-top ul li a:hover {
-    color:orange
+    color:#6495ED   
 }
 .site-top ul li a:after {
     content:"";
@@ -1487,7 +1487,7 @@ a:hover,a:active {
     position:absolute;
     bottom:-16px;
     height:6px;
-    background-color:#fe9600;
+    background-color:#6495ED    ;
     width:100%;
     max-width:0;
     transition:max-width .25s ease-in-out
@@ -1498,7 +1498,7 @@ a:hover,a:active {
     position:absolute;
     bottom:-21px;
     height:6px;
-    background-color:#fe9600;
+    background-color:#6495ED    ;
     width:100%;
     max-width:0;
     transition:max-width .25s ease-in-out
@@ -1670,7 +1670,7 @@ a:hover,a:active {
     color:#504e4e
 }
 .entry-title a:hover {
-    color:orange
+    color:#6495ED   
 }
 .p-time {
     position:absolute;
@@ -2006,8 +2006,8 @@ i.iconfont.hotpost {
 }
 .navigator i:hover {
     color:#fff;
-    background:orange;
-    border:2px solid orange;
+    background:#6495ED  ;
+    border:2px solid #6495ED    ;
     -webkit-transition:all .2s ease-in-out;
     -moz-transition:all .2s ease-in-out;
     -o-transition:all .2s ease-in-out;
@@ -2029,7 +2029,7 @@ i.iconfont.hotpost {
     color:#b9b9b9
 }
 .site-info a:hover {
-    color:orange
+    color:#6495ED   
 }
 .footertext p {
     margin-bottom:8px
@@ -2138,8 +2138,8 @@ i.iconfont.hotpost {
     text-decoration:underline dotted rgba(0,0,0,.1)
 }
 .entry-content a:hover {
-    color:orange;
-    text-decoration:underline orange
+    color:#6495ED   ;
+    text-decoration:underline #6495ED   
 }
 h1.entry-title {
     font-size:24px;
@@ -2237,7 +2237,7 @@ h1.page-title.mb- {
     background-size:contain;
     -webkit-transition:all .5s ease-in-out;
     transition:all .5s ease-in-out;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/12.cur),auto;
     opacity:1
 }
 .cd-top.cd-is-visible {
@@ -2319,7 +2319,7 @@ h1.page-title.mb- {
     margin-right:5px
 }
 .post-tags a:hover {
-    color:orange
+    color:#6495ED   
 }
 .post-tags i {
     margin-right:5px
@@ -2379,7 +2379,7 @@ h1.page-title.mb- {
     margin-right:10px
 }
 .post-share ul li a:hover {
-    color:orange
+    color:#6495ED   
 }
 .post-share .show-share {
     margin-left:10px;
@@ -2845,7 +2845,7 @@ h3#comments-list-title {
     margin:auto
 }
 .butterBar-message {
-    background:#fe9600;
+    background:#6495ED  ;
     color:#fff;
     border-bottom-left-radius:4px;
     border-bottom-right-radius:4px;
@@ -3018,7 +3018,7 @@ h1.works-title {
     font-style:italic;
     font-size:20px;
     font-weight:400;
-    color:orange;
+    color:#6495ED   ;
     margin-left:30px;
     margin-top:50px
 }
@@ -3044,7 +3044,7 @@ span.time {
 .ar-time i {
     padding:10px;
     border-radius:100px;
-    background:orange;
+    background:#6495ED  ;
     color:#fff
 }
 .ar-time {
@@ -3070,7 +3070,7 @@ span.time {
 span.ar-circle {
     height:10px;
     width:10px;
-    background:orange;
+    background:#6495ED  ;
     display:inline-block;
     position:absolute;
     left:-5px;
@@ -3152,7 +3152,7 @@ header.page-header {
     -ms-transform:rotate(360deg)
 }
 span.sitename {
-    color:orange;
+    color:#6495ED   ;
     padding-bottom:10px;
     display:block;
     -webkit-transition:all .3s;
@@ -3183,11 +3183,11 @@ span.sitename {
 }
 .link-title span.fake-title {
     padding-left:10px;
-    border-left:3px solid orange
+    border-left:3px solid #6495ED   
 }
 .links ul li:before {
     content:"";
-    background-color:orange;
+    background-color:#6495ED    ;
     -webkit-transform:skew(45deg,0);
     transform:skew(45deg,0);
     width:0;
@@ -3201,7 +3201,7 @@ span.sitename {
 }
 .links ul li:hover {
     color:#27323a;
-    border:1px solid orange
+    border:1px solid #6495ED    
 }
 .links ul li:hover:before {
     width:180%
@@ -3478,7 +3478,7 @@ a.page-numbers {
     font-weight:600
 }
 .comment h4 a:hover {
-    color:orange
+    color:#6495ED   
 }
 .comment hr {
     clear:both;
@@ -3631,9 +3631,9 @@ a.page-numbers {
     text-shadow:none
 }
 .comment-respond input[type='submit']:hover {
-    border:1px solid #fe9600;
+    border:1px solid #6495ED    ;
     background:none !important;
-    color:#fe9600
+    color:#6495ED   
 }
 .comment-respond input[type='submit']:hover {
     background:#5aa738
@@ -3727,7 +3727,7 @@ a.page-numbers {
     line-height:1
 }
 .siren-checkbox-radio:checked+.siren-checkbox-radioInput:after {
-    background-color:#fe9600;
+    background-color:#6495ED    ;
     border-radius:100%;
     content:"";
     display:block;
@@ -4356,7 +4356,7 @@ i.iconfont.js-toggle-search.iconsearch {
     padding:10px 0
 }
 .sorry li a:hover {
-    color:orange
+    color:#6495ED   
 }
 .sorry-inner {
     padding:20px;
@@ -4371,14 +4371,14 @@ i.iconfont.js-toggle-search.iconsearch {
 .err-button.back a {
     padding:10px 30px;
     margin:0 10px;
-    border:1px solid orange;
-    color:orange;
+    border:1px solid #6495ED    ;
+    color:#6495ED   ;
     -webkit-border-radius:50px;
     -moz-border-radius:50px;
     border-radius:50px
 }
 #gohome {
-    background:orange;
+    background:#6495ED  ;
     color:#fff
 }
 .err-button.back a:hover {
@@ -4491,7 +4491,7 @@ embed,iframe,object {
     position:absolute
 }
 #nprogress .bar {
-    background:orange;
+    background:#6495ED  ;
     position:fixed;
     z-index:1031;
     top:0;
@@ -4505,7 +4505,7 @@ embed,iframe,object {
     right:0;
     width:100px;
     height:100%;
-    box-shadow:0 0 10px orange,0 0 5px orange;
+    box-shadow:0 0 10px #6495ED ,0 0 5px #6495ED  ;
     opacity:1;
     -webkit-transform:rotate(3deg) translate(0px,-4px);
     -ms-transform:rotate(3deg) translate(0px,-4px);
@@ -4527,8 +4527,8 @@ embed,iframe,object {
     height:20px;
     box-sizing:border-box;
     border:solid 3px transparent;
-    border-top-color:orange;
-    border-left-color:orange;
+    border-top-color:#6495ED    ;
+    border-left-color:#6495ED   ;
     border-radius:50%;
     -webkit-animation:nprogress-spinner 400ms linear infinite;
     animation:nprogress-spinner 400ms linear infinite
@@ -4632,8 +4632,8 @@ i.iconfont.down {
     font-size:15px
 }
 #pagination a:hover {
-    border:1px solid orange;
-    color:orange
+    border:1px solid #6495ED    ;
+    color:#6495ED   
 }
 #pagination .loading {
     background:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg");
@@ -4796,7 +4796,7 @@ i.iconfont.down {
         display:none
     }
     .links ul li:hover .sitename {
-        color:orange
+        color:#6495ED   
     }
     .links ul li:hover .linkdes {
         color:#949494;
@@ -5009,7 +5009,7 @@ i.iconfont.js-toggle-search.iconsearch {
 }
 #mo-nav ul li a:hover {
     cursor:pointer;
-    color:orange
+    color:#6495ED   
 }
 .we-content li {
     height:250px
@@ -5561,7 +5561,7 @@ i.iconfont.js-toggle-search.iconsearch {
     border:0;
     color:#fff;
     line-height:1;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/12.cur),auto;
     font-size:14px;
     font-weight:500;
     padding:7px 15px;
@@ -5687,7 +5687,7 @@ button.botui-actions-buttons-button::-moz-focus-inner,input.botui-actions-text-i
     padding:0
 }
 button.botui-actions-buttons-button {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/12.cur),auto;
     -webkit-appearance:button
 }
 .botui-app-container {
@@ -5804,13 +5804,16 @@ button.botui-actions-buttons-button {
     width:auto
 }
 .logolink a:hover .sakurasono {
-    background-color:orange;
+    background-color:   #6495ED;
     color:#fff
 }
 .logolink a:hover .shironeko,.logolink a:hover rt {
-    color:orange
+    color:  #6495ED
 }
-.logolink.moe-mashiro a {
+.logolink a:hover .of,.logolink a:hover rt  {
+    color:  #191970  
+}
+.logolink.mostone a {
     color:#464646;
     float:left;
     font-size:28px;
@@ -5822,14 +5825,14 @@ button.botui-actions-buttons-button {
     padding-top:11px;
     text-decoration-line:none
 }
-.logolink.moe-mashiro .sakurasono {
+.logolink.mostone .sakurasono {
     font-size:25px;
     border-radius:9px;
     padding-bottom:2px;
     padding-top:5px
 }
-.logolink.moe-mashiro .shironeko {
-    margin-left:-5px
+.logolink.mostone .shironeko {
+    
 }
 .forgetmenot input[type=checkbox] {
     border:1px solid #b4b9be;
@@ -6191,7 +6194,7 @@ button.botui-actions-buttons-button {
 }
 @media(min-width:861px) {
     .hide-live2d {
-    background-color:orange;
+    background-color:#6495ED    ;
     bottom:156px;
     visibility:visible;
     min-height:38.75px
@@ -6599,7 +6602,7 @@ progress {
     color:#000
 }
 .art .art-content #archives a:hover {
-    color:orange
+    color:#6495ED   
 }
 .art .art-content #archives .al_year {
     padding-left:100px
@@ -6750,7 +6753,7 @@ a.toc-link {
     width:2px
 }
 .is-active-link::before {
-    background-color:orange !important
+    background-color:#6495ED     !important
 }
 .flipx {
     -moz-transform:scaleX(-1);
@@ -6884,10 +6887,10 @@ to {
 }
 .motion-switcher-table th:hover {
     background-color:rgba(245,245,245,.5);
-    color:orange
+    color:#6495ED   
 }
 .motion-switcher-table .on-hover {
-    color:orange
+    color:#6495ED   
 }
 .motion-container {
     height:110px;
@@ -6927,7 +6930,7 @@ to {
     background-color:rgba(245,245,245,.8)
 }
 #emotion-toggle,.emotion-box,.on-hover,.emotion-item,.emoji-item,.tieba-container span {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/12.cur),auto
 }
 .alignright {
     width:auto !important
@@ -7119,8 +7122,8 @@ to {
     cursor:pointer
 }
 .insert-image-tips:hover {
-    color:orange;
-    border:1px solid orange
+    color:#6495ED   ;
+    border:1px solid #6495ED    
 }
 .insert-image-button {
     opacity:0;
@@ -7133,8 +7136,8 @@ to {
     cursor:pointer
 }
 .insert-image-tips-hover {
-    color:orange;
-    border:1px solid orange
+    color:#6495ED   ;
+    border:1px solid #6495ED    
 }
 .upload-image-preview {
     display:inline-block;
@@ -7328,7 +7331,7 @@ to {
     padding:2px;
     text-shadow:none;
     border-radius:0 0 5px 5px;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/texto.cur),auto
+    cursor:url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.10/cursor/11.cur),auto
 }
 .highlight-wrap code[data-rel]:before {
     color:#fff;
@@ -7471,8 +7474,8 @@ to {
     .serif {
     font-family:'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif
 }
-}.moe-mashiro {
-    font-family:'Moe-Mashiro','Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif
+}.mostone {
+    font-family:'mostone','Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif
 }
 .skin-menu {
     position:fixed;
