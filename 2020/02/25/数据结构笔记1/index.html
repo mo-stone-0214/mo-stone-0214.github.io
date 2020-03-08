@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">《数据结构》笔记 | The Base of .MoStone</title>
+  <title itemprop="name">《数据结构》笔记（1）——绪论 | The Base of MoStone</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -314,6 +314,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.13/post_pic/20-2-25/1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.13/post_pic/20-2-25/1.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      《数据结构》笔记（1）——绪论</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://mo-stone-0214.github.io/">
+            <img src="/images/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://mo-stone-0214.github.io/">MoStone</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-2-25<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -321,28 +345,24 @@
         <div class="toc"></div>
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-          <header class="entry-header">
-            <h1 class="entry-title">《数据结构》笔记</h1>
-            <p class="entry-census">MoStone&nbsp;·&nbsp;2020-2-25&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
-
-            <hr>
-          </header>
-        
         <div class="entry-content">
-          <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><h3 id="认识数据结构"><a href="#认识数据结构" class="headerlink" title="认识数据结构"></a>认识数据结构</h3><p>数值计算：利用数学方程。</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;步骤：具体问题→数学模型→算法→编程、调试→得到答案</p>
-<p>非数值计算：利用数据结构。</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;步骤：问题→抽象出问题的模型→求模型的解</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;类型：线性结构（一对一）；非线性结构【树形结构（一对多）、图形结构（多对多）】</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;（注：判断是否为线性结构优先画图，更直观。）</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>数据：对信息的一种符号表示。</p>
-<p>数据元素：数据的基本单位，通常作为一个整体进行考虑和处理。数据项是数据的不可分割的最小单位。</p>
-<p>数据类型：性质相同的数据元素的组合。</p>
-<p>（注：数据由数据元素构成，数据元素由数据项构成。）</p>
-<p><u>数据结构：</u>1、S=（D，R）数据和关系的集合。</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2、逻辑结构+存储结构+</p>
-<h4 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h4><p>包含：集合、线性结构、树形结构、图形结构。</p>
-<h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h4><p>包含：1、顺序存储方式：存储空间连续。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2、链式储存方式：存储空间不连续。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3、索引存储方式：索引表。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;4、散列存储方式：哈希函数。</p>
+          <h2 id="认识数据结构"><a href="#认识数据结构" class="headerlink" title="认识数据结构"></a>认识数据结构</h2><p>数值计算：利用数学方程。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;步骤：具体问题→数学模型→算法→编程、调试→得到答案</p>
+<p>非数值计算：利用数据结构。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;步骤：问题→抽象出问题的模型→求模型的解<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;类型：线性结构（一对一）；非线性结构【树形结构（一对多）、图形结构（多对多）】<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;（注：判断是否为线性结构优先画图，更直观。）</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>数据：对信息的一种符号表示。<br>数据元素：数据的基本单位，通常作为一个整体进行考虑和处理。数据项是数据的不可分割的最小单位。<br>数据类型：性质相同的数据元素的组合。<br>（注：数据由数据元素构成，数据元素由数据项构成。数据＞数据元素＞数据项）</p>
+<p>数据结构：1、数学概念：S=（D，R）数据和关系的集合。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<font color="red">2、内容概念：逻辑结构+存储结构+算法。</font><br>（数据逻辑结构独立于计算机，存储结构依赖于计算机，运算定义依赖于逻辑结构，实现依赖于存储结构。）</p>
+<p>ADT——抽象数据类型，数据↔操作，ADT=（R,S,T）<br>&ensp;&ensp;&ensp;&ensp;定义：1、使用视图：逻辑结构+操作集合。<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2、设计视图：存储结构+算法设计<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3、实现视图：成员变量+成员函数</p>
+<h3 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><ul><br>    <li>集合</li><br>    <li>线性结构<br>    <ul><br>        <li>线性表</li><br>        <li>栈</li><br>        <li>队列</li><br>        <li>串级数组</li><br>    </ul><br>    </li><br>    <li>非线性结构<br>    <ul><br>        <li>树形结构</li><br>        <li>图形结构</li><br>    </ul><br>    </li><br></ul>
+
+<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><ul><br>    <li>顺序存储方式：存储空间连续。</li><br>    <li>链式储存方式：存储空间不连续。</li><br>    <li>索引存储方式：索引表。</li><br>    <li>散列存储方式：哈希函数。</li><br></ul>
+
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>程序=算法+数据结构</p>
+<p>定义：有穷规则的集合，规则确定一个解决某一特定类型问题的操作序列。</p>
+<p>特征：输入、输出、确定性、有穷性、可行性。</p>
+<p>原则：正确性、可读性、健壮性（容错处理）、效率与存储量的需求。</p>
+<p>方式：自然语言、流程图、伪代码。</p>
+<font color="red">算法评价：时间复杂度——定性描述该算法的运行时间。常用大O符号表述，不包括这个函数的低阶项和首项系数。</font>
+
+<p>程序设计实质：数据的表示和处理。</p>
 
         </div>
         <!-- .entry-content -->
