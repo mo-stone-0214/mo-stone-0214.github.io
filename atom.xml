@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-03-09T01:44:30.099Z</updated>
+  <updated>2020-03-14T10:46:58.846Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《数据结构》笔记（3）——线性表链式储存结构和算法</title>
+    <link href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B03/"/>
+    <id>/2020/03/10/数据结构笔记3/</id>
+    <published>2020-03-10T01:45:00.000Z</published>
+    <updated>2020-03-14T10:46:58.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;相关概念&quot;&gt;&lt;a href=&quot;#相关概念&quot; class=&quot;headerlink&quot; title=&quot;相关概念&quot;&gt;&lt;/a&gt;相关概念&lt;/h2&gt;&lt;p&gt;结点：数据元素的存储映像。由数据域和地址域两部分组成。&lt;br&gt;➢ 数据域：元素本身信息&lt;br&gt;➢
+        
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《数据结构》笔记（2）——线性表及其顺序储存结构和算法</title>
     <link href="/2020/03/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B02/"/>
     <id>/2020/03/03/数据结构笔记2/</id>
     <published>2020-03-03T01:45:00.000Z</published>
-    <updated>2020-03-09T01:44:30.099Z</updated>
+    <updated>2020-03-14T10:44:51.428Z</updated>
     
     <summary type="html">
     
@@ -117,7 +143,7 @@
     <link href="/2020/01/22/%E5%85%B3%E4%BA%8E%E6%96%B9%E8%88%9F%E8%BF%91%E5%86%B5%E7%9A%84%E7%9C%8B%E6%B3%95/"/>
     <id>/2020/01/22/关于方舟近况的看法/</id>
     <published>2020-01-22T11:42:00.000Z</published>
-    <updated>2020-02-28T15:45:00.163Z</updated>
+    <updated>2020-03-10T07:24:26.432Z</updated>
     
     <summary type="html">
     
