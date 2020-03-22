@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-03-21T13:06:42.705Z</updated>
+  <updated>2020-03-22T04:13:15.329Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《数据结构》笔记（3.5）——双链表算法</title>
+    <link href="/2020/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B03.5/"/>
+    <id>/2020/03/20/数据结构笔记3.5/</id>
+    <published>2020-03-20T01:45:00.000Z</published>
+    <updated>2020-03-22T04:13:15.329Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;总体思路与单链表类似，直接给出参考代码。&lt;/p&gt;
+&lt;p&gt;注：参考代码中各个算法均包含在类中.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/2020/03/10/数据结构笔记3/#单链表算法&quot;&gt;单链表部分算法&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;链表定义&quot;&gt;&lt;a href=&quot;#链表定义&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《数据结构》笔记（4）——栈</title>
     <link href="/2020/03/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B04/"/>
     <id>/2020/03/17/数据结构笔记4/</id>
     <published>2020-03-17T01:45:00.000Z</published>
-    <updated>2020-03-21T13:06:42.705Z</updated>
+    <updated>2020-03-22T04:11:59.807Z</updated>
     
     <summary type="html">
     
@@ -47,7 +76,7 @@
     <link href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B03/"/>
     <id>/2020/03/10/数据结构笔记3/</id>
     <published>2020-03-10T01:45:00.000Z</published>
-    <updated>2020-03-18T12:06:12.278Z</updated>
+    <updated>2020-03-22T04:13:12.298Z</updated>
     
     <summary type="html">
     
@@ -73,7 +102,7 @@
     <link href="/2020/03/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B02/"/>
     <id>/2020/03/03/数据结构笔记2/</id>
     <published>2020-03-03T01:45:00.000Z</published>
-    <updated>2020-03-18T12:06:06.009Z</updated>
+    <updated>2020-03-22T04:13:19.193Z</updated>
     
     <summary type="html">
     
@@ -110,9 +139,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
@@ -180,9 +209,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   

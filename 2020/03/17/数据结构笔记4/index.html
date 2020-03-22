@@ -349,8 +349,8 @@
           <h2 id="栈的相关概念"><a href="#栈的相关概念" class="headerlink" title="栈的相关概念"></a>栈的相关概念</h2><p>➢栈：限定仅在表尾进行插入或删除操作的线性表。</p>
 <p>➢栈的特点：先进后出（FILO）或后进先出（LIFO）。</p>
 <p>➢栈的举例：子程序的嵌套、阶乘问题（递归问题）。</p>
-<h2 id="栈的操作"><a href="#栈的操作" class="headerlink" title="栈的操作"></a>栈的操作</h2><h3 id="利用数组创建栈"><a href="#利用数组创建栈" class="headerlink" title="利用数组创建栈"></a>利用数组创建栈</h3><pre><code class="java">
-/**用数组创建栈 */
+<h2 id="栈的操作"><a href="#栈的操作" class="headerlink" title="栈的操作"></a>栈的操作</h2><p>注：参考代码中各个算法均包含在类中.</p>
+<h3 id="利用数组创建栈"><a href="#利用数组创建栈" class="headerlink" title="利用数组创建栈"></a>利用数组创建栈</h3><h4 id="定义栈"><a href="#定义栈" class="headerlink" title="定义栈"></a>定义栈</h4><pre><code class="java">/**用数组创建栈 */
 public static class Stack&lt;E&gt; {
     //初始化栈的最大容量为100
     private static final int totall = 100;
@@ -361,35 +361,9 @@ public static class Stack&lt;E&gt; {
     public Stack() {
         this.n = 0;
         this.datas = new Object[totall];
-       }
-
-    /** 入栈
-       * @param data1 入栈元素
-    **/
-    public void In(E data) {
-        // 判断栈是否满
-        if (n == totall) {
-            throw new RuntimeException(&quot;栈满，无法插入新元素!&quot;);
-        }
-        datas[n] = data;
-        n++;
     }
 
-    /** 出栈
-     *
-     * @return 返回栈顶元素
-     * 
-    **/
-    public E Out() {
-        // 判断栈是否为空
-        if (n==0) {
-            throw new RuntimeException(&quot;出栈顶失败，因为此时栈中没有元素！&quot;); 
-        }
-        E topdata = (E) datas[n-1];
-        n--;
-        return topdata;
-    }
-
+    //打印链表
     public void print(){
         System.out.print(&quot;n=&quot;+n+&quot; 元素依次为：&quot;);
         for (int i = 0; i &lt;= n-1; i++){
@@ -397,79 +371,103 @@ public static class Stack&lt;E&gt; {
         }
         System.out.println();
     }
-
-    /**在栈底部增加
-     * 
-     * @param data 增加的数据
-     * @param stack 需增加的栈
-    */
-    public void ButtonIn(E data){
-        //判断是否为空栈
-        if(this.n==0){
-            this.In(data);
-            return;
-        }
-        // 判断栈是否满
-        if (this.n == totall) {
-               throw new RuntimeException(&quot;栈满，无法插入新元素!&quot;);
-        }
-        //创建一个新过渡栈和过渡数据
-        Stack&lt;E&gt; stack1 =new Stack&lt;&gt;();
-        E data1;
-        //取得增加前栈的数据数量
-        int n = this.n;
-        //依次将原始栈中元素增加到过渡栈中
-        for(int i=0;i&lt;n;i++){
-            data1 = this.Out();
-            stack1.In(data1);
-        }
-        //此时原始栈为空，在原始栈增加data
-        this.In(data);
-        //将过渡栈中的数据增加到原始栈中
-        for(int i = 0; i&lt;n; i++){
-            data1 =(E) stack1.Out();
-            this.In(data1);
-        }
+}
+</code></pre>
+<h4 id="入栈"><a href="#入栈" class="headerlink" title="入栈"></a>入栈</h4><pre><code class="java">
+/** 入栈
+ * @param data 入栈元素
+**/
+public void In(E data) {
+    // 判断栈是否满
+    if (n == totall) {
+        throw new RuntimeException(&quot;栈满，无法插入新元素!&quot;);
     }
-
-    /** 删除栈的底部元素
-     * 
-     * @param stack 需删除元素的栈
-    */
-    public void ButtonOut(){
-        //判断是否为空栈
-        if(this.n==0){
-            throw new RuntimeException(&quot;出栈顶失败，因为此时栈中没有元素！&quot;);
-        }
-        // 判断栈是否只有一个元素
-        if (n == 1) {
-            this.Out();
-            return;
-        }
-        //创建一个新过渡栈和过渡数据
-        Stack&lt;E&gt; stack1 =new Stack&lt;&gt;();
-        E data1;
-        //取得减少前栈的数据数量
-        int n = this.n-1;
-        //依次将原始栈中元素增加到过渡栈中
-        for(int i=0;i&lt;n;i++){
-            data1 = this.Out();
-            stack1.In(data1);
-        }
-        //此时原始栈只有一个元素，删除
-        this.Out();
-        //将过渡栈中的数据增加到原始栈中
-        for(int i = 0; i&lt;n; i++){
-            data1 =(E) stack1.Out();
-            this.In(data1);
-        }
-    }    
+    datas[n] = data;
+    n++;
 }
 
+/**在栈底部增加
+ * 
+ * @param data 增加的数据
+*/
+public void ButtonIn(E data){
+    //判断是否为空栈
+    if(this.n==0){
+        this.In(data);
+        return;
+    }
+    // 判断栈是否满
+    if (this.n == totall) {
+        throw new RuntimeException(&quot;栈满，无法插入新元素!&quot;);
+    }
+    //创建一个新过渡栈和过渡数据
+    Stack&lt;E&gt; stack1 =new Stack&lt;&gt;();
+    E data1;
+    //取得增加前栈的数据数量
+    int n = this.n;
+    //依次将原始栈中元素增加到过渡栈中
+    for(int i=0;i&lt;n;i++){
+        data1 = this.Out();
+        stack1.In(data1);
+    }
+    //此时原始栈为空，在原始栈增加data
+    this.In(data);
+    //将过渡栈中的数据增加到原始栈中
+    for(int i = 0; i&lt;n; i++){
+        data1 =(E) stack1.Out();
+        this.In(data1);
+    }
+}
 `
 </code></pre>
-<p>主函数测试</p>
-<pre><code class="java">public static void main(String[] args){
+<h4 id="出栈"><a href="#出栈" class="headerlink" title="出栈"></a>出栈</h4><pre><code class="java">/** 出栈
+ *
+ * @return 返回栈顶元素
+ * 
+**/
+public E Out() {
+    // 判断栈是否为空
+    if (n==0) {
+        throw new RuntimeException(&quot;出栈顶失败，因为此时栈中没有元素！&quot;); 
+    }
+    E topdata = (E) datas[n-1];
+    n--;
+    return topdata;
+}    
+
+/** 删除栈的底部元素
+ * 
+*/
+public void ButtonOut(){
+    //判断是否为空栈
+    if(this.n==0){
+        throw new RuntimeException(&quot;出栈顶失败，因为此时栈中没有元素！&quot;);
+    }
+    // 判断栈是否只有一个元素
+    if (n == 1) {
+        this.Out();
+        return;
+    }
+    //创建一个新过渡栈和过渡数据
+    Stack&lt;E&gt; stack1 =new Stack&lt;&gt;();
+    E data1;
+    //取得减少前栈的数据数量
+    int n = this.n-1;
+    //依次将原始栈中元素增加到过渡栈中
+    for(int i=0;i&lt;n;i++){
+        data1 = this.Out();
+        stack1.In(data1);
+    }
+    //此时原始栈只有一个元素，删除
+    this.Out();
+    //将过渡栈中的数据增加到原始栈中
+    for(int i = 0; i&lt;n; i++){
+        data1 =(E) stack1.Out();
+        this.In(data1);
+    }
+}    
+</code></pre>
+<h4 id="主函数测试"><a href="#主函数测试" class="headerlink" title="主函数测试"></a>主函数测试</h4><pre><code class="java">public static void main(String[] args){
     Stack&lt;Integer&gt; stack =new Stack&lt;&gt;();
 
     stack.In(4);
@@ -492,7 +490,7 @@ public static class Stack&lt;E&gt; {
 }
 
 </code></pre>
-<h3 id="利用链表创建栈"><a href="#利用链表创建栈" class="headerlink" title="利用链表创建栈"></a>利用链表创建栈</h3><pre><code class="java">//用链表创建栈
+<h3 id="利用链表创建栈"><a href="#利用链表创建栈" class="headerlink" title="利用链表创建栈"></a>利用链表创建栈</h3><h4 id="定义栈-1"><a href="#定义栈-1" class="headerlink" title="定义栈"></a>定义栈</h4><pre><code class="java">//用链表创建栈
 public static class Stuck&lt;E&gt;{
 
     //创建结点
@@ -522,36 +520,11 @@ public static class Stuck&lt;E&gt;{
         header = new Node();
     }
 
-    /** 在栈顶部添加数据
-     * 
-     * @param data 添加的数据
-    */
-    @SuppressWarnings(&quot;unchecked&quot;)
-
-    public void In(E data){
-        //检查是否栈满
-        if (num == totall){
-            throw new IndexOutOfBoundsException (&quot;栈满。&quot;);
-        }
-        //创建一个新结点
-        Node node = new Node();
-        //输入数据
-        node.data = data;
-        //找到当前顶部结点
-        Node topnode = FindNode(num);
-        //将顶部结点的next指向新结点
-        topnode.next = (E) node;
-        //数目+1
-        ++num;
-    }
-
     /** 查找指定位置的结点
      * 
      * @param n 查找位置
      * @return 该位置结点
      */
-    @SuppressWarnings(&quot;unchecked&quot;)
-
     public Node FindNode(int n){
         //创建新结点
         Node thenode = header;
@@ -563,31 +536,7 @@ public static class Stuck&lt;E&gt;{
         return thenode;
     }
 
-    /**删除顶部数据
-     * 
-     * @return 顶部数据
-     */
-    public E Out(){
-        //判断是否为空
-        if (num == 0){
-            throw new IndexOutOfBoundsException (&quot;栈空。&quot;);
-        }
-        //找到顶端的两个结点
-        Node p = FindNode(num);
-        Node q = FindNode(num-1);
-        //将顶部的结点数据赋给其他变量，并删除
-        E data = p.data;
-        p.data = null;
-        //将第二顶端的结点地址域指向null
-        q.next = null;
-        //数目-1
-        --num;
-        //返回删除数据
-        return data;
-    }
-
-    @SuppressWarnings(&quot;unchecked&quot;)
-
+    //打印
     public void print(){
         System.out.print(&quot;栈中数据数目num=&quot;+num+&quot; 分别为：&quot;);
         Node p = (Stuck&lt;E&gt;.Node) header.next;
@@ -597,77 +546,117 @@ public static class Stuck&lt;E&gt;{
         }
         System.out.println();
     }
-
-    /** 在栈底部添加数据
-     * 
-     * @param data 添加的数据
-     */
-    @SuppressWarnings(&quot;unchecked&quot;)
-
-    public void InButtom(E data){
-        //检查是否栈满
-        if (num == totall){
-            throw new IndexOutOfBoundsException (&quot;栈满。&quot;);
-        }
-        //检查是否空栈
-        if (num == 0){
-            this.In(data);
-            return;
-        }
-        //创建一个新结点
-        Node node = new Node();
-        //输入数据
-        node.data = data;
-        //创建一个过渡栈
-        Stuck&lt;Integer&gt; stuck = new Stuck&lt;&gt;();
-        //用循环将当前栈里元素移动到过渡栈中
-        int n = num;
-        for (int i = 1 ; i&lt;=n ; i++){
-            stuck.In((Integer) this.Out());
-        }
-        //此时原栈为空，增加新数据
-        this.In(data);
-        //用循环将过渡栈里数据返回
-        for (int i = 1 ; i&lt;=n ; i++){
-            this.In((E) stuck.Out());;
-        }    
-    }
-
-    /** 在栈底部删除数据
-     * 
-     * @return 删除的数据
-     */
-    @SuppressWarnings(&quot;unchecked&quot;)
-
-    public E OutButtom(){
-        //检查是否空栈
-        if (num == 0){
-            throw new IndexOutOfBoundsException (&quot;栈空。&quot;);
-        }
-        //检查是否只有一个数据
-        if (num == 1){
-            return this.Out();
-        }
-        //创建一个过渡栈
-        Stuck&lt;Integer&gt; stuck = new Stuck&lt;&gt;();
-        //用循环将当前栈里元素移动到过渡栈中
-        int n = num-1;
-        for (int i = 1 ; i&lt;=n ; i++){
-            stuck.In((Integer) this.Out());
-        }
-        //此时原栈只有一个数据，删除数据
-        E data = this.Out();
-        //用循环将过渡栈里数据返回
-        for (int i = 1 ; i&lt;=n ; i++){
-            this.In((E) stuck.Out());;
-        }
-        //返回
-        return data;        
-    }
 }
 </code></pre>
-<p>主函数测试</p>
-<pre><code class="java">public static void main(String[] args){
+<h4 id="入栈-1"><a href="#入栈-1" class="headerlink" title="入栈"></a>入栈</h4><pre><code class="java">/** 在栈顶部添加数据
+ * 
+ * @param data 添加的数据
+*/
+
+public void In(E data){
+    //检查是否栈满
+    if (num == totall-1){
+        throw new IndexOutOfBoundsException (&quot;栈满。&quot;);
+    }
+    //创建一个新结点
+    Node node = new Node();
+    //输入数据
+    node.data = data;
+    //找到当前顶部结点
+    Node topnode = FindNode(num);
+    //将顶部结点的next指向新结点
+    topnode.next = (E) node;
+    //数目+1
+    ++num;
+}
+
+/** 在栈底部添加数据
+ * 
+ * @param data 添加的数据
+ */
+public void InButtom(E data){
+    //检查是否栈满
+    if (num == totall-1){
+        throw new IndexOutOfBoundsException (&quot;栈满。&quot;);
+    }
+    //检查是否空栈
+    if (num == 0){
+        this.In(data);
+        return;
+    }
+    //创建一个新结点
+    Node node = new Node();
+    //输入数据
+    node.data = data;
+    //创建一个过渡栈
+    Stuck&lt;Integer&gt; stuck = new Stuck&lt;&gt;();
+    //用循环将当前栈里元素移动到过渡栈中
+    int n = num;
+    for (int i = 1 ; i&lt;=n ; i++){
+        stuck.In((Integer) this.Out());
+    }
+    //此时原栈为空，增加新数据
+    this.In(data);
+    //用循环将过渡栈里数据返回
+    for (int i = 1 ; i&lt;=n ; i++){
+        this.In((E) stuck.Out());;
+    }    
+}
+</code></pre>
+<h4 id="出栈-1"><a href="#出栈-1" class="headerlink" title="出栈"></a>出栈</h4><pre><code class="java">/**删除顶部数据
+ * 
+ * @return 顶部数据
+ */
+public E Out(){
+    //判断是否为空
+    if (num == 0){
+        throw new IndexOutOfBoundsException (&quot;栈空。&quot;);
+    }
+    //找到顶端的两个结点
+    Node p = FindNode(num);
+    Node q = FindNode(num-1);
+    //将顶部的结点数据赋给其他变量，并删除
+    E data = p.data;
+    p.data = null;
+    //将第二顶端的结点地址域指向null
+    q.next = null;
+    //数目-1
+    --num;
+    //返回删除数据
+    return data;
+}
+
+/** 在栈底部删除数据
+ * 
+ * @return 删除的数据
+ */
+public E OutButtom(){
+    //检查是否空栈
+    if (num == 0){
+        throw new IndexOutOfBoundsException (&quot;栈空。&quot;);
+    }
+    //检查是否只有一个数据
+    if (num == 1){
+        return this.Out();
+    }
+    //创建一个过渡栈
+    Stuck&lt;Integer&gt; stuck = new Stuck&lt;&gt;();
+    //用循环将当前栈里元素移动到过渡栈中
+    int n = num-1;
+    for (int i = 1 ; i&lt;=n ; i++){
+        stuck.In((Integer) this.Out());
+    }
+    //此时原栈只有一个数据，删除数据
+    E data = this.Out();
+    //用循环将过渡栈里数据返回
+    for (int i = 1 ; i&lt;=n ; i++){
+        this.In((E) stuck.Out());;
+    }
+    //返回
+    return data;        
+}
+</code></pre>
+<h4 id="主函数测试-1"><a href="#主函数测试-1" class="headerlink" title="主函数测试"></a>主函数测试</h4><pre><code class="java">public static void main(String[] args){
     Stuck&lt;Integer&gt; stuck = new Stuck&lt;&gt;();
     stuck.In(1);
     stuck.In(2);
@@ -707,9 +696,26 @@ public static class Stuck&lt;E&gt;{
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/03/20/数据结构笔记3.5/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/03/22/84vpKH.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/03/22/84vpKH.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（3.5）——双链表算法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/03/10/数据结构笔记3/" rel="next">
               <div class="background">
