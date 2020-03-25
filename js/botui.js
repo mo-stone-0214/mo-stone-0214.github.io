@@ -60,11 +60,11 @@ function bot_ui_ini() {
         firstpart = function () {
             botui.message.add({
                 delay: 1000,
-                content: "目前就读于杭州电子科技大学。"
+                content: "目前还是个大学生。"
             }).then(function () {
                 botui.message.add({
                     delay: 1000,
-                    content: "之前对机械和天文感兴趣，但之后觉得信息管理与信息系统也可以。"
+                    content: "对精密机械和天文感兴趣，但不是所有的事都随自己的心意的。"
                 }).then(function () {
                     botui.message.add({
                         delay: 1000,
@@ -121,7 +121,7 @@ function bot_ui_ini() {
         why_mostone = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "MoStone 是以前我的称呼的英文 Monkey 和英文名 Stone 相结合的名称。"
+                content: "MoStone 是以前的称呼的英文 Monkey 和英文名 Stone 相结合的名称。"
             }).then(function () {
                	botui.message.add({
                     delay: 1000,

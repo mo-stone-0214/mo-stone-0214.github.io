@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">music | The Base of MoStone</title>
+  <title itemprop="name">《数据结构》笔记（5）——栈应用 | The Base of MoStone</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -310,64 +310,331 @@
   </div>
 </header>
 
-        <div class="pattern-center-blank"></div>
-  
-    <div class="pattern-center ">
-      <div class="pattern-attachment-img">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="/images/cover/Music.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-      </div>
-      <header class="pattern-header ">
-        <h1 class="entry-title">
-        喜欢的音乐</h1>
-      </header>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/03/25/8xPeoj.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/03/25/8xPeoj.jpg">
     </div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      <h3>博客内歌单</h3>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      《数据结构》笔记（5）——栈应用</h1>
+      <p class="entry-census">
+        <span>
+          <a href="https://mo_stone.gitee.io/">
+            <img src="/images/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="https://mo_stone.gitee.io/">MoStone</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-3-24<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
 
-<p><meting-js server="netease" type="playlist" id="4929760665" mutex="true"><br></meting-js></p>
-<h3>acg相关</h3>
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="表达式括号匹配"><a href="#表达式括号匹配" class="headerlink" title="表达式括号匹配"></a>表达式括号匹配</h2><p>利用栈判断表达式中括号是否匹配，但这只能判断括号的数目正确，像是“1+(2+3(4/)5)”这类就无法判断。</p>
+<p><img src="https://s1.ax1x.com/2020/03/25/8xPZwQ.jpg" alt></p>
+<p>其实这类问题可以不用栈，直接通过数左括号和右括号的数目来判断。</p>
+<h2 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h2><p>这里有三种表达式：前缀表达式（波兰表达式）、中缀表达式、后缀表达式（逆波兰表达式）。</p>
+<p>中缀表达式就是生活中常见的表达式，如：1+2*3</p>
+<p>由于中缀表达式对于人能较好理解，但对于计算机来讲难以处理，而后缀表达式则容易处理。后缀表达式如：123*+</p>
+<p>前缀表达式相较于后缀来说，用得就少了些，如：+1*23</p>
+<h3 id="中缀转后缀表达式"><a href="#中缀转后缀表达式" class="headerlink" title="中缀转后缀表达式"></a>中缀转后缀表达式</h3><p>这里就只列出中缀转后缀的代码的参考，首先是因为似乎用的比较多，其次其他的转换可以根据此推出，毕竟转换的思路前辈们都已帮我们确定了下来。</p>
+<h4 id="参考思路"><a href="#参考思路" class="headerlink" title="参考思路"></a>参考思路</h4><p>我觉得这位大神的文章已经讲得很详细了。</p>
+<p><a href="https://www.cnblogs.com/lanhaicode/p/10776166.html" target="_blank" rel="noopener">链接在此</a></p>
+<h4 id="关于java-util-Stack"><a href="#关于java-util-Stack" class="headerlink" title="关于java.util.Stack"></a>关于java.util.Stack</h4><p>之前找到java有关于栈的类，所以参考代码就直接引用。</p>
+<p><del>实际上这个类存在许多问题，毕竟这是Vector动态数组的子类，但用在这里是没什么大问题。</del></p>
+<p>Stack类是Vector的一个子类，它实现了一个标准的后进先出的栈。</p>
+<p>以下为参考函数中使用的类中带有的方法。</p>
+<ol><br>    <li>boolean empty()<br>检测堆栈是否为空。</li><br>    <li>Object peek()<br>查看堆栈顶部的对象，但不从堆栈中移除它。</li><br>    <li>Object pop()<br>移除堆栈顶部的对象，并作为此函数的值返回该对象。</li><br>    <li>Object push(Object element)<br>把项压入堆栈顶部。</li><br></ol>
 
-<p><meting-js server="netease" type="playlist" id="4905227338" mutex="true"><br></meting-js></p>
-<h3>常听</h3>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><p>目前仅支持一位数的运算，看之后还记不记得有改进这回事。。</p>
+<p>导入的类</p>
+<pre><code class="java">import java.util.Stack;
+import java.util.ArrayList;
 
-<p><meting-js server="netease" type="playlist" id="3108482762" mutex="true"><br></meting-js></p>
-<h3>收藏</h3>
+//输入用
+import java.util.Arrays;
+import java.util.Scanner;
 
-<p><meting-js server="netease" type="playlist" id="3199539136" mutex="true"><br></meting-js></p>
+`
+</code></pre>
+<p>中缀转后缀代码</p>
+<pre><code class="java">/**
+ * 中缀转后缀
+ * @param infix 中缀表达式的列表
+ * @return 后缀表达式的列表
+ */
+public static ArrayList&lt;String&gt; InfixToSuffix(ArrayList&lt;String&gt; infix){
 
-      <!-- .entry-content -->
-      
-      
-      <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-      <footer class="post-footer">
-        <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-        <div class="post-tags">
+    //创建后缀表达式表
+    ArrayList&lt;String&gt; suffix = new ArrayList&lt;String&gt;();
+    //创建符号栈
+    Stack&lt;String&gt; operator = new Stack&lt;&gt;();
+
+    //对原中缀表达式进行循环
+    for (int i = 0 ; i &lt; infix.size() ; i++){
+        String item = infix.get(i);
+        //如果是数字，直接入表
+        if (isNum(item)){
+            suffix.add(item);
+
+        //如果是括号
+        }else if (&quot;(&quot;.equals(item) || &quot;)&quot;.equals(item)){
+            //如果为（，直接入栈
+            if (&quot;(&quot;.equals(item)){
+                operator.push(item);
+            //如果是），从栈顶依次向下出栈入表，直到遇到（
+            }else{
+                while (true){
+                    //遇到（，只出栈，并跳出循环
+                    if(&quot;(&quot;.equals(operator.peek())){
+                        operator.pop();
+                        break;
+                    //遇到其他符号，出栈入表
+                    }else{
+                        suffix.add(operator.pop());
+                    }
+                }
+            }
+
+        //如果遇到操作符
+        }else{
+            //如果栈为空栈，或当前符号权重大于前一个，入栈
+            if(operator.isEmpty() || heavy(item) &gt; heavy(operator.peek())){
+                operator.push(item);
+
+            //若当前符号权重小于前一个，循环元素出栈入表，直至空栈，或遇到权重更小的操作符或（
+            }else{
+                while (!operator.isEmpty() &amp;&amp; !&quot;(&quot;.equals(operator.peek())){
+                    if(heavy(item) &lt;= heavy(operator.peek())){
+                        suffix.add(operator.pop());
+                    }
+                }
+                //当前操作符压栈
+                operator.push(item);
+            }
+        }
+    }
+    //循环完毕，若栈不为空，依次出栈入表。
+    while (!operator.isEmpty()){
+        suffix.add(operator.pop());
+    }
+    return suffix;    
+}
+</code></pre>
+<p>相关方法代码</p>
+<pre><code class="java">/**
+ * 符号权重
+ * @param item 符号
+ * @return 权重int
+ */
+private static int heavy(String item) {
+    int heavy;
+    if (&quot;(&quot;.equals(item) || &quot;)&quot;.equals(item) ){
+        heavy = 0 ;
+    }else if(&quot;+&quot;.equals(item) || &quot;-&quot;.equals(item)){
+        heavy = 1 ;  
+    }else if(&quot;*&quot;.equals(item) || &quot;/&quot;.equals(item)){
+        heavy = 2;
+    }else{
+        throw new IndexOutOfBoundsException (&quot;存在没有设置权重的字符&quot;);
+    }
+    return heavy;
+}
+
+/**
+ * 判断是否为数字
+ * 为之后允许输入两位数及以上的数字做准备
+ * @param str 需判断的字符串
+ * @return true/false
+ */
+public static boolean isNum(String str){
+    for (int i = 0; i &lt; str.length(); i++){
+        if (!Character.isDigit(str.charAt(i))){
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * 非法字符检查
+ * @param list 需检查的ArrayList列表
+ */
+public static void Correct(ArrayList&lt;String&gt; list){
+    for (int i = 0 ; i &lt; list.size() ; i++){
+        String x = list.get(i);
+        if (!isNum(x) &amp;&amp; !&quot;(&quot;.equals(x) &amp;&amp; !&quot;)&quot;.equals(x) &amp;&amp; !&quot;+&quot;.equals(x) &amp;&amp; !&quot;-&quot;.equals(x) &amp;&amp; !&quot;*&quot;.equals(x) &amp;&amp; !&quot;/&quot;.equals(x)){
+            throw new IndexOutOfBoundsException (&quot;非法字符&quot;);
+            }
+    }
+}
+
+/**
+ * 字符串转化为ArrayList
+ * @param str 需转换的字符串
+ * @return ArrayList
+ */
+public static ArrayList&lt;String&gt; StringToList(String str){
+    ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+       for (int i = 0 ; i &lt; str.length() ; i++){
+            list.add(String.valueOf(str.charAt(i))); 
+       }
+    return list;
+}
+</code></pre>
+<p>后缀表达式的计算代码</p>
+<pre><code class="java">/**
+ * 根据后缀表达式list计算结果
+ * @param list
+ * @return
+ */
+private static int calculate(ArrayList&lt;String&gt; suffix) {
+    //创建数字栈
+    Stack&lt;String&gt; number = new Stack&lt;&gt;();
+    //对列表中元素进行循环
+    for(int i=0; i&lt;suffix.size(); i++){
+        String item = suffix.get(i);
+        //如果是数字，入栈
+        if(isNum(item)){
+            number.push(item);
+
+        //如果是符号，取栈顶两个元素，运算后入栈
+        }else {
+            //String → int
+            int num2 = Integer.parseInt(number.pop());
+            int num1 = Integer.parseInt(number.pop());
+            int result = 0;
+            if(item.equals(&quot;+&quot;)){
+                result = num1 + num2;
+            }else if(item.equals(&quot;-&quot;)){
+                  result = num1 - num2;
+            }else if(item.equals(&quot;*&quot;)){
+                  result = num1 * num2;
+            }else if(item.equals(&quot;/&quot;)){
+                  result = num1 / num2;
+            }else {
+                throw new RuntimeException(&quot;非法符号&quot;);
+            }
+            //int → String
+            number.push(String.valueOf(result));
+        }
+    }
+    //返回计算结果
+    return Integer.parseInt(number.pop());
+}
+
+</code></pre>
+<p>主函数测试</p>
+<p>注：输入表达式需保证结构正确，部分输入错误无法判断出。</p>
+<pre><code class="java">public static void main(String[] args){
+    //输入
+    //Scanner sc = new Scanner(System.in); 
+    //String orgexp = sc.nextLine(); 
+    String orgexp=&quot;1+(2+3/4)-5&quot;;
+
+    ArrayList&lt;String&gt; infix = StringToList(orgexp);
+    Correct(infix);
+
+    ArrayList&lt;String&gt; suffix = InfixToSuffix(infix);
+    System.out.print(&quot;中缀转化后缀为：&quot;);
+    for (int i = 0 ; i &lt; suffix.size() ; i++){
+         System.out.print(suffix.get(i));
+    }
+    System.out.println();
+
+    System.out.print(&quot;最终结果：&quot;+orgexp+&quot;=&quot;+calculate(suffix));
+}
+
+</code></pre>
+<h3 id="关于其他表达式的转化"><a href="#关于其他表达式的转化" class="headerlink" title="关于其他表达式的转化"></a>关于其他表达式的转化</h3><p>这里就只列出中缀转后缀的代码的参考，首先是因为似乎用的比较多，其次其他的转换可以根据此推出，毕竟转换的思路前辈们都已帮我们确定了下来。</p>
+
         </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer>-->
-      <!-- .entry-footer -->
-    </article>
+        <!-- .entry-content -->
+        
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
       <!-- #post-## -->
-      <!--<section class="author-profile">
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/03/20/数据结构笔记3.5/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/03/22/84vpKH.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/03/22/84vpKH.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（3.5）——双链表算法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "zBCQxAHWMPlHCRIfdR3MhIhL-gzGzoHsz",
+        appKey: "Pl2GbdLqzzxnrJ8cAbj6UXPq",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="/about/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
+          <a href="https://mo_stone.gitee.io/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="https://mo-stone-0214.github.io/" itemprop="url" rel="author">MoStone</a>
+            <a href="https://mo_stone.gitee.io/" itemprop="url" rel="author">MoStone</a>
             </h3>
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i>We are still on the way.</p>
-      </section> -->
+        <p><i class="iconfont icon-write"></i>注意力涣散</p>
+      </section>
+    </main><!-- #main -->
   </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
