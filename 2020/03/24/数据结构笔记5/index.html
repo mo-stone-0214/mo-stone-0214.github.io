@@ -353,31 +353,30 @@
 <p>中缀表达式就是生活中常见的表达式，如：1+2*3</p>
 <p>由于中缀表达式对于人能较好理解，但对于计算机来讲难以处理，而后缀表达式则容易处理。后缀表达式如：123*+</p>
 <p>前缀表达式相较于后缀来说，用得就少了些，如：+1*23</p>
-<h3 id="中缀转后缀表达式"><a href="#中缀转后缀表达式" class="headerlink" title="中缀转后缀表达式"></a>中缀转后缀表达式</h3><p>这里就只列出中缀转后缀的代码的参考，首先是因为似乎用的比较多，其次其他的转换可以根据此推出，毕竟转换的思路前辈们都已帮我们确定了下来。</p>
-<h4 id="参考思路"><a href="#参考思路" class="headerlink" title="参考思路"></a>参考思路</h4><p>我觉得这位大神的文章已经讲得很详细了。</p>
+<h3 id="部分参考思路"><a href="#部分参考思路" class="headerlink" title="部分参考思路"></a>部分参考思路</h3><p>关于中缀转后缀表达式，以及后缀表达式的计算，这位大神的文章已经讲得很详细了。</p>
 <p><a href="https://www.cnblogs.com/lanhaicode/p/10776166.html" target="_blank" rel="noopener">链接在此</a></p>
+<h3 id="中缀转后缀表达式"><a href="#中缀转后缀表达式" class="headerlink" title="中缀转后缀表达式"></a>中缀转后缀表达式</h3><p>这里就只列出中缀转后缀的代码的参考，首先是因为似乎用的比较多，其次其他的转换可以根据此推出，毕竟转换的思路前辈们都已帮我们确定了下来。</p>
 <h4 id="关于java-util-Stack"><a href="#关于java-util-Stack" class="headerlink" title="关于java.util.Stack"></a>关于java.util.Stack</h4><p>之前找到java有关于栈的类，所以参考代码就直接引用。</p>
 <p><del>实际上这个类存在许多问题，毕竟这是Vector动态数组的子类，但用在这里是没什么大问题。</del></p>
 <p>Stack类是Vector的一个子类，它实现了一个标准的后进先出的栈。</p>
 <p>以下为参考函数中使用的类中带有的方法。</p>
 <ol><br>    <li>boolean empty()<br>检测堆栈是否为空。</li><br>    <li>Object peek()<br>查看堆栈顶部的对象，但不从堆栈中移除它。</li><br>    <li>Object pop()<br>移除堆栈顶部的对象，并作为此函数的值返回该对象。</li><br>    <li>Object push(Object element)<br>把项压入堆栈顶部。</li><br></ol>
 
-<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><p>目前仅支持一位数的运算，看之后还记不记得有改进这回事。。</p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><p>注：参考代码虽支持正的小数和两位数，但其他可能依然存在问题。</p>
 <p>导入的类</p>
 <pre><code class="java">import java.util.Stack;
 import java.util.ArrayList;
 
-//输入用
+//输入
 import java.util.Arrays;
 import java.util.Scanner;
-
 `
 </code></pre>
-<p>中缀转后缀代码</p>
+<p>中缀转后缀表达式代码</p>
 <pre><code class="java">/**
- * 中缀转后缀
- * @param infix 中缀表达式的列表
- * @return 后缀表达式的列表
+ * 中缀表达式转化为后缀表达式
+ * @param infix 中缀表达式列表
+ * @return 后缀表达式列表
  */
 public static ArrayList&lt;String&gt; InfixToSuffix(ArrayList&lt;String&gt; infix){
 
@@ -422,7 +421,7 @@ public static ArrayList&lt;String&gt; InfixToSuffix(ArrayList&lt;String&gt; infi
             }else{
                 while (!operator.isEmpty() &amp;&amp; !&quot;(&quot;.equals(operator.peek())){
                     if(heavy(item) &lt;= heavy(operator.peek())){
-                        suffix.add(operator.pop());
+                         suffix.add(operator.pop());
                     }
                 }
                 //当前操作符压栈
@@ -430,15 +429,22 @@ public static ArrayList&lt;String&gt; InfixToSuffix(ArrayList&lt;String&gt; infi
             }
         }
     }
+
+    //如果最后一个是括号，会导致输出结果多出空的字符串
+    for (int i = 0 ; i&lt;suffix.size() ; i++){
+        if (&quot;&quot;.equals(suffix.get(i))){
+            suffix.remove(i);
+        }
+    }
+
     //循环完毕，若栈不为空，依次出栈入表。
     while (!operator.isEmpty()){
         suffix.add(operator.pop());
     }
     return suffix;    
-}
-</code></pre>
-<p>相关方法代码</p>
-<pre><code class="java">/**
+}    
+
+/**
  * 符号权重
  * @param item 符号
  * @return 权重int
@@ -458,31 +464,17 @@ private static int heavy(String item) {
 }
 
 /**
- * 判断是否为数字
- * 为之后允许输入两位数及以上的数字做准备
+ * 判断字符串是否为数字
  * @param str 需判断的字符串
  * @return true/false
  */
 public static boolean isNum(String str){
-    for (int i = 0; i &lt; str.length(); i++){
-        if (!Character.isDigit(str.charAt(i))){
+    for (int i = 0 ; i&lt;str.length() ; i++){
+        if (!Character.isDigit(str.charAt(0))){
             return false;
         }
     }
     return true;
-}
-
-/**
- * 非法字符检查
- * @param list 需检查的ArrayList列表
- */
-public static void Correct(ArrayList&lt;String&gt; list){
-    for (int i = 0 ; i &lt; list.size() ; i++){
-        String x = list.get(i);
-        if (!isNum(x) &amp;&amp; !&quot;(&quot;.equals(x) &amp;&amp; !&quot;)&quot;.equals(x) &amp;&amp; !&quot;+&quot;.equals(x) &amp;&amp; !&quot;-&quot;.equals(x) &amp;&amp; !&quot;*&quot;.equals(x) &amp;&amp; !&quot;/&quot;.equals(x)){
-            throw new IndexOutOfBoundsException (&quot;非法字符&quot;);
-            }
-    }
 }
 
 /**
@@ -491,21 +483,72 @@ public static void Correct(ArrayList&lt;String&gt; list){
  * @return ArrayList
  */
 public static ArrayList&lt;String&gt; StringToList(String str){
+    //创建列表
     ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
-       for (int i = 0 ; i &lt; str.length() ; i++){
-            list.add(String.valueOf(str.charAt(i))); 
-       }
+    String digit = &quot;&quot;;
+    //对字符串进行循环
+
+    for (int i = 0 ; i &lt; str.length() ; i++){
+          //储存当前循环的字符
+           String item = String.valueOf(str.charAt(i));
+           //如果是数字或小数点，储存到digit中
+           if (isNum(item) || &quot;.&quot;.equals(item)){
+               digit+=String.valueOf(item);
+
+           //如果是符号
+           }else if(&quot;(&quot;.equals(item) || &quot;)&quot;.equals(item) || &quot;+&quot;.equals(item) || &quot;-&quot;.equals(item) || &quot;*&quot;.equals(item) || &quot;/&quot;.equals(item)) {
+
+              //如果是第一个，即（，直接入表
+               if (i==0){
+                   list.add(String.valueOf(item));
+
+               //否则将前一个数字入表，随后符号入表
+               }else{
+                   if (!&quot;&quot;.equals(digit)){
+                       list.add(digit);
+                       digit = &quot;&quot;;
+                   }
+                   list.add(String.valueOf(item));
+               }
+           }else{
+               throw new IndexOutOfBoundsException (&quot;非法字符&quot;);
+           }
+    }
+    //循环完毕，若还有储存的数字，入表。
+    list.add(String.valueOf(digit));
+
     return list;
 }
 </code></pre>
-<p>后缀表达式的计算代码</p>
+<p>主函数测试</p>
+<pre><code class="java">public static void main(String[] args){
+    //输入
+    //Scanner sc = new Scanner(System.in); 
+    //String orgexp = sc.nextLine(); 
+    String orgexp=&quot;(0*1)+((2.5+3)*4.5)-50&quot;;
+
+    ArrayList&lt;String&gt; infix = StringToList(orgexp);
+    ArrayList&lt;String&gt; suffix = InfixToSuffix(infix);
+
+    System.out.print(&quot;中缀转化后缀为：&quot;);
+    for (int i = 0 ; i &lt; suffix.size() ; i++){
+          if (i == suffix.size()-1){
+               System.out.print(suffix.get(i));
+               continue;
+           }
+           System.out.print(suffix.get(i)+&quot;,&quot;);
+    }
+    System.out.println();
+}
+</code></pre>
+<h3 id="后缀表达式计算参考代码"><a href="#后缀表达式计算参考代码" class="headerlink" title="后缀表达式计算参考代码"></a>后缀表达式计算参考代码</h3><p>注：参考代码虽支持正的小数和两位数，但其他可能依然存在问题。</p>
 <pre><code class="java">/**
- * 根据后缀表达式list计算结果
- * @param list
- * @return
+ * 根据后缀表达式suffix计算结果
+ * @param suffix 后缀表达式列表
+ * @return 结果
  */
-private static int calculate(ArrayList&lt;String&gt; suffix) {
-    //创建数字栈
+private static Double calculate(ArrayList&lt;String&gt; suffix) {
+      //创建数字栈
     Stack&lt;String&gt; number = new Stack&lt;&gt;();
     //对列表中元素进行循环
     for(int i=0; i&lt;suffix.size(); i++){
@@ -516,53 +559,139 @@ private static int calculate(ArrayList&lt;String&gt; suffix) {
 
         //如果是符号，取栈顶两个元素，运算后入栈
         }else {
-            //String → int
-            int num2 = Integer.parseInt(number.pop());
-            int num1 = Integer.parseInt(number.pop());
-            int result = 0;
+             //String → double
+              double num2 = Double.parseDouble(number.pop());
+               double num1 = Double.parseDouble(number.pop());
+               double result = 0;
             if(item.equals(&quot;+&quot;)){
-                result = num1 + num2;
+                  result = num1 + num2;
             }else if(item.equals(&quot;-&quot;)){
-                  result = num1 - num2;
+                   result = num1 - num2;
             }else if(item.equals(&quot;*&quot;)){
                   result = num1 * num2;
             }else if(item.equals(&quot;/&quot;)){
-                  result = num1 / num2;
+                   result = num1 / num2;
             }else {
                 throw new RuntimeException(&quot;非法符号&quot;);
             }
-            //int → String
+            //double → String
             number.push(String.valueOf(result));
         }
     }
     //返回计算结果
-    return Integer.parseInt(number.pop());
+    return Double.parseDouble(number.pop());
 }
-
 </code></pre>
 <p>主函数测试</p>
-<p>注：输入表达式需保证结构正确，部分输入错误无法判断出。</p>
 <pre><code class="java">public static void main(String[] args){
     //输入
     //Scanner sc = new Scanner(System.in); 
     //String orgexp = sc.nextLine(); 
-    String orgexp=&quot;1+(2+3/4)-5&quot;;
+      String orgexp=&quot;(0*1)+((2.5+3)*4.5)-50&quot;;
 
     ArrayList&lt;String&gt; infix = StringToList(orgexp);
-    Correct(infix);
-
     ArrayList&lt;String&gt; suffix = InfixToSuffix(infix);
-    System.out.print(&quot;中缀转化后缀为：&quot;);
-    for (int i = 0 ; i &lt; suffix.size() ; i++){
-         System.out.print(suffix.get(i));
-    }
-    System.out.println();
 
     System.out.print(&quot;最终结果：&quot;+orgexp+&quot;=&quot;+calculate(suffix));
 }
-
 </code></pre>
-<h3 id="关于其他表达式的转化"><a href="#关于其他表达式的转化" class="headerlink" title="关于其他表达式的转化"></a>关于其他表达式的转化</h3><p>这里就只列出中缀转后缀的代码的参考，首先是因为似乎用的比较多，其次其他的转换可以根据此推出，毕竟转换的思路前辈们都已帮我们确定了下来。</p>
+<h3 id="中缀表达式计算参考代码"><a href="#中缀表达式计算参考代码" class="headerlink" title="中缀表达式计算参考代码"></a>中缀表达式计算参考代码</h3><p>注：参考代码虽支持正的小数和两位数，但其他可能依然存在问题。</p>
+<pre><code class="java">/**
+ * 两个数字之间的运算
+ * @param x1 数字1
+ * @param x2 数字2
+ * @param item 运算符号
+ * @return 结果
+ */
+private static double calculate(double x1,double x2,String item){
+    //定义结果
+    double result ;
+    //根据运算符对两个数字进行运算
+    if (item.equals(&quot;+&quot;)){
+        result = x1+x2;
+    }else if (item.equals(&quot;-&quot;)){
+        result = x1-x2;
+    }else if (item.equals(&quot;*&quot;)){
+        result = x1*x2;
+    }else if (item.equals(&quot;/&quot;)){
+        result = x1/x2;
+    }else{
+           throw new IndexOutOfBoundsException (&quot;表达式非法&quot;);
+       }
+       //返回
+    return result;
+   }
+
+/**
+ * 中缀表达式的运算
+ * @param infix 中缀表达式的列表
+ * @return 结果
+ */
+public static double InFixOperation(ArrayList&lt;String&gt; infix){
+    //定义数字和操作符的栈
+    Stack&lt;String&gt; number = new Stack&lt;&gt;();
+    Stack&lt;String&gt; operator = new Stack&lt;&gt;();
+
+    //对中缀表达式进行循环
+    for (int i = 0 ; i&lt;infix.size() ; i++){
+        //当前循环的符号
+        String item = infix.get(i);
+
+        //如果是数字，直接入数字栈
+        if (isNum(item)){
+            number.push(item);
+
+        //否则就是操作符
+        }else{
+            //如果是），将前面的数字和符号依次从后往前运算，直至（，并将结果入数字栈
+            if (&quot;)&quot;.equals(item)){
+                while (!operator.peek().equals(&quot;(&quot;)){
+                    double num2 = Double.parseDouble(number.pop());
+                    double num1 = Double.parseDouble(number.pop());
+                    String oper = operator.pop();
+                    number.push(String.valueOf(calculate(num1,num2,oper)));
+                }
+                operator.pop();
+
+            //如果是（，或操作栈为空，或当前运算符权重大于前者，直接入操作符栈
+            }else if (&quot;(&quot;.equals(item) || operator.isEmpty() || heavy(item)&gt;heavy(operator.peek()) ){
+                operator.push(item);
+
+            //否则，将前两个数字进行符号运算，结果入数字栈，操作符入操作栈
+            }else{
+                double num2 = Double.parseDouble(number.pop());
+                double num1 = Double.parseDouble(number.pop());
+                String oper = operator.pop();
+                   number.push(String.valueOf(calculate(num1,num2,oper)));
+                   operator.push(item);
+               }    
+           }
+       }
+
+       //循环完毕，若符号栈不为空，则从后往前运算，并将结果入数字栈
+       if (!operator.isEmpty()){
+           double num2 = Double.parseDouble(number.pop());
+        double num1 = Double.parseDouble(number.pop());
+        String oper = operator.pop();
+        number.push(String.valueOf(calculate(num1,num2,oper)));
+       }
+
+       //返回结果
+    return Double.parseDouble(number.pop());    
+}
+</code></pre>
+<p>主函数测试</p>
+<pre><code class="java">public static void main(String[] args){
+    //输入
+    //Scanner sc = new Scanner(System.in); 
+    //String orgexp = sc.nextLine(); 
+    String orgexp=&quot;(0*1)+((2.5+3)*4.5)-50&quot;;
+
+    ArrayList&lt;String&gt; infix = StringToList(orgexp);
+
+    System.out.print(&quot;最终结果：&quot;+orgexp+&quot;=&quot;+InFixOperation(infix));
+}
+</code></pre>
 
         </div>
         <!-- .entry-content -->
