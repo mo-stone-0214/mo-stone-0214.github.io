@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">《数据结构》笔记（3.5）——双链表算法 | The Base of MoStone</title>
+  <title itemprop="name">archive_a: 2020/4 | The Base of MoStone</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -319,382 +319,276 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-20.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-20.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      《数据结构》笔记（3.5）——双链表算法</h1>
-      <p class="entry-census">
-        <span>
-          <a href="https://mo_stone.gitee.io/">
-            <img src="/images/avatar.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="https://mo_stone.gitee.io/">MoStone</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-3-20<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
-  </div>
-
-<div id="content" class="site-content">
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <p>总体思路与单链表类似，直接给出参考代码。</p>
-<p>注：参考代码中各个算法均包含在类中.</p>
-<p><a href="/2020/03/10/数据结构笔记3/#单链表算法">单链表部分算法</a></p>
-<h2 id="链表定义"><a href="#链表定义" class="headerlink" title="链表定义"></a>链表定义</h2><pre><code class="java">//创建链表 
-public static class DouLinkedList&lt;E&gt; {
-
-    //链表结点数据类型定义
-    public class Node{
-        //数据域，保存数据元素
-        public E data; 
-        //地址域，保存前后结点地址
-        public Node next; 
-        public Node pre;
-        //构造结点，指定数据元素和后继结点
-        public Node(E data, Node next , Node pre){
-            this.data = data;
-            this.next = next; 
-            this.pre = pre; 
-        }
-        //初始化结点
-        public Node() {
-            this(null,null,null);
-        }
-    }
-
-    //链表大小
-    private int num = 0;
-    //链表头结点 
-    Node header;
-    public  DouLinkedList() {
-        header = new Node();
-    }
-
-    /**查找指定位置结点
-     *         
-     * @param n 位置
-     * @return 结点
-     */
-    private Node  findNode(int n) {
-        Node p = header;
-        for (int i = 1; i &lt;= n; ++i) {
-            p = p.next;
-        }
-        return p;
-    }
-
-    /** 代码6：打印顺序表
-     * 
-     **/
-    public void print() {
-        System.out.print(&quot;顺序表长度为:&quot;+num+&quot;,内部元素为:&quot;);
-        Node p = header;
-        for (int i = 0; i &lt; num; i++){
-            p = p.next;
-            System.out.print(p.data + &quot; &quot;);
-        }
-        System.out.println();
-    }
-}
-</code></pre>
-<h2 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h2><pre><code class="java">
-/**判断插入位置是否合法
- * 
- * @param n 插入位置
- */
-private void Check(int n) {
-    if (n &lt;= 0 || n &gt; num+1) {
-        throw new IndexOutOfBoundsException (&quot;插入位置不合法！&quot;);
-    }
-}
-
-/**在链表头部插入
- * 
- * @param data 插入数据
- */
-public void addFirst(E data) {
-    //如果是空表
-    if (num == 0){
-        addLast(data);
-        return;
-    }
-    //创建一个新结点
-    Node newNode = new Node();
-    //将新结点和原结点的next和pre域指向相应结点
-    newNode.next = header.next;
-    header.next.pre = newNode;
-    header.next = newNode;
-    //输入数据
-    newNode.data = data;
-    //长度+1
-    ++num;
-}
-
-/**在链表尾部插入
- * 
- * @param data 插入数据
- */
-public void  addLast(E data) {
-    //创建一个新结点
-    Node newNode = new Node();
-    //找到最后一个结点p
-    Node p = findNode(num);
-    //各地址域指向相应结点
-    p.next = newNode;
-    newNode.pre = p;
-    //输入数据
-    newNode.data = data;
-    //链表长度+1
-    ++num;
-}
-
-/** 在链表指定 n位置前插入结点
-  * 
-  * @param n 插入位置，从1计数
-  * @param data 插入元素
-**/
-public void  add(int n, E data) {
-    //判断插入位置是否合法
-    Check(n);
-    if (n == 1) {
-        addFirst(data);
-        return;
-    }
-    if (n == num+1) {
-        addLast(data);
-        return;
-    }
-    //创建一个新结点
-    Node newNode = new Node();
-    //找到插入位置n前后的结点p,q
-    Node p = findNode(n-1);
-    Node q = findNode(n);
-    //地址域指向相应
-    p.next = newNode;
-    newNode.pre = p;
-    newNode.next = q;
-    q.pre = newNode;
-    //输入数据
-    newNode.data = data;
-    //链表长度+1
-    ++num;
-}
-</code></pre>
-<h2 id="删除算法"><a href="#删除算法" class="headerlink" title="删除算法"></a>删除算法</h2><pre><code class="java">/**  删除链表第一个结点
- * 
- */
-public void  removeFirst() {
-    //判断链表是否为空
-    if (header.next == null) {
-        throw new RuntimeException(&quot;删除失败，因为链表为空！&quot;);
-    }
-    //如果只有一个结点
-    if (num==1){
-        removeLast();
-        return;
-    }
-    //取得第一个结点p
-    Node p = header.next;
-    //相应地址域的改变
-    p.next.pre = null;
-    header.next = p.next;
-    p.next = null;
-    p.pre = null;
-    //链表长度-1
-    --num;
-}
-
-/**删除链表尾元素 
- * 
- */
-public void  removeLast() {
-    //判断链表是否为空
-    if (header.next == null) {
-        throw new RuntimeException(&quot;删除失败，因为链表为空!&quot;);
-    }
-    //取得倒数第二个结点p,以及最后一个结点q
-    Node p = findNode(num - 1);
-    Node q = p.next;
-    //相应地址域的改变
-    p.next = null;
-    q.pre = null;
-    //长度-1
-    --num;
-}
-
-/** 删除链表指定位置的结点
- * 
- *  @param n 删除位置
-**/
-public void  remove(int n) {
-    //判断链表是否为空
-    if (header.next == null) {
-        throw new RuntimeException(&quot;删除失败，因为链表为空！&quot;);
-    }
-    //判断删除位置是否合法
-    CheckForRemove(n);
-    if (n == 0) {
-        removeFirst();
-        return;
-    }
-    if (n == num) {
-        removeLast();
-        return;
-    }
-    //找到删除位置n前后的结点p、r，以及删除位置index的结点q
-    Node p = findNode(n-1);
-    Node q = p.next;
-    Node r = q.next;
-    //相应地址域改变
-    p.next = r;
-    r.pre = p;
-    q.next = null;
-    q.pre = null;
-    //链表长度-1
-    --num;
-}
-
-/** 判断删除位置是否合法
- * 
- * @param n 删除位置
-**/
-private void  CheckForRemove(int n) {
-    if (n &lt;= 0 || n &gt; num) {
-        throw new IndexOutOfBoundsException(&quot;删除位置不合法！&quot;);
-    }
-}
-</code></pre>
-<h2 id="主函数测试"><a href="#主函数测试" class="headerlink" title="主函数测试"></a>主函数测试</h2><pre><code class="java">public static void  main(String[] args) {
-    DouLinkedList&lt;Integer&gt; linkedList = new DouLinkedList&lt;&gt;();
-    // 在链表头部插入元素
-    linkedList.addFirst(2);
-    linkedList.addFirst(6);
-    linkedList.addFirst(3);
-    linkedList.print();
-    // 在链表中间插入元素
-    linkedList.add(2, 7);
-    linkedList.print();
-    // 在链表尾部插入元素
-    linkedList.addLast(8);
-    linkedList.print();
-    // 删除第一个元素
-    linkedList.removeFirst();
-    linkedList.print();
-    // 在链表中间删除元素
-    linkedList.remove(3);
-    linkedList.print();
-    // 删除最后一个元素
-    linkedList.removeLast();
-    linkedList.print();
-}
-
-</code></pre>
-
-        </div>
-        <!-- .entry-content -->
-        
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/03/24/数据结构笔记5/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-24.1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-24.1.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                《数据结构》笔记（5）——栈应用</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/03/17/数据结构笔记4/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-17.1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/20-3-17.1.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                《数据结构》笔记（4）——栈</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
-      
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "zBCQxAHWMPlHCRIfdR3MhIhL-gzGzoHsz",
-        appKey: "Pl2GbdLqzzxnrJ8cAbj6UXPq",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="https://mo_stone.gitee.io/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="https://mo_stone.gitee.io/" itemprop="url" rel="author">MoStone</a>
-            </h3>
-          </div>
-        </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>注意力涣散</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+      <div class="blank" style="padding-top: 75px;">
 </div>
-
-
+<div id="content" class="site-content">
+  <div id="main">
+    <header class="page-header">
+      <h1 class="cat-title">
+      归档</h1>
+      <span class="cat-des">
+        <p>
+        Archives</p>
+      </span>
+    </header>
+    <div id="main-part">
+      <article class="art">
+        <div class="art-main">
+          <div class="art-content">
+            <div id="archives">
+              <p style="text-align:right;">
+                [<span id="al_expand_collapse" style="cursor: s-resize;">
+                全部展开/收缩</span>
+              ]</p>
+              
+              
+              
+              
+              
+                
+                <h3 class="al_year">2020年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      04月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2020/04/03/数据结构笔记7/">
+                          <span style="color:#0bf;">
+                          03日09:45:00</span>
+                          《数据结构》笔记（7）——数组
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      03月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2020/03/31/数据结构笔记6/">
+                          <span style="color:#0bf;">
+                          31日09:45:00</span>
+                          《数据结构》笔记（6）——队列
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/03/24/数据结构笔记5/">
+                          <span style="color:#0bf;">
+                          24日09:45:00</span>
+                          《数据结构》笔记（5）——栈应用
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/03/20/数据结构笔记3.5/">
+                          <span style="color:#0bf;">
+                          20日09:45:00</span>
+                          《数据结构》笔记（3.5）——双链表算法
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/03/17/数据结构笔记4/">
+                          <span style="color:#0bf;">
+                          17日09:45:00</span>
+                          《数据结构》笔记（4）——栈
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/03/10/数据结构笔记3/">
+                          <span style="color:#0bf;">
+                          10日09:45:00</span>
+                          《数据结构》笔记（3）——线性表链式储存结构和算法
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/03/03/数据结构笔记2/">
+                          <span style="color:#0bf;">
+                          03日09:45:00</span>
+                          《数据结构》笔记（2）——线性表及其顺序储存结构和算法
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      02月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2020/02/27/碧蓝航线1000天纪念/">
+                          <span style="color:#0bf;">
+                          27日16:00:00</span>
+                          我和碧蓝航线
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/02/25/数据结构笔记1/">
+                          <span style="color:#0bf;">
+                          25日09:45:00</span>
+                          《数据结构》笔记（1）——绪论
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2020/02/20/决战中途岛观后感/">
+                          <span style="color:#0bf;">
+                          20日13:33:00</span>
+                          《决战中途岛》观后感
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      01月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2020/01/22/关于方舟近况的看法/">
+                          <span style="color:#0bf;">
+                          22日19:42:00</span>
+                          关于方舟近况的看法
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+              
+              
+              
+                
+                <h3 class="al_year">2019年</h3>
+              
+              
+                
+                <ul class="al_mon_list">
+                  <li class="al_li">
+                    <span class="al_mon" style="cursor: s-resize;">
+                      12月(<span id="post-num">
+                      3</span>
+                    篇文章)</span>
+                    <ul class="al_post_list" style="">
+              
+                      <li>
+                        <a href="/2019/12/25/谨此纪念霜星/">
+                          <span style="color:#0bf;">
+                          25日09:58:00</span>
+                          谨此纪念霜星
+                        </a>
+                      </li>
+                      
+              
+              
+              
+              
+              
+                      <li>
+                        <a href="/2019/12/09/Hello World/">
+                          <span style="color:#0bf;">
+                          09日17:50:00</span>
+                          Hello World
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              
+              
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
 
     </div>    
     <div class="ins-search">

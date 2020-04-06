@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-04-02T02:08:51.384Z</updated>
+  <updated>2020-04-04T08:31:07.449Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《数据结构》笔记（7）——数组</title>
+    <link href="/2020/04/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B07/"/>
+    <id>/2020/04/03/数据结构笔记7/</id>
+    <published>2020-04-03T01:45:00.000Z</published>
+    <updated>2020-04-04T08:31:07.449Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;数组是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。&lt;/p&gt;
+&lt;h2 id=&quot;特点&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>《数据结构》笔记（6）——队列</title>
@@ -191,9 +218,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
@@ -261,9 +288,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
@@ -283,9 +310,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
     
   </entry>
   
