@@ -362,15 +362,29 @@
 <h2 id="数组的顺序存储结构"><a href="#数组的顺序存储结构" class="headerlink" title="数组的顺序存储结构"></a>数组的顺序存储结构</h2><p>数组元素是连续存放的，因此采用顺序存储结构。无论几维数组,在计算机中都是按一维数组来存放。</p>
 <p>假定存在一个二维数组A m×n （m行n列） ，L是每个元素所占的存储单元。<br>按行优先顺序存储结构：LOC(a ij)=LOC(a 00)+(i×n+j)×L<br>按列优先顺序存储结构：LOC(a ij)=LOC(a 00)+(j×m+i)×L</p>
 <p>假定存在一个三维数组A m×n×p （m页n行p列），L是每个元素所占的存储单元。<br><img src="https://s1.ax1x.com/2020/04/04/GwfPtU.jpg" alt></p>
-<h2 id="数组的压缩存储"><a href="#数组的压缩存储" class="headerlink" title="数组的压缩存储"></a>数组的压缩存储</h2><p>相同值的多个元素占用一个存储单元，零元素不分配存储单元。</p>
-<h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>n阶矩阵，a ij=a ji  ,  0&lt;=i,j&lt;=(n-1)</p>
-<p>思路：如a ij 已存在数组中，若之后要取出数组中a ji，则取出a ij即可。</p>
-<p><img src="https://s1.ax1x.com/2020/04/04/GwfA1J.jpg" alt></p>
-<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p>以主对角线划分，三角矩阵有上三角和下三角两种。<br>上三角矩阵：它的下三角(不包括主对角线)中的元素均为常数。<br>下三角矩阵正好相反，它的主对角线上方均为常数。<br>大多数情况下，常数为0。</p>
-<p>按行优先顺序存放下三角矩阵的存储和对称矩阵类似。<br><img src="https://s1.ax1x.com/2020/04/04/GwfCkT.jpg" alt></p>
-<p>按行优先顺序存放上三角矩阵中的元素a ij 。<br><img src="https://s1.ax1x.com/2020/04/04/Gwfp7V.jpg" alt></p>
-<h3 id="带状矩阵"><a href="#带状矩阵" class="headerlink" title="带状矩阵"></a>带状矩阵</h3><p>对角矩阵中，所有的非零元素集中在以主对角线为中心的带状区域中，<br>即除了主对角线和主对角线相邻两侧的若干条对角线上的元素之外，其余元素皆为零。</p>
-<h2 id="数组的操作"><a href="#数组的操作" class="headerlink" title="数组的操作"></a>数组的操作</h2>
+<h2 id="数组的压缩存储"><a href="#数组的压缩存储" class="headerlink" title="数组的压缩存储"></a>数组的压缩存储</h2><p>相同值的多个元素占用一个存储单元，零元素不分配存储单元。以下例子的每个元素存储大小为1。</p>
+<h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>按行优先顺序存放对称矩阵的存储</p>
+<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUcb6.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgU6Dx.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgU2VK.jpg" alt></p>
+<h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p>以主对角线划分，三角矩阵有上三角和下三角两种。<br>上三角矩阵的下三角(不包括主对角线)中的元素均为常数。下三角矩阵正好相反，它的主对角线上方均为常数。<br>大多数情况下，常数为0。</p>
+<h4 id="下三角矩阵"><a href="#下三角矩阵" class="headerlink" title="下三角矩阵"></a>下三角矩阵</h4><p>按行优先顺序存放下三角矩阵的存储。</p>
+<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUyK1.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUrvR.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgURUO.jpg" alt></p>
+<h4 id="上三角矩阵"><a href="#上三角矩阵" class="headerlink" title="上三角矩阵"></a>上三角矩阵</h4><p>按行优先顺序存放上三角矩阵的存储</p>
+<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUW5D.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUhPe.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgU48H.jpg" alt></p>
+<h3 id="带状矩阵"><a href="#带状矩阵" class="headerlink" title="带状矩阵"></a>带状矩阵</h3><p>对角矩阵中，所有的非零元素集中在以主对角线为中心的带状区域中，即除了主对角线和主对角线相邻两侧的若干条对角线上的元素之外，其余元素皆为零。</p>
+<p>按行优先顺序存放带状矩阵的存储。</p>
+<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUIxA.jpg" alt></p>
+<p>在 a ij 之前有 i 行，共有 （3×i-1）个非零元素，在第 i 行，有（j-i+1）个非零元素。这样，非零元素 a ij 的地址为：</p>
+<p>k=3×i-1+(j-i+1)=2i+j</p>
+<h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p>稀疏矩阵中有s个非零元素，且s远远小于矩阵元素的总数（即s≦m×n）。</p>
+<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUTKI.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUHqP.jpg" alt></p>
+
         </div>
         <!-- .entry-content -->
         
