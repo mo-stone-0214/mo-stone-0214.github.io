@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>The Base of MoStone</title>
+  <title>MoStone&#39;s Base</title>
   
   <subtitle>我们，依旧在路上。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-04-07T09:21:14.863Z</updated>
+  <updated>2020-04-12T03:31:46.184Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《数据结构》笔记（8.1）——树的定义和存储结构</title>
+    <link href="/2020/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B08.1/"/>
+    <id>/2020/04/10/数据结构笔记8.1/</id>
+    <published>2020-04-10T01:45:00.000Z</published>
+    <updated>2020-04-12T03:31:46.184Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>《数据结构》笔记（7）——数组</title>
@@ -96,11 +122,11 @@
   </entry>
   
   <entry>
-    <title>《数据结构》笔记（3.5）——双链表算法</title>
+    <title>《数据结构》笔记（3.5）——双向链表</title>
     <link href="/2020/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B03.5/"/>
     <id>/2020/03/20/数据结构笔记3.5/</id>
     <published>2020-03-20T01:45:00.000Z</published>
-    <updated>2020-03-31T14:05:06.235Z</updated>
+    <updated>2020-04-12T03:32:59.358Z</updated>
     
     <summary type="html">
     
@@ -108,10 +134,10 @@
       
         
         
-          &lt;p&gt;总体思路与单链表类似，直接给出参考代码。&lt;/p&gt;
+          &lt;p&gt;总体思路与单向链表类似，直接给出参考代码。&lt;/p&gt;
 &lt;p&gt;注：参考代码中各个算法均包含在类中.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/2020/03/10/数据结构笔记3/#单链表算法&quot;&gt;单链表部分算法&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;链表定义&quot;&gt;&lt;a href=&quot;#链表定义&quot;
+&lt;h2 id=&quot;链表定义&quot;&gt;&lt;a
         
       
     
@@ -151,11 +177,11 @@
   </entry>
   
   <entry>
-    <title>《数据结构》笔记（3）——线性表链式储存结构和算法</title>
+    <title>《数据结构》笔记（3）——线性表链式储存结构</title>
     <link href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B03/"/>
     <id>/2020/03/10/数据结构笔记3/</id>
     <published>2020-03-10T01:45:00.000Z</published>
-    <updated>2020-03-22T04:13:12.298Z</updated>
+    <updated>2020-04-12T03:30:20.330Z</updated>
     
     <summary type="html">
     
@@ -177,11 +203,11 @@
   </entry>
   
   <entry>
-    <title>《数据结构》笔记（2）——线性表及其顺序储存结构和算法</title>
+    <title>《数据结构》笔记（2）——线性表及其顺序储存结构</title>
     <link href="/2020/03/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B02/"/>
     <id>/2020/03/03/数据结构笔记2/</id>
     <published>2020-03-03T01:45:00.000Z</published>
-    <updated>2020-03-22T04:13:19.193Z</updated>
+    <updated>2020-04-12T03:30:18.851Z</updated>
     
     <summary type="html">
     
