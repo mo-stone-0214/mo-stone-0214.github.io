@@ -368,7 +368,7 @@
 <p>特点，每一层上的结点数都是最大结点数。</p>
 <h3 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h3><p>定义：高度为 k ，有 n 个结点的二叉树，当且仅当其每一个结点都与高度为 k 的满二叉树中编号从 1 至 n 的结点一一对应时，称为完全二叉树。</p>
 <p>特点：<br>1、叶子结点只可能在层次最大的两层上出现。<br>2、对任一结点，若其右分支下子孙的最大层次为 L，则其左分支下子孙的最大层次必为 L 或 L+1 。</p>
-<p>判断方法：<br>1、根据特点2，若存在一个 k 层的完全二叉树，那么从 1 到 k-1 层必为满二叉树。<br>2、根据定义，在完全二叉树第 k 层，从左往右必定依次与满二叉树的第 k 层一一对应，允许 k 层右端连续空缺，但不允许左端中途不连续空缺。</p>
+<p>判断方法：<br>1、根据特点2，若存在一个 k 层的完全二叉树，那么从 1 到 k-1 层必为满二叉树。<br>2、根据定义，在完全二叉树第 k 层，从左往右必定依次与满二叉树的第 k 层一一对应，允许 k 层右端连续空缺，但不允许左端中途空缺。</p>
 <h2 id="二叉树的储存方法"><a href="#二叉树的储存方法" class="headerlink" title="二叉树的储存方法"></a>二叉树的储存方法</h2><h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><p>思路：若存在两个数据，分别为树的父级和子级，位置为 i 和 j ，若子级位于左侧，其位置关系为：j = i × 2 ；若位于右侧，为： j = i × 2 + 1</p>
 <h4 id="方法参考代码"><a href="#方法参考代码" class="headerlink" title="方法参考代码"></a>方法参考代码</h4><pre><code class="java">public static class ArrayTree&lt;E&gt;{
 
@@ -467,6 +467,7 @@
 </code></pre>
 <h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p>优点:<br>1、找双亲结点、子结点和兄弟结点容易。<br>2、每个结点的存储空间不大。</p>
 <p>缺点：<br>当二叉树的高度和结点比例偏高时，内存利用率偏低，即可能存在大量空内存。</p>
+<p>适用于静态数组，并且结点个数已知的完全二叉树或接近完全二叉树的二叉树。</p>
 <h3 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h3><h4 id="个人最初的想法"><a href="#个人最初的想法" class="headerlink" title="个人最初的想法"></a>个人最初的想法</h4><p>结点拥有三个部分：数据域，三个指向父级和左右子级的地址域。</p>
 <h5 id="参考方法代码"><a href="#参考方法代码" class="headerlink" title="参考方法代码"></a>参考方法代码</h5><pre><code class="java">//定义结点
 public static class Node&lt;E&gt;{
@@ -673,6 +674,7 @@ public static class LinkedBTree&lt;E&gt; {
 <h4 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h4><pre><code class="java">结点F的孩子结点为：空和空
 </code></pre>
 <h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>找儿子容易,找双亲结点难。（可用三叉列表）</p>
+<p>一般来说，适用于任何的二叉树。</p>
 
         </div>
         <!-- .entry-content -->
@@ -692,9 +694,26 @@ public static class LinkedBTree&lt;E&gt; {
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/14/数据结构笔记8.2/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（8.2）——</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/04/03/数据结构笔记7/" rel="next">
               <div class="background">
