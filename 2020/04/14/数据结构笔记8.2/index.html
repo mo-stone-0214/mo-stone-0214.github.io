@@ -390,8 +390,9 @@
 </code></pre><p>结论：B是左子树根结点，D结点在左侧，GE结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J9Xu01.jpg" alt></p>
 <p>根据后序和中序的特点，E位于G的上一层，且G在以E为根结点的子树的左子树中，E无右子树。<br><img src="https://s1.ax1x.com/2020/04/15/J9jG5V.jpg" alt></p>
 <p>同理，右子树中，C位于F的上一层，且F在以C为根结点的子树的右子树中，C无左子树。<br><img src="https://s1.ax1x.com/2020/04/15/J9jhqA.jpg" alt></p>
-<h2 id="二叉树遍历算法"><a href="#二叉树遍历算法" class="headerlink" title="二叉树遍历算法"></a>二叉树遍历算法</h2><p>二叉树以用链表构建的为例，每个结点中包含：该节点的数据，左、右子结点的地址。</p>
-<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><pre><code class="java">/**
+<h2 id="二叉树递归遍历算法"><a href="#二叉树递归遍历算法" class="headerlink" title="二叉树递归遍历算法"></a>二叉树递归遍历算法</h2><p>二叉树以用链表构建的为例，每个结点中包含：该节点的数据，左、右子结点的地址。</p>
+<p>实际上个人觉得二叉树遍历的递归算法虽容易理解，但写出来对于我来说可能会有点困难，因为找到进入和跳出的点可能对于我来说有些困难，所以个人的倾向还是使用<a href="/2020/04/21/数据结构笔记8.3/">非递归的算法</a>。</p>
+<h3 id="树的创建"><a href="#树的创建" class="headerlink" title="树的创建"></a>树的创建</h3><pre><code class="java">/**
  * 创建结点，包含数据，左右子结点地址
  */
 public static class Node&lt;E&gt;{
@@ -444,15 +445,20 @@ public static class LinkedTree&lt;E&gt;{
         return theNode;
     }
 }
-
+`
+</code></pre>
+<h3 id="递归遍历的方法"><a href="#递归遍历的方法" class="headerlink" title="递归遍历的方法"></a>递归遍历的方法</h3><pre><code class="java">
 /**
  * 二叉树的遍历
+ * 均依靠各自遍历方法的特点
  */
 public static class TreeTraver{
-    //先序
-    private static void preOrder(Node&lt;Object&gt; root){
+     //先序
+    static ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+    public static void preOrder(Node&lt;Object&gt; root){
         if(root == null) return;
-        System.out.print(root.data + &quot; &quot;);
+        list.add(root.data);
+        //System.out.print(root.data + &quot; &quot;);
         preOrder(root.left);
         preOrder(root.right);
     }
@@ -460,7 +466,8 @@ public static class TreeTraver{
     private static void inOrder(Node&lt;Object&gt; root){
         if (root == null) return;
         inOrder(root.left);
-        System.out.print(root.data + &quot; &quot;);
+        list.add(root.data);
+        //System.out.print(root.data + &quot; &quot;);
         inOrder(root.right);
     }
     //后序
@@ -468,9 +475,13 @@ public static class TreeTraver{
         if (root == null) return;
         postOrder(root.left);
         postOrder(root.right);
-        System.out.print(root.data + &quot; &quot;);
+        list.add(root.data);
+        //System.out.print(root.data + &quot; &quot;);
     }
-
+    private static void print(){
+        for (int i = 0 ; i&lt;list.size() ; i++) System.out.print(list.get(i)+&quot; &quot;);
+        list.removeAll(list);
+    }
 }
 </code></pre>
 <h3 id="主函数测试"><a href="#主函数测试" class="headerlink" title="主函数测试"></a>主函数测试</h3><pre><code class="java">public static void main(String[] args){
@@ -485,14 +496,17 @@ public static class TreeTraver{
 
     System.out.print(&quot;先序遍历序列：&quot;);
     TreeTraver.preOrder(A);
+    TreeTraver.print();
     System.out.println();
 
     System.out.print(&quot;中序遍历序列：&quot;);
     TreeTraver.inOrder(A);
+    TreeTraver.print();
     System.out.println();
 
     System.out.print(&quot;后序遍历序列：&quot;);
     TreeTraver.postOrder(A);
+    TreeTraver.print();
     System.out.println();
 
 }
@@ -520,9 +534,26 @@ public static class TreeTraver{
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/21/数据结构笔记8.3/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/23/JaataD.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/23/JaataD.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（8.3）——二叉树的非递归遍历算法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/04/10/数据结构笔记8.1/" rel="next">
               <div class="background">
@@ -888,7 +919,13 @@ $(document).ready(function() {
     background: rgba(255, 255, 255, 0.8);
   }
 </style>
+
+
+
+
 <meting-js
+
+    meting="true"
 
     id="4958534384"
 
