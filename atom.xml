@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-04-23T10:14:16.096Z</updated>
+  <updated>2020-04-25T10:10:24.590Z</updated>
   <id>/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《数据结构》笔记（8.4）——二叉树的应用</title>
+    <link href="/2020/04/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B08.4/"/>
+    <id>/2020/04/24/数据结构笔记8.4/</id>
+    <published>2020-04-24T01:45:00.000Z</published>
+    <updated>2020-04-25T10:10:24.590Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;哈夫曼树&quot;&gt;&lt;a href=&quot;#哈夫曼树&quot; class=&quot;headerlink&quot; title=&quot;哈夫曼树&quot;&gt;&lt;/a&gt;哈夫曼树&lt;/h2&gt;&lt;h3 id=&quot;基本术语&quot;&gt;&lt;a href=&quot;#基本术语&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《数据结构》笔记（8.3）——二叉树的非递归遍历算法</title>
     <link href="/2020/04/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B08.3/"/>
     <id>/2020/04/21/数据结构笔记8.3/</id>
     <published>2020-04-21T01:45:00.000Z</published>
-    <updated>2020-04-23T10:14:16.096Z</updated>
+    <updated>2020-04-25T08:22:26.248Z</updated>
     
     <summary type="html">
     
@@ -30,7 +56,7 @@
         
         
           &lt;p&gt;&lt;a href=&quot;/2020/04/14/数据结构笔记8.2/#二叉树递归遍历算法&quot;&gt;二叉树遍历递归算法&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://pan.baidu.com/s/1wfxUv3yM80B77DBghSnSvw&quot;
+&lt;h2 id=&quot;导入的包，树、队列的构建&quot;&gt;&lt;a href=&quot;#导入的包，树、队列的构建&quot; class=&quot;headerlink&quot;
         
       
     
@@ -297,9 +323,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
@@ -367,9 +393,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
     
   </entry>
   
@@ -389,9 +415,9 @@
       <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
-    
       <category term="游戏相关" scheme="/tags/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
     
   </entry>
   
