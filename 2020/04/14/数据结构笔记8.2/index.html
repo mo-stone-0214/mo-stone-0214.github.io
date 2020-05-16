@@ -48,7 +48,7 @@
   /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
-  var bg = "/images/cover/1.jpg,/images/cover/2.jpg,/images/cover/3.jpg,/images/cover/4.jpg,/images/cover/5.jpg".split(",");
+  var bg = "/images/cover/1.jpg,/images/cover/2.jpg,/images/cover/3.jpg,/images/cover/4.jpg,/images/cover/5.jpg,/images/cover/6.jpg".split(",");
   var bgindex = Math.floor(Math.random()*bg.length);
   if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
     alert('朋友，IE浏览器未适配哦~');
@@ -363,7 +363,9 @@
 <h3 id="后序法（PostOrder）"><a href="#后序法（PostOrder）" class="headerlink" title="后序法（PostOrder）"></a>后序法（PostOrder）</h3><p>从左子结点b开始访问，接着访问右子结点c，最后访问根结点a。<br>即：左子树 → 右子树 → 根结点<br><img src="https://s1.ax1x.com/2020/04/15/J9YEYn.jpg" alt></p>
 <h3 id="层次法"><a href="#层次法" class="headerlink" title="层次法"></a>层次法</h3><p>从上往下，从左往右依次读出结点。</p>
 <h2 id="依据序列构建二叉树"><a href="#依据序列构建二叉树" class="headerlink" title="依据序列构建二叉树"></a>依据序列构建二叉树</h2><p>若仅已知先序序列、中序序列、后序序列其中任意一个，无法唯一确定二叉树。</p>
-<p>若已知先序和后序序列，同样无法唯一确定二叉树。</p>
+<p>若知先序和后序序列，同样无法唯一确定二叉树。</p>
+<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><dl><br>    <dt>前序遍历与中序遍历相同的二叉树。</dt><br>        <dd>空二叉树、只有根结点的二叉树、只有左子树的二叉树</dd><br>    <dt>中序遍历与后序遍历相同的二叉树。</dt><br>        <dd>空二叉树、只有根结点的二叉树、只有右子树的二叉树</dd><br>    <dt>前序遍历与后序遍历相同的二叉树。</dt><br>        <dd>空二叉树、只有根结点的二叉树</dd><br></dl>
+
 <h3 id="先序、中序序列"><a href="#先序、中序序列" class="headerlink" title="先序、中序序列"></a>先序、中序序列</h3><pre><code>例：若已知某二叉树的先序序列 [ ABHFDECKG ] 和中序序列 [ HBDFAEKCG ] ，构建该二叉树。
 </code></pre><p>对于先序序列，根结点在第一个位置。对于中序序列，根结点大多数情况在中序序列的中间某一位置（也可能存在位于首尾的情况），左边部分是根结点的左子树的中序遍历序列，右边部分是根结点的右子树的中序遍历序列。</p>
 <pre><code>先序：A BHFD ECKG
@@ -392,10 +394,10 @@
 <p>同理，右子树中，C位于F的上一层，且F在以C为根结点的子树的右子树中，C无左子树。<br><img src="https://s1.ax1x.com/2020/04/15/J9jhqA.jpg" alt></p>
 <h2 id="二叉树递归遍历算法"><a href="#二叉树递归遍历算法" class="headerlink" title="二叉树递归遍历算法"></a>二叉树递归遍历算法</h2><p>二叉树以用链表构建的为例，每个结点中包含：该节点的数据，左、右子结点的地址。</p>
 <p>实际上个人觉得二叉树遍历的递归算法虽容易理解，但写出来对于我来说可能会有点困难，因为找到进入和跳出的点可能对于我来说有些困难，所以个人的倾向还是使用<a href="/2020/04/21/数据结构笔记8.3/">非递归的算法</a>。</p>
-<h3 id="树的创建"><a href="#树的创建" class="headerlink" title="树的创建"></a>树的创建</h3><pre><code class="java">/**
+<h3 id="结点和树的创建及递归遍历"><a href="#结点和树的创建及递归遍历" class="headerlink" title="结点和树的创建及递归遍历"></a>结点和树的创建及递归遍历</h3><pre><code class="java">/**
  * 创建结点，包含数据，左右子结点地址
  */
-public static class Node&lt;E&gt;{
+static class Node&lt;E&gt;{
     E data;
     Node&lt;E&gt; right;
     Node&lt;E&gt; left;
@@ -416,75 +418,74 @@ public static class Node&lt;E&gt;{
 /**
  * 创建树
  */
-public static class LinkedTree&lt;E&gt;{
+static class LinkedTree&lt;E&gt;{
 
-    //根结点
-    Node&lt;E&gt; root;
+      //根结点
+       Node&lt;E&gt; root;
 
-    //初始化树
-    public LinkedTree(E data){
-        root = new Node&lt;&gt;(data);
-    }
+       //初始化树
+       public LinkedTree(E data){
+           root = new Node&lt;&gt;(data);
+       }
 
-    /**
-     * 添加结点
-     * @param data 添加的数据
-     * @param father 父级结点地址
-     * @param isLeft 是否为父级结点的左子结点
-     * @return 添加的结点
-     */
-    public Node&lt;E&gt; add(E data , Node&lt;E&gt; father , boolean isLeft){
+       /**
+        * 添加结点
+        * @param data 添加的数据
+        * @param father 父级结点地址
+        * @param isLeft 是否为父级结点的左子结点
+        * @return 添加的结点
+        */
+       public Node&lt;E&gt; add(E data , Node&lt;E&gt; father , boolean isLeft){
         if(father == null) throw new RuntimeException(&quot;无父级，拒绝添加&quot;);
 
         Node&lt;E&gt; theNode = new Node&lt;&gt;(data);
         if(isLeft){
-            father.left = theNode;
+        father.left = theNode;
         }else{
             father.right = theNode;
         }
         return theNode;
     }
-}
-`
-</code></pre>
-<h3 id="递归遍历的方法"><a href="#递归遍历的方法" class="headerlink" title="递归遍历的方法"></a>递归遍历的方法</h3><pre><code class="java">
-/**
- * 二叉树的遍历
- * 均依靠各自遍历方法的特点
- */
-public static class TreeTraver{
-     //先序
-    static ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
-    public static void preOrder(Node&lt;Object&gt; root){
+
+    //先序
+    private void preOrder(Node&lt;E&gt; root){
         if(root == null) return;
-        list.add(root.data);
-        //System.out.print(root.data + &quot; &quot;);
+        System.out.print(root.data + &quot; &quot;);
         preOrder(root.left);
         preOrder(root.right);
     }
     //中序
-    private static void inOrder(Node&lt;Object&gt; root){
+    private void inOrder(Node&lt;E&gt; root){
         if (root == null) return;
         inOrder(root.left);
-        list.add(root.data);
-        //System.out.print(root.data + &quot; &quot;);
+        System.out.print(root.data + &quot; &quot;);
         inOrder(root.right);
     }
     //后序
-    private static void  postOrder(Node&lt;Object&gt; root){
+    private void  postOrder(Node&lt;E&gt; root){
         if (root == null) return;
         postOrder(root.left);
         postOrder(root.right);
-        list.add(root.data);
-        //System.out.print(root.data + &quot; &quot;);
+        System.out.print(root.data + &quot; &quot;);
     }
-    private static void print(){
-        for (int i = 0 ; i&lt;list.size() ; i++) System.out.print(list.get(i)+&quot; &quot;);
-        list.removeAll(list);
+
+
+    int lives_count = 0;
+    int count=0;
+    //计算叶子结点和总结点，递归
+    private void count(Node&lt;E&gt; root){
+        if (root == null) return;
+        if (root.right == null &amp;&amp; root.left == null) lives_count +=1 ;
+
+        count(root.left);
+        count(root.right);
+        count+=1;
     }
 }
+`
 </code></pre>
-<h3 id="主函数测试"><a href="#主函数测试" class="headerlink" title="主函数测试"></a>主函数测试</h3><pre><code class="java">public static void main(String[] args){
+<h3 id="主函数测试"><a href="#主函数测试" class="headerlink" title="主函数测试"></a>主函数测试</h3><pre><code class="java">@SuppressWarnings(&quot;unused&quot;)
+public static void main(String[] args){
     LinkedTree&lt;Object&gt; tree = new LinkedTree&lt;&gt;(&quot;A&quot;);
 
     Node&lt;Object&gt; A = tree.root;
@@ -495,25 +496,29 @@ public static class TreeTraver{
     Node&lt;Object&gt; G = tree.add(&#39;G&#39;, C, false);
 
     System.out.print(&quot;先序遍历序列：&quot;);
-    TreeTraver.preOrder(A);
-    TreeTraver.print();
+    tree.preOrder(A);
     System.out.println();
 
     System.out.print(&quot;中序遍历序列：&quot;);
-    TreeTraver.inOrder(A);
-    TreeTraver.print();
+    tree.inOrder(A);
     System.out.println();
 
     System.out.print(&quot;后序遍历序列：&quot;);
-    TreeTraver.postOrder(A);
-    TreeTraver.print();
+    tree.postOrder(A);
     System.out.println();
 
+    tree.count(A);
+    System.out.print(&quot;总结点数：&quot;);
+    System.out.println(tree.count);
+    System.out.print(&quot;叶子结点数：&quot;);
+    System.out.println(tree.lives_count);
 }
 </code></pre>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>先序遍历序列：A B D C F G 
 中序遍历序列：D B A F C G 
 后序遍历序列：D B F G C A 
+总结点数：6
+叶子结点数：3
 `
 </code></pre>
         </div>
