@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">关于方舟近况的看法 | MoStone&#39;s Base</title>
+  <title itemprop="name">《数据结构》笔记（9）——排序 | MoStone&#39;s Base</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -325,11 +325,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.4/post_pic/20-1-22/1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.4/post_pic/20-1-22/1.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/05/22/YLzzHP.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/22/YLzzHP.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      关于方舟近况的看法</h1>
+      《数据结构》笔记（9）——排序</h1>
       <p class="entry-census">
         <span>
           <a href="https://mo_stone.gitee.io/">
@@ -341,7 +341,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-1-22<span class="bull">
+        2020-5-19<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -355,27 +355,137 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>新年池里我90发年和阿我都没出，稍微缓和情绪并且在看到网上的一些情况后，有感而发。比较严肃，所以没有图。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>月卡党；是大学生，属于有点闲钱，也有点时间，真想要什么东西的时候也愿意氪金的开服玩家，属于氪金量少于一万的“白嫖玩家”。</p>
-<p>其实对于大多数手游，我一向不会报以太大的期望，一是主要玩的还是pc，手游填补不方便玩pc的空档。二是环境如此，有多少创作者愿意以及能够与当前市面上的一些寡头厂商竞争呢，而那些在市面上的厂商所做的那些游戏质量有多好呢，毕竟手游精品化嘛。</p>
-<p>不得不说，方舟出现在了一个十分好的时间点上。开服之前的周边和同人为游戏积攒了不小数量的玩家，为其他游戏的上线验证了一条新路，即使经过三测的经历，大多数玩家也愿意在一个月后继续玩，因为玩家看到了一个愿意听取玩家意见，并对游戏进行优化的yj。这对于不愿意再受到某些厂商“割韭菜”式的行为的我来说这个游戏是值得尝试的，更别提我还喜欢这游戏的玩法和立绘、ui的（毕竟塔防游戏我玩过的只有王城保卫战觉得还可以），三测后我也“失忆”了。而开服后游戏的口碑也可以证明大多数玩家对游戏是充满了期待的。</p>
-<p>但yj毕竟不是其他的某些厂商，生产力的不足始终是一个缺陷，也是其他大多数问题的根源，如果不解决的话，随着刚开服时的热情的递减，是必定会在某一个时间点爆发的，尤其是对于一个唯一一款游戏就能拿下许多成就的新公司来说。树大招风，不知有多少其他厂商眼红和嫉妒。</p>
-<p>诚然，游戏一开始存在许多问题，但之后的发展让玩家看到了改进的趋势，包括危机合约让玩家看到了新机制的可能，文案的改善也让玩家愿意耐心下来看剧情（如只出来两章的霜星的牺牲对玩家的震撼之大，当然方舟剧情挖坑多填坑少也是一个问题）。但生产力依然是个问题，长草期过长（都被调侃成植树节了），正逐渐消磨玩家的耐心。就像2019年手游收入一样，方舟的国内收入逐月下降，当然，对于一个氪金量曾超过农药的手游来说，这是正常现象，即使收入下降，但基本的依然很多。</p>
-<p>“文案抄袭”（我觉得有人故意扩大问题），“立绘抄袭”（虽然感觉不算），“只过洋节”（这帽子扣的有点大）并没有对游戏整体口碑造成什么影响，这一方面是玩家整体对游戏是有好感的，二是对大多数玩家利益可能有损害（虽然有些现实，但大多数人毕竟不愿意自己喜爱玩的游戏厂商受到这些影响，进而影响到自己的游戏体验），即使是碎石上限开放，也只有一部分玩家抱怨。但一旦遇到影响大多数玩家利益的问题，就没有人愿意站出来维护游戏了（一部分人除外，那不是维护游戏声誉，那是给游戏招黑）。这次限定up就存在这个问题，排除跟风的大多数没抽到的人除了怪自己的运气不好之外，更愿意保持中立，吃瓜看戏，毕竟自己身上也有损失，抽到的人许多也不愿意出来发声，海豹的下场在任何游戏中都已体现，而且现在已经形成对立。所以和之前的问题爆发比起来，这次尤为严重，一旦有任何一个问题爆发，许多其他没有摆在明面上的问题同样也会爆发，游戏口碑也会受到影响。</p>
-<p>我不清楚是不是要冲业绩；不知道也不想知道某些厂商是否有水军暗中操作；不知道策划是不是经验不足；不清楚是不是在试探玩家底线（个人更愿意相信最后一种，毕竟我还是挺喜欢这游戏的）。对于yj这种新兴公司来说，玩家口碑更为重要，而从玩家整体口碑来看，去年似乎运行的还不错，即使说不上很好，但也比大多数其他的好。（这就是个比烂的时代）</p>
-<p>这次的问题也许有对现实妥协的因素，其实更让我关注的是之后的发展趋势，产能不足的问题看起来还得持续一段时间（毕竟春节活动就这样看着是有点凄凉，但是我还是乐观的相信是因为一些不可抗力），是否还会出这一类操作不得而知，玩家的好感经不起消磨，之后只能希望少一些操作，拿了个最佳游戏不算什么，国内游戏环境如此。</p>
-<h2 id="嘴臭部分"><a href="#嘴臭部分" class="headerlink" title="嘴臭部分"></a>嘴臭部分</h2><p>我90发限定池子出的两了六星，一个小火龙一个陈晖洁，就出了一次新的五星，你说我六星9％的概率撞上了我也没的说，但我已经碎了石头和充了钱抽这池子，抽成这样我还敢再继续充钱吗 。我可没有太多的钱砸在这游戏里面，我也不只玩这游戏，有这钱我还不如去舰b买皮肤，人可不能在一棵树上吊死。三个新的皮肤也买了，之前很想要陈晖洁我也充了98买礼包，除此以外每个月买月卡的石头也存着买皮肤了，之前没抽到反正在池子里面不会跑。出限定的我也没有意见，要吃饭的可以理解，但具体体现在这样的池子上就有问题了，这也不能怪玩家有怨言。</p>
-<p>无论是有多么正当的原因，也许是因为之前送的石头比较多影响了氪金量，即使本意不是“割韭菜”，这种池子给人感觉就是在“割韭菜”，为什么要把限定和非限定放在一起。其他游戏也许也有这样的，但别人要么抽卡成本低，要么是有资本，要么脸厚。刚开始我看到消息还以为自己看错了，如果方舟走最后一条路的话，开服时玩家越有好感，越有期待，之后黑起来越狠，尤其对于方舟有这么大的玩家数量。你说我脸黑我也认，抽不到自己想要的玩家或多或少都有怨言，但为何这次大多数人表示不满。</p>
-<p>我之前也玩过千年战争，要不是那游戏太肝了我也不会弃坑。方舟只是国内市场缺乏塔防游戏，版号寒冬之后，世界观和立绘讨喜的情况下，非常适宜地推出的，拿个最佳游戏正常，毕竟TapTap上其他某些游戏玩家就是看不惯，而有的游戏也没有方舟这样被大多数玩家所知道，收入榜第一也没有什么，只是这游戏玩家觉得确实不错，也愿意氪金守护喜爱的游戏，这些还不算什么。国内环境就是这样，有什么办法，这就是所谓的游戏精品化。</p>
-<p>林子大了什么鸟都有，有的玩家就是这样，有就赞美，没有就喷，这次的问题不正中了那些为黑而黑的人的下怀吗。也不能怪更多吃瓜看戏的人，毕竟这些人也有没抽到的，同样也有损失，只是在键盘上敲一敲是不可能改变与自己观点相背的人的观点的。之前还希望评分上9，现在只能期望不下8。</p>
-<p>所以说有些人不知道哪出了点问题，什么“白嫖玩家是养活游戏厂商的关键人群”这种话也说得出来。在？脑子是个好东西，你也应该有一个。</p>
-<p>还有些人不知道是生下来只玩过这一款游戏，还是集体有一个群，一起恰烂钱，不知道这是给游戏招黑吗。我也不知道为什么能在少前冬活前的直播的弹幕中看到吹方舟的，也不知道为什么舰b出个红色婚纱就说抄袭陈晖洁的旗袍的。你们就喜欢看方舟与其他游戏对立是吗。对于这些人我说一个在网上看到的比喻。</p>
-<p>消费的人在商场里讨价还价很常见，也可以理解。有的商家愿意卖给他们，但经常让他们不要和其他人说，显而易见，其他人一听说了这件事也想搭顺风车，商家亏本卖东西还不如不卖。但有一天突然有一个对着讨价还价的人说:“你怎么能这样呢，人家商家不吃饭的？”</p>
-<p>这种人要么精神不正常，要么他是店家的孙子（各种意义上的）。</p>
-<p>算了，玩个游戏这么累干嘛，你们线下pvp高兴就好，我在里面找乐子不也挺好。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>一点小小的建议，我并不像那些微博上的那些人要求的那样指望官方道歉，毕竟“承认的错误才是错误”，而且我更愿意相信有一些不可抗力的。希望根据玩家的一些反馈进行总结，不管是公司内部，又或是发展方向上进行一下调整，解决主要问题（我记着不是赚得挺多的吗，我知道流水和收入不是一个东西，但收入依然不小吧，找不到人，生产力提不上去？还是忙着弄国际服的事情，那也不能忘了国服吧），并在游戏内容及其之后的活动中让玩家感受到类似于剧情文案方面的比较明显的改善，又或者是危机合约gkd，我要让红刀哥、红锤哥和我比看谁死在切城废墟。我认为大多数玩家还是愿意继续玩下去的，但玩家的耐心是有限的。（也许根本轮不到我提建议）</p>
-<p>感谢你能看到这里，无论是支持的，想喷我的，又或是找乐子，无所谓的，这只是一个还比较喜欢玩方舟的玩家的个人极其片面想法，只是提供一个角度而已。如果想法和意见与你的不同，并且觉得我说的话没有道理，请务必坚持自己的看法，我算什么，我还没有本事让你必须接受我的观点。</p>
+          <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br></dd></dl>
 
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
+<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
+<h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>插入第i个对象时，前面的V[0],V[1], …,V[i-1]已排好序，此时，用v[i]的关键字与V[i-1], V[i-2],…的关键字顺序进行比较，找到插入位置即将V[i]插入，原来位置上对象向后顺移。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOqRHS.jpg" alt></p>
+<h4 id="希尔排序-缩小增量排序"><a href="#希尔排序-缩小增量排序" class="headerlink" title="希尔排序(缩小增量排序)"></a>希尔排序(缩小增量排序)</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
+<h5 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h5><p>先取一个正整数 d1 &lt; n，把所有相隔 d1 的记录放一组，组内进行直接插入排序；然后取 d2 &lt; d1，重复上述分组和排序操作；直至di=1，即将所有记录放进一个组中排序为止。</p>
+<font color="red">当d = 1 是与直接插入排序相同，但由于之前关键字较小的记录已跳跃式前移，在进行最后一趟增量为1的插入排序时，序列已基本有序，所以能够节省运算时间。</font>
+
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOxwAf.jpg" alt></p>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 直接插入算法（升序）
+ * @param arr 需要排序的int数组
+ * @return 排好序的int数组
+ */
+public static int[] insertSort(int[] arr){
+
+    //如果数组中没有或只有一个元素，无需排序，直接返回。
+    if (arr.length == 0 || arr.length == 1) return arr;
+
+    int j;
+
+    //从数组中位置为1的数据开始，循环至最后一个
+    for (int i = 1 ; i&lt;arr.length ; i++){
+
+        //储存当前所选数据
+        int theNum = arr[i];
+
+        //从当前数据往前读取，依次向后移动并判断，直至循环完毕或遇到比其更小的数据，储存当前位置j
+        for (j = i-1 ; j&gt;=0 ; j--){
+            arr[j+1] = arr[j];
+            if (arr[j]&lt;theNum)break;
+        }
+
+        //将数据输入至j位置
+        arr[j+1] = theNum;
+
+    }
+
+    //返回已排好序的数组
+    return arr;
+}
+
+/**
+ * 希尔算法（升序）
+ * @param arr 需要排序的int数组
+ * @return 排好序的int数组
+ */
+public static int[] shellSort(int[] arr){
+
+    //如果数组中没有或只有一个元素，无需排序，直接返回。
+    if (arr.length == 0 || arr.length == 1) return arr;
+
+    int n;
+
+    //将步长n取为当前数组长度一半，向下取整，之后依次循环/2，直至n=1
+    for(n = (int)(Math.floor(arr.length / 2));n&gt;=1;n = (int)(Math.floor(n / 2))){
+
+        //与直接插入排序类似，只是步长从1改为n
+        for(int i = n ; i &lt; arr.length ; i+=n){
+
+            int theNum = arr[i];
+            int j;
+
+            for (j = i-n ; j &gt;= 0 ; j-=n){
+
+                arr[j+n] = arr[j];
+
+                if (theNum&gt;arr[j]) break;
+
+            }
+            arr[j+n]= theNum;
+        }
+    }
+
+    //返回已排好序的数组
+    return arr;
+}
+
+/**
+ * 输出用
+ * @param arr int数组
+ */
+public static void print(int[] arr) {
+    // TODO Auto-generated method stub
+
+    if(arr == null)System.out.println(&quot;列表为null&quot;);
+
+    System.out.print(&quot;[&quot;);
+    for (int i = 0 ; i &lt; arr.length ; i++){
+        if(i == arr.length -1 ) {
+            System.out.println(arr[i]+&quot;]&quot;);
+            break;
+        }
+        System.out.print(arr[i]+&quot;,&quot;);
+    }
+}
+`
+</code></pre>
+<h5 id="测试主函数"><a href="#测试主函数" class="headerlink" title="测试主函数"></a>测试主函数</h5><pre><code class="java">public static void main(String[] args){
+
+    int[] arr = {1,3,6,4,2,5,0,7};
+    System.out.print(&quot;排序前：&quot;);
+    print(arr);
+
+    System.out.println(&quot;排序后：&quot;);
+    print(insertSort(arr));
+    print(shellSort(arr));
+}
+``
+</code></pre>
+<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><pre><code class="text">排序前：[1,3,6,4,2,5,0,7]
+排序后：
+[0,1,2,3,4,5,6,7]
+[0,1,2,3,4,5,6,7]
+`
+</code></pre>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><font size="5px" face="黑体">一、空间复杂度：</font>
+
+<p>只需要一个记录的辅助空间。</p>
+<font size="5px" face="黑体">二、时间复杂度：</font>
+
+<dl><br>    <dt>直接插入排序</dt><br>    <dd><img src="https://s1.ax1x.com/2020/05/22/YX9bRO.jpg" alt></dd><br>    <dt>希尔排序</dt><br>    <dd>平均比较次数和对象平均移动次数在 n^1.25 与 1.6*n^1.25 之间。</dd><br></dl>
+
+<h4 id="小结两者比较"><a href="#小结两者比较" class="headerlink" title="小结两者比较"></a>小结两者比较</h4><p><img src="https://s1.ax1x.com/2020/05/22/YXuSTU.jpg" alt></p>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p>两两比较待排序的对象的关键字，如果发生逆序，则交换之，直到全部对象都排好序为止。</p>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
+<h5 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>将第一个记录的关键字与第二个记录的关键字进行比较，若为逆序r[1].key&gt;r[2].key，则交换；然后比较第二个记录与第三个记录；依次类推，直至第n-1个记录和第n个记录比较为止——此时为第一趟冒泡排序，结果关键字最大的记录被安置在最后一个记录上。</li><br>    <li>对前n-1个记录进行第二趟冒泡排序，结果使关键字次大的记录被安置在第n-1个记录位置。</li><br>    <li>重复上述过程，直到“在一趟排序过程中没有进行过交换记录的操作”为止</li><br></ol>
+
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4>
         </div>
         <!-- .entry-content -->
         
@@ -394,36 +504,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/02/20/决战中途岛观后感/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.8/post_pic/20-2-20/1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.8/post_pic/20-2-20/1.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                《决战中途岛》观后感</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2019/12/25/谨此纪念霜星/" rel="next">
+            <a href="/2020/05/12/数据结构笔记8.4.2/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0/post_pic/19-12-25/1.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0/post_pic/19-12-25/1.png">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                谨此纪念霜星</h3>
+                《数据结构》笔记(8.4.2)——二叉树的应用：二叉排列树，线索二叉树</h3>
                 <hr>
               </div>
             </a>
