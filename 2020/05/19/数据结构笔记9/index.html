@@ -357,7 +357,8 @@
         <div class="entry-content">
           <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br></dd></dl>
 
-<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><p>均以升序为例。</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
 <h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
 <h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>插入第i个对象时，前面的V[0],V[1], …,V[i-1]已排好序，此时，用v[i]的关键字与V[i-1], V[i-2],…的关键字顺序进行比较，找到插入位置即将V[i]插入，原来位置上对象向后顺移。</p>
 <h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOqRHS.jpg" alt></p>
@@ -480,12 +481,326 @@ public static void print(int[] arr) {
 
 <dl><br>    <dt>直接插入排序</dt><br>    <dd><img src="https://s1.ax1x.com/2020/05/22/YX9bRO.jpg" alt></dd><br>    <dt>希尔排序</dt><br>    <dd>平均比较次数和对象平均移动次数在 n^1.25 与 1.6*n^1.25 之间。</dd><br></dl>
 
-<h4 id="小结两者比较"><a href="#小结两者比较" class="headerlink" title="小结两者比较"></a>小结两者比较</h4><p><img src="https://s1.ax1x.com/2020/05/22/YXuSTU.jpg" alt></p>
+
 <h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p>两两比较待排序的对象的关键字，如果发生逆序，则交换之，直到全部对象都排好序为止。</p>
 <h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>将第一个记录的关键字与第二个记录的关键字进行比较，若为逆序r[1].key&gt;r[2].key，则交换；然后比较第二个记录与第三个记录；依次类推，直至第n-1个记录和第n个记录比较为止——此时为第一趟冒泡排序，结果关键字最大的记录被安置在最后一个记录上。</li><br>    <li>对前n-1个记录进行第二趟冒泡排序，结果使关键字次大的记录被安置在第n-1个记录位置。</li><br>    <li>重复上述过程，直到“在一趟排序过程中没有进行过交换记录的操作”为止</li><br></ol>
+<h5 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>将第一个记录的关键字与第二个记录的关键字进行比较，若为逆序r[1].key&gt;r[2].key，则交换；然后比较第二个记录与第三个记录；依次类推，直至第n-1个记录和第n个记录比较为止。此时为第一趟冒泡排序，结果关键字最大的记录被安置在最后一个记录上。</li><br>    <li>对前n-1个记录进行第二趟冒泡排序，结果使关键字次大的记录被安置在第n-1个记录位置。</li><br>    <li>重复上述过程，直到“在一趟排序过程中没有进行过交换记录的操作”为止。</li><br></ol>
 
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQacnJ.jpg" alt></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
+<font color="red">若基准值比重复的关键字大的时候，后面的数据会移动到前面，因而该排序方法不稳定。</font>
+
+<h5 id="思想-3"><a href="#思想-3" class="headerlink" title="思想"></a>思想</h5><p>通过一趟排序将待排序列分成两部分，使其中一部分记录的关键字均比另一部分小，再分别对这两部分排序，以达到整个序列有序。</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQwMz8.jpg" alt></p>
+<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 冒泡排序，升序
+ * @param arr 需排列的int数组
+ * @return 已排列的int数组
+ */
+public static int[] bubbleSort(int[] arr){
+
+    if (arr.length == 0 || arr.length == 1) return arr;
+
+    int j,midNum;
+
+    //添加一个判定是否交换的标志，如果在循环过程中某一次循环的所有元素没有交换，则说明已经排好序，并且可以提前结束循环
+    boolean isExchange;
+
+    for (int i = 0 ; i&lt;arr.length-1 ; i++){
+
+        isExchange=false;
+
+        for ( j=0 ; j &lt; arr.length-1-i; j++){
+
+            if (arr[j]&gt;arr[j+1]){
+                midNum = arr[j+1];
+                arr[j+1] = arr [j];
+                arr[j] = midNum;
+
+                isExchange = true;
+            }
+        }
+
+        if(!isExchange) break;
+
+    }
+    midNum = -1;
+
+    return arr;
+}
+
+/**
+ * 快速排序，递归，升序
+ * @param arr 所需排序的数组(需保证输入符合规范)
+ * @param start 开始位置
+ * @param end 结束位置
+ * @return 已部分或完全排好序的数组
+ */
+public static int[] quickSort(int[] arr , int start , int end){
+
+    //如果起始位置和终止位置相同，直接返回
+    if(start == end) return arr ;
+
+    //如果满足开始位置和结束位置在0~数组长度-1的返回内，并且开始位置小于结束位置时
+    if(start&lt;end &amp;&amp; start&gt;=0 &amp;&amp; start&lt;=arr.length-1 &amp;&amp; end&gt;=0 &amp;&amp; end&lt;=arr.length-1){
+
+        //创建首尾指针
+        int i = start;
+        int j = end;
+
+        //取出基准值
+        int theNum = arr[i];
+
+        //循环至首尾指针相等
+        while(i!=j){
+
+            //首指针不动，尾指针循环从右往左寻找比基准值小的数据，并将尾指针所指数据赋予首指针所指位置
+            while(i&lt;j &amp;&amp; arr[j]&gt;=theNum) j-=1;
+            if(i&lt;j) {arr[i]=arr[j];i+=1;}
+
+            //尾指针不动，首指针循环从左往右寻找比基准值大的数据，并将首指针所指数据赋予尾指针所指位置
+            while(i&lt;j &amp;&amp; arr[i]&lt;=theNum) i+=1;
+            if(i&lt;j) {arr[j]=arr[i];j-=1;}
+
+        }
+
+        //此时首尾指针相等，将基准值赋予该位置
+        arr[i] = theNum;
+
+        //递归运算
+        quickSort(arr,start,i-1);
+        quickSort(arr,i+1,end);
+    }
+
+    //返回部分或完全已排序好的数组
+    return arr;
+}
+```
+</code></pre>
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><dl><br>    <dt>冒泡排序</dt><br>    <dd>总共要进行 n-1 趟，对 i 个记录的表进行一趟冒泡需要 i-1 次关键码比较，所以：<br><img src="https://s1.ax1x.com/2020/05/30/tQdDUI.jpg" alt></dd><br>    <dt>快速排序</dt><br>    <dd><br>        <ul>时间复杂度：<br><br>            <li>最好情况（每次总是选到中间值作枢轴）:T(n)=O(nlog2n)</li><br>            <li>最坏情况（每次总是选到最小或最大元素作枢轴）:T(n)=O(n²)</li><br>        </ul><br>        <ul>空间复杂度：<br><br>            <li>最坏情况：S(n)=O(n)</li><br>            <li>一般情况：S(n)=O(log2n)</li><br>        </ul><br>    </dd><br></dl>
+
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>将待排序的结点分为已排序(初始为空)和为未排序两组，依次将未排序的结点中值最小的结点插入已排序的组中。</p>
+<h4 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
+<font color="red">若第二个重复关键字之后存在比其小的关键字，那么在排序中第一个重复关键字会与后面更小的关键字交换，从而导致该算法不稳定。</font>
+
+<p>比如：49 50 49* 13</p>
+<h5 id="思想-4"><a href="#思想-4" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>通过 n-1 次关键字比较，从n个记录中找出关键字最小的记录，将它与第一个记录交换。</li><br>    <li>再通过 n-2 ，n-3 ，…… 次共 n-1 次排序后，排序结束。</li><br></ol>
+
+<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQcDaD.jpg" alt></p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
+<h5 id="思想-5"><a href="#思想-5" class="headerlink" title="思想"></a>思想</h5><p>先将无序序列建成一个堆，得到关键字最小（或最大）的记录；输出堆顶的最小（大）值后，使剩余的n-1个元素重又建成一个堆，则可得到n个元素的次小值；重复执行，得到一个有序序列。</p>
+<p>整个排序过程可分为以下三步：</p>
+<ol><br>    <li>将一个无序序列建成一个堆。</li><br>    <li>输出堆顶元素。</li><br>    <li>调整剩余元素，使之成为一个新的堆。</li><br>    <li>重复2、3步骤，直至输出完毕。</li><br></ol>
+
+<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h5><p>以将{49 38 65 97 76 13 27 50}按升序排列为例。</p>
+<p>将该序列建成一个最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcGXjK.jpg" alt></p>
+<p>输出堆顶元素，并调整剩余元素，使之成为一个新的最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcJkgP.jpg" alt></p>
+<p>同理，重复上一步，直至清空堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcYGRI.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcYJzt.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcY8JA.jpg" alt></p>
+<h4 id="参考代码-2"><a href="#参考代码-2" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：在堆排序算法中构建的堆优先用顺序储存；若升序排列则需要构建最大堆，降序排列需构建最小堆，可降低空间复杂度。</font>
+
+<pre><code class="java">/**
+ * 直接选择排序，升序
+ * @param arr 需要排序的int数组
+ * @return 排好序的int数组
+ */
+public static int[] straight_selectSort(int[] arr){
+
+    //如果数组长度为0或1，直接返回
+    if(arr.length == 0 || arr.length == 1) return arr;
+
+    int midNum;
+
+    //循环（数组长度-2）次排序
+    for (int i = 0 ; i&lt;arr.length-1 ; i++){
+
+        //创建未排序部分最小数据位置
+        int min_index = i;
+
+        //循环寻找未排序部分的最小数据
+        for (int j = i+1 ; j&lt;arr.length ; j++){
+
+            if(arr[j]&lt;arr[min_index]) min_index = j;
+
+        }
+
+        //未排序部分的最前端数据与最小数据调换，并并入已排序部分
+        midNum = arr[i];
+        arr[i] = arr[min_index];
+        arr[min_index] = midNum;
+    }
+
+    //返回已排好序的数组
+    return arr;
+}
+
+/**
+ * 堆排序，升序
+ * @param arr 需排列的int数组
+ * @return 已排好列的int数组
+ */
+public static int[] heapSort(int[] arr){
+
+    //将拥有n个数据的数组创建为最大堆
+    //注：在循环过程中始终保证根结点为arr[i]的堆为最大堆，下方同理
+    for(int i = arr.length/2-1 ; i&gt;=0 ; i--){
+        to_maxheap(arr,i,arr.length-1);
+    }
+
+    int midNum;
+
+    //每次将n个数据的最大堆的最大值（根结点，第0位置）与数组最后一个数调换，并将前n-1个重新排为最大堆。
+    //依次类推，共循环n次
+    for(int i = arr.length-1 ; i&gt;=1 ; i--){
+        midNum = arr[i];
+        arr[i] = arr[0];
+        arr[0] = midNum;
+
+        to_maxheap(arr,0,i-1);
+    }
+
+    //数据初始化并返回
+    midNum = 0;
+    return arr;
+
+}
+
+/**
+ * 创建最大堆
+ * @param arr int数组
+ * @param root 堆的根结点
+ * @param end 范围
+ */
+private static void to_maxheap(int[] arr,int root,int end) {
+    // TODO Auto-generated method stub
+
+    //寻找根结点最大子结点，初始化为左子结点
+    int max_child = root * 2 + 1;
+    int maxNum;
+
+    //当最大子结点在root~end范围内时循环
+    while(max_child&lt;=end){
+
+        //如果根结点右子结点比左子结点大，最大子变更为右子结点
+        if(max_child&lt;end &amp;&amp; arr[max_child]&lt;arr[max_child+1]/*如果需要为降序，此处为&gt;符号*/) max_child+=1;
+
+        //如果子结点数据比根结点数据大，结点数据交换，并将root、max_child指针向下层移动
+        if(arr[root]&lt;arr[max_child]/*如果需要为降序，此处为&gt;符号*/){
+            maxNum = arr[root];
+            arr[root] = arr[max_child];
+            arr[max_child] = maxNum;
+
+            root = max_child;
+            max_child = 2*root+1;
+
+        //否则，跳出循环
+        }else{
+            break;
+        }
+    }
+    //数据初始化
+    maxNum = 0;
+}
+```
+</code></pre>
+<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul><br>    <li>直接选择排序：<br>        <ul><br>            <li>时间复杂度：<br>                <ul><br>                    <li>移动次数：<br>最好情况：0<br>最坏情况：3(n-1)</li><br>                    <li>比较次数：<br><img src="https://s1.ax1x.com/2020/06/07/tgqF9U.jpg" alt></li><br>                </ul><br>            </li><br>        </ul><br>    </li><br>    <li>堆排序:<br>        <ul><br>            <li>时间复杂度：O(n log2(n))</li><br>            <li>空间复杂度：O(1)</li><br>        </ul><br>    </li><br></ul>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>此方法为<font color="red">稳定排序</font>。</p>
+<h5 id="思想-6"><a href="#思想-6" class="headerlink" title="思想"></a>思想</h5><p>设有两个有序表A和B，对象个数分别为al 和 bl ，变量i和j分别是两表的当前指针。</p>
+<p>设表C是归并后的新有序表，变量k是它的当前指针。</p>
+<p>i和j对A和B遍历时，依次将关键字小的对象放到C中，当A或B遍历结束时，将另一个表的剩余部分照抄到新表中。</p>
+<h5 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h5><p>以将{8 4 5 6 3 2 9 7}按升序排列为例。</p>
+<p><img src="https://s1.ax1x.com/2020/06/07/t2ZyfU.jpg" alt></p>
+<h4 id="参考代码-3"><a href="#参考代码-3" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：此参考代码与思想有一定出入。</font>
+
+<p><del>但能成功排序。。</del></p>
+<pre><code class="java">/**
+ * 归并排序，数组中的一段
+ * @param arr 数组
+ * @param start1 第1开始位置
+ * @param start2 第2开始位置
+ * @param n 需排序的数组总长度
+ * @return 已排序的数组
+ */
+private static int[] mergeSort_1(int[] arr,int start1,int start2,int n){
+
+    //创建过渡数组
+    int[] arr2 =new int[n];
+
+    //将数组看成两个部分，并创建指针
+    int p = start1,q = start2;
+    int k = 0;
+
+    //循环至p，q指针其中一个指到各部分末尾
+    while(p&lt;start2 &amp;&amp; q&lt;start1+n){
+
+        //取指针所指数据大的添加入过渡数组中，并取出数据的指针向后移动
+        if(arr[p]&lt;arr[q]){
+            arr2[k++]=arr[p++];
+        }else{
+            arr2[k++]=arr[q++];
+        }
+    }
+
+    //如果各部分还有未添加入过渡数组的数据，直接按顺序加入
+    if(p!=start2){
+        for (int i = p ; i&lt;start2 ; i++) arr2[k++] = arr[i];
+    }
+    if(q!=start1+n){
+        for (int i = q ; i&lt;start1+n ; i++) arr2[k++] = arr[i];
+    }
+
+    //将过渡数组中已排好序的数据添加回原来需排序数组的位置
+    p = start1;
+    for(int i = 0 ; i&lt;n ; i++) arr[start1++]=arr2[i];
+
+    //返回已部分排好序的数组
+    return arr;
+}
+
+/**
+ * 归并排序，升序
+ * @param arr 需排列的int序列
+ * @return 已排列的int序列
+ */
+public static int[] mergeSort(int[] arr){
+
+    //如果长度为0或1，直接返回输出
+    if(arr.length==0 || arr.length==1) return arr;
+
+    //将需排序的序列分为元素数为n的子序列，i为子序列开始位置
+    int n = 1,i = 0;
+
+    //循环至子序列元素数n大于需排序序列
+    while(n&lt;arr.length){
+
+        //依次取两个子序列进行归并，结束后取之后的两个子序列
+        for(i = 0; i&lt;arr.length ; i+=2*n) {
+
+            //若第一个子序列能取n个元素，而第二个不能取，则这两个长度不等的子序列进行归并
+            if(n&lt;(arr.length-i) &amp;&amp; 2*n&gt;(arr.length-i)){
+                mergeSort_1(arr,i,i+n,arr.length%(2*n));
+
+            //若两个子序列均完整有n个数据，则直接归并
+            }else if(i+2*n&lt;=arr.length){
+                mergeSort_1(arr,i,i+n,2*n);
+            }
+            //若第一个子序列无法取完整的n个元素，则跳过
+        }
+
+        //子序列元素数×2
+        n*=2;
+    }
+
+    //返回已排好序的序列
+    return arr;
+}
+`
+</code></pre>
+<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>归并排序在第 i 趟归并后，有序子序列长度为 2i 。对于具有 n 个记录的序列来说，必须做 log2(n) 趟归并，每趟归并所花的时间为 O(n)。</p>
+<p>所以，二路归并排序算法的时间复杂度为 O(n log2(n))，空间复杂度为 O(n)。</p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基本原理：</p>
+<p>采用“分配”和“收集”的办法，用对多关键字进行排序的思想实现对单关键字进行排序的方法。</p>
+
         </div>
         <!-- .entry-content -->
         
