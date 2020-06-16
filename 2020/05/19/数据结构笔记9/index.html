@@ -332,12 +332,12 @@
       《数据结构》笔记（9）——排序</h1>
       <p class="entry-census">
         <span>
-          <a href="https://mo_stone.gitee.io/">
+          <a href="/">
             <img src="/images/avatar.jpg">
           </a>
         </span>
         <span>
-          <a href="https://mo_stone.gitee.io/">MoStone</a>
+          <a href="/">MoStone</a>
         </span>
         <span class="bull">
         ·</span>
@@ -355,7 +355,8 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br></dd></dl>
+          <p>在学习过程中，断断续续写了一个月。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br>    <dt>选取排序方法时需要考虑的因素</dt><br>    <dd><br>        <ul><br>            <li>待排序的记录数目</li><br>            <li>记录本身信息量的大小</li><br>            <li>关键字的结构及其分布情况</li><br>            <li>对排序稳定性的要求</li><br>            <li>语言工具的条件、辅助空间的大小</li><br>        </ul><br>    </dd><br></dd></dl>
 
 <h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><p>均以升序为例。</p>
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
@@ -798,8 +799,9 @@ public static int[] mergeSort(int[] arr){
 </code></pre>
 <h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>归并排序在第 i 趟归并后，有序子序列长度为 2i 。对于具有 n 个记录的序列来说，必须做 log2(n) 趟归并，每趟归并所花的时间为 O(n)。</p>
 <p>所以，二路归并排序算法的时间复杂度为 O(n log2(n))，空间复杂度为 O(n)。</p>
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>基本原理：</p>
-<p>采用“分配”和“收集”的办法，用对多关键字进行排序的思想实现对单关键字进行排序的方法。</p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><ul><br>    <li>基本原理<br>        <ul><br>            <li>采用“分配”和“收集”的办法，用对多关键字进行排序的思想实现对单关键字进行排序的方法。</li><br>        </ul><br>    </li><br>    <li>多关键字排序原理<br>        <ul>以扑克牌为例<br><br>            <li>每张扑克牌有两个“关键字”：花色和面值，它们之间有次序的优先。</li><br>            <li>对以上排序，可以先对花色排序，或先对面值排序，之后再对另一个关键字排序。</li><br>        </ul><br>    </li><br></ul>
+
+
 
         </div>
         <!-- .entry-content -->
@@ -819,9 +821,26 @@ public static int[] mergeSort(int[] arr){
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/05/30/数据结构笔记10/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（10）——查找</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/05/12/数据结构笔记8.4.2/" rel="next">
               <div class="background">
@@ -855,11 +874,11 @@ public static int[] mergeSort(int[] arr){
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-          <a href="https://mo_stone.gitee.io/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
+          <a href="/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="https://mo_stone.gitee.io/" itemprop="url" rel="author">MoStone</a>
+            <a href="/" itemprop="url" rel="author">MoStone</a>
             </h3>
           </div>
         </div>
