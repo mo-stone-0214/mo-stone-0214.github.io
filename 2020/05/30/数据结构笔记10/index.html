@@ -413,7 +413,7 @@ public static int binarySearch(int[] list, int key) {
 </code></pre>
 <h4 id="算法分析-1"><a href="#算法分析-1" class="headerlink" title="算法分析"></a>算法分析</h4><p>如果把当前查找位置上的结点作为根，左子表和右子表的结点分别作为根的左子树和右子树，由此得到的二叉树称为描述折半查找的判定树。<br><img src="https://s1.ax1x.com/2020/06/13/txSYp4.jpg" alt></p>
 <p>借助于判定树很容易求得折半查找的平均查找长度。</p>
-<p>设结点总数为n，其高度为k，那么 n = 2^k - 1 ，即k = (log2 n) + 1</p>
+<p>设结点总数为n，其高度为k，那么 2^(k-1)-1 &lt; n ≤ 2^k -1 </p>
 <font color="red">折半查找的算法复杂度为：log2 n<br>ASL = 各个结点层数的平均数（以图中为例：(ASL = （1+2×2+3×4+4×4）/11=3 ）</font>
 
 <p><hr><br>即在最坏情况下，折半查找方法查找成功的比较次数不超过判定树的高度。</p>
@@ -864,6 +864,54 @@ $(document).ready(function() {
   <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
 </div>
 <button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+  <div id="theGif" style="position:fixed;bottom: 100px;width: 200px;height: 200px;">
+  
+
+
+  <img id="m14_pic" src="/images/m14.gif" onmousemove="display_button()" onmouseout="none_button()" >
+  
+  <button id="hidden_button" style="display:none ; margin: 0 auto;" onclick="theGif_disappear()">Hidden</button>
+
+
+<!--  -->
+
+<script>
+
+  function display_button(){
+
+    var Btn = document.getElementById("hidden_button");
+
+    Btn.style.display = "block";
+
+  }
+
+  function none_button(){
+
+    var Btn = document.getElementById("hidden_button");
+
+    setTimeout(function(){Btn.style.display = "none"}, 1000);
+
+  }
+
+  function theGif_disappear(){
+
+    var theGif = document.getElementById("theGif");
+
+    theGif.style.display = "none";
+
+  }
+
+
+</script>
+
+  
+
+</div>
+
+
+
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <!-- require MetingJS -->
