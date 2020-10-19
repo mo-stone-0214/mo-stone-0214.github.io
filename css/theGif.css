@@ -1,0 +1,23 @@
+@media screen and (max-width: 1024px){
+	#theGif{
+	    display: none;
+	}
+    #hidden_button{
+	    display:none ; 
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#theGif{
+		position:fixed;
+	    bottom: 100px;
+	    width: 200px;
+	    height: 200px;
+    }
+
+    #hidden_button{
+	    display:none ; 
+	    margin: 0 auto;
+    }
+}
+
