@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">《数据结构》笔记（8.3）——二叉树的非递归遍历算法 | Mo_Stone&#39;s Basic</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+  <link rel="stylesheet" href="/css/theGif.css" media="all">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "MoStone'sBasic";
+  mashiro_option.author_name = "Basic";
+  mashiro_option.site_url = "/";
+  mashiro_option.v_appId = "zBCQxAHWMPlHCRIfdR3MhIhL-gzGzoHsz";
+  mashiro_option.v_appKey = "Pl2GbdLqzzxnrJ8cAbj6UXPq";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "/images/cover/1.jpg,/images/cover/2.jpg,/images/cover/3.jpg,/images/cover/4.jpg,/images/cover/5.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:  #6495ED}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background: #6495ED}::-webkit-scrollbar-thumb{background:  #6495ED}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color: #6495ED}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color: #6495ED}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+
+
+  
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="Hi,MoStone！" style="left: 20px;">Hi,MoStone！</h1>
+        </a>
+      </div>
+      <div class="header-info">
+        <p>
+        <i class="fa fa-quote-left"></i>  We are still on the way.  <i class="fa fa-quote-right"></i>
+        </p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/mo-stone-0214" target="_blank" class="social" title="github">
+                    <img src="/images/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5653209092" target="_blank" class="social" title="sina">
+                    <img src="/images/social/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:mo-stone@163.com" target="_blank" class="social" title="email">
+                    <img src="/images/social/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1181615474&amp;site=qq&amp;menu=yes" target="_blank" class="social" title="qq">
+                    <img src="/images/social/qq.PNG">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=118858374" target="_blank" class="social" title="wangyiyun">
+                    <img src="/images/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink mostone">
+          <a href="/">
+            <span class="sakurasono">MoStone&#39;s</span>
+            <span class="shironeko">Basic</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/技术/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/日常/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          日常
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/笔记/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          笔记
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/other/">
+                          <i class="fa fa-th" aria-hidden="true"></i>
+                          碎片
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-user-o" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/04/23/JaataD.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/23/JaataD.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      《数据结构》笔记（8.3）——二叉树的非递归遍历算法</h1>
+      <p class="entry-census">
+        <span>
+          <a href="/">
+            <img src="/images/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="/">MoStone</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-21<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p><a href="/2020/04/14/数据结构笔记8.2/#二叉树递归遍历算法">二叉树遍历递归算法</a></p>
+<h2 id="导入的包，树、队列的构建"><a href="#导入的包，树、队列的构建" class="headerlink" title="导入的包，树、队列的构建"></a>导入的包，树、队列的构建</h2><p>其实完全可以不用导入动态数组ArrayList包的，这只是我比较倾向于用而已。</p>
+<pre><code class="java">import java.util.ArrayList;
+import java.util.Stack;
+``
+</code></pre>
+<p>栈在先序、中序、后序遍历中使用。<br>队列在层次遍历中使用。（其实这是直接搬用的前面<a href="/2020/03/31/数据结构笔记6/#方法参考代码">用数组构建循环队列的方法</a>，懒得再写一遍而已）</p>
+<pre><code class="java">/**
+ * 创建结点，包含数据，左右子结点地址
+ */
+static class Node&lt;E&gt;{
+    E data;
+    Node&lt;E&gt; right;
+    Node&lt;E&gt; left;
+
+    //相关数据的添加
+    public Node(E data , Node&lt;E&gt; right , Node&lt;E&gt; left){
+        this.left = left;
+        this.right = right;
+        this.data = data;
+    }
+
+    //初始化
+    public Node(E data){
+        this(data,null,null);
+    }
+}
+
+/**
+ * 创建树
+ */
+public static class LinkedTree&lt;E&gt;{
+
+    //根结点
+    Node&lt;E&gt; root;
+
+    //初始化树
+    public LinkedTree(E data){
+        root = new Node&lt;&gt;(data);
+    }
+
+    /**
+     * 添加结点
+     * @param data 添加的数据
+     * @param father 父级结点地址
+     * @param isLeft 是否为父级结点的左子结点
+     * @return 添加的结点
+     */
+    public Node&lt;E&gt; add(E data , Node&lt;E&gt; father , boolean isLeft){
+        if(father == null) throw new RuntimeException(&quot;无父级，拒绝添加&quot;);
+
+        Node&lt;E&gt; theNode = new Node&lt;&gt;(data);
+        if(isLeft){
+            father.left = theNode;
+        }else{
+            father.right = theNode;
+        }
+        return theNode;
+    }
+}
+
+/**
+ * 循环队列
+ */
+static class QueueArray&lt;E&gt;{
+
+    //设定队列，队的容量，前端和后端，元素数量。
+    //前端为队头元素位置，后端下标为队尾元素后一个位置。
+    private int size = 20 ;
+    private Object[] que_arr ;
+    private int front ;
+    private int rear ;
+    private int count ;
+    //初始化队列
+    public QueueArray(){
+        que_arr =new Object [size] ;
+        this.front = 0 ;
+        this.rear = 0 ;
+        this.count = 0;
+    }
+    /**
+     * 入队
+     * @param data
+     */
+    public void In(E data){
+        //判断是否队满
+        if (count == size){
+            throw new RuntimeException(&quot;队满&quot;);
+        }
+        //添加数据，元素总数+1
+        que_arr[rear] = data ;
+        ++count;
+        //队尾标号的增加
+        if (rear+1 &gt;= size){
+            rear = 0;
+        }else{
+            ++rear;
+        }
+    }
+
+    /**
+     * 出队
+     * @return 队头元素
+     */
+    public Object Out(){
+        if (count == 0){
+            throw new RuntimeException(&quot;队空&quot;);
+        }
+        Object data = que_arr[front];
+        que_arr[front] = null ;
+        --count;
+        if (front+1 &gt;= size){
+            front = 0;
+        }else{
+            ++front;
+        }
+        return data;
+    }
+}
+
+/**
+ * 输出
+ * @param list 需输出的数组
+ */
+public static void print(ArrayList&lt;Object&gt; list){
+    for (int i = 0 ; i&lt;list.size() ; i++) System.out.print(list.get(i)+&quot; &quot;);
+    System.out.println();
+}
+
+`
+</code></pre>
+<h2 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h2><h3 id="思想1"><a href="#思想1" class="headerlink" title="思想1"></a>思想1</h3><p>循环控制：</p>
+<p>1、入栈前，指向本结点；<br>2、先左子树一次入栈并输出（入栈前先指向该结点），直到没有左子树的结点为止；<br>3、出栈顶元素，然后找到右子树，继续1、2操作，直到栈为空且结点为空。</p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>指针指向根结点，将左子树结点1、2、3循环依次入栈并输出，直至没有左子树结点，指针为null。</p>
+<pre><code class="text">栈中元素：1 2 3
+输出元素：1 2 3
+</code></pre>
+<p>栈顶结点3出栈，无右子结点，之后栈顶结点2出栈，指针指向结点2的右子结点5，继续重复一步骤：将结点5的左子树结点循环入栈并输出，当然此处5为叶子结点，无左子节点。</p>
+<pre><code class="text">栈中元素：1 5
+输出元素：1 2 3 5
+</code></pre>
+<p>结点5出栈，无右子结点，之后栈顶结点1出栈，指针指向结点1的右子结点4，同上。</p>
+<pre><code class="text">栈中元素：4
+输出元素：1 2 3 5 4
+</code></pre>
+<p>结点4出栈，无右子结点，此时栈为空，指针指向结点4的左子结点null，遍历结束。</p>
+<pre><code class="text">栈中元素：
+输出元素：1 2 3 5 4
+</code></pre>
+<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 先序1
+ * @param root 树的根结点
+ * @return 先序遍历序列数组
+ */
+public static ArrayList&lt;Object&gt; preOrder(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+    if(root==null) return null;
+
+    //创建暂时存储结点的栈
+    Stack&lt;Node&lt;Object&gt;&gt; stack = new Stack&lt;&gt;();
+
+    //创建先序遍历序列储存的列表
+    ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+    //创建指针，并指向root
+    Node&lt;Object&gt; p = root;
+
+    //循环至栈空
+    while(p!=null || !stack.isEmpty() ){
+
+        /*
+         * 循环将p结点和左子结点入栈入组，直至p为null
+         */
+        while(p!=null){
+            stack.add(p);
+            list.add(p.data);
+            p = p.left;
+        }
+
+        /*
+         * 如果p为null，栈为空，表明遍历结束
+         * 如果栈不为空，弹出栈顶结点，p指针指向该节点的右子节点（有可能为null）
+         * 继续循环将p的左子节点入栈入组
+         */
+        if(!stack.isEmpty()){
+            p = stack.pop();
+            p = p.right;
+        }
+    }
+
+    //返回后序遍历序列数组
+    return list;
+}
+</code></pre>
+<h3 id="思想2"><a href="#思想2" class="headerlink" title="思想2"></a>思想2</h3><p>使用一个栈，首先将根结点入栈，开始循环：</p>
+<p>从栈中退出当前结点p，先访问它，然后将其右孩子入栈，再将其左孩子入栈，如此直到栈为空。<br>（因为对左孩子的访问先序遍历先于右孩子，后入栈的先访问）</p>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>结点1入栈。</p>
+<pre><code class="text">栈中元素：1
+输出元素：
+</code></pre>
+<p>栈顶结点1出栈，输出结点1，并将结点1的右子结点4先入栈，左子结点2后入栈。</p>
+<pre><code class="text">栈中元素：4 2
+输出元素：1
+</code></pre>
+<p>栈顶结点2出栈，输出结点2，同样将结点2的右子结点5先入栈，左子结点3后入栈。</p>
+<pre><code class="text">栈中元素：4 5 3
+输出元素：1 2
+</code></pre>
+<p>栈顶结点3出栈，输出结点3，因结点3为叶子结点，无入栈。栈顶结点5出栈，输出结点5</p>
+<pre><code class="text">栈中元素：4
+输出元素：1 2 3 5
+</code></pre>
+<p>栈顶结点4出栈，输出结点4，栈空，遍历结束。</p>
+<pre><code class="text">栈中元素：
+输出元素：1 2 3 5 4
+</code></pre>
+<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 先序2
+ * @param root 树的根结点
+ * @return 先序遍历序列数组
+ */
+public static ArrayList&lt;Object&gt; preOrder2(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+    if(root==null) return null;
+
+    //创建存储结点的栈
+    Stack&lt;Node&lt;Object&gt;&gt; stack = new Stack&lt;&gt;();
+
+    //创建先序遍历序列储存的列表
+    ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+    //创建指针
+    Node&lt;Object&gt; p;
+
+    //将根结点入栈
+    stack.push(root);
+
+    //循环至栈空
+    while(!stack.isEmpty()){
+
+        /*
+         * 依据先序遍历的特点：p结点→左子节点→右子结点
+         */
+
+        //p指针指向弹出栈顶的结点
+        p = stack.pop();
+
+        //p结点的数据入组
+        list.add(p.data);
+
+        //如果有右结点，入栈
+        if( p.right != null) stack.push(p.right);
+
+        //如果有左节点，入栈并p指针指向左子节点
+        if( p.left != null) {
+            stack.push(p.left);
+            p=p.left;
+        }
+    }
+
+    //返回先序遍历序列数组
+    return list;
+}
+`
+</code></pre>
+<h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>与先序的循环控制类似：</p>
+<p>1、入栈前，先指向本结点；<br>2、先左子树一次入栈（入栈前先指向该结点），直到没有左子树的结点为止；<br>3、出栈顶元素并输出，若有右子树，找到右子树，继续1、2操作，直到栈为空且结点为空。</p>
+<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>指针指向根结点，将左子树结点1、2、3循环依次入栈，直至没有左子树结点，指针为null。</p>
+<pre><code class="text">栈中元素：1 2 3
+输出元素：
+</code></pre>
+<p>栈顶结点3出栈并输出，无右子结点，之后栈顶结点2出栈并输出，指针指向结点2的右子结点5，继续重复一步骤：将结点5的左子树结点循环入栈，当然此处5为叶子结点，无左子节点。</p>
+<pre><code class="text">栈中元素：1 5
+输出元素：3 2
+</code></pre>
+<p>结点5出栈并输出，无右子结点，之后栈顶结点1出栈并输出，指针指向结点1的右子结点4，同上。</p>
+<pre><code class="text">栈中元素：4
+输出元素：3 2 5 1 
+</code></pre>
+<p>结点4出栈并输出，无右子结点，此时栈为空，指针指向结点4的左子结点null，遍历结束。</p>
+<pre><code class="text">栈中元素：
+输出元素：3 2 5 1 4
+</code></pre>
+<h3 id="参考代码-2"><a href="#参考代码-2" class="headerlink" title="参考代码"></a>参考代码</h3><pre><code class="java">/**
+ * 中序
+ * @param root 树的根结点
+ * @return 中序遍历序列数组
+ */
+public static ArrayList&lt;Object&gt; inOrder(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+    if(root==null) return null;
+
+    //创建存储结点的栈
+    Stack&lt;Node&lt;Object&gt;&gt; stack = new Stack&lt;&gt;();
+
+    //创建中序遍历序列储存的列表
+    ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+    //创建指针，并指向根结点
+    Node&lt;Object&gt; p = root;
+
+    //循环至p指针为null，以及栈为空。
+    while(p!=null || !stack.isEmpty() ){
+
+        //依次将左子树结点入栈，直至为null
+        while(p!=null){
+            stack.add(p);
+            p = p.left;
+        }
+
+        /*
+         * 如果指针p和栈均为空，则遍历完成
+         * 如果栈不为空，弹出的栈顶结点，数据入组，p指针指向该节点右子节点
+         */
+        if(!stack.isEmpty()){
+            p = stack.pop();
+            list.add(p.data);
+            p = p.right;
+        }
+    }
+
+    //返回中序遍历序列数组
+    return list;
+}
+`
+</code></pre>
+<h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><h3 id="思想1——双栈"><a href="#思想1——双栈" class="headerlink" title="思想1——双栈"></a>思想1——双栈</h3><p>实际上我觉得这个方法很神奇。实际上它做的是一个反向的预排序遍历。</p>
+<p>由于后序序列的顺序是：左子结点→右子结点→根结点，所以入栈1的顺序是正常顺序，入栈2的顺序是：根结点→右子结点→左子结点，之后再将栈2的结点依次出栈输出。</p>
+<h4 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>先将根结点入栈1，在循环中将栈1的栈顶结点1出栈，指针指向结点1，并将其入栈2，将指针所指的结点1的左、右子结点2、4按顺序依次入栈1.</p>
+<pre><code class="text">栈1元素：2 4
+栈2元素：1
+</code></pre>
+<p>栈1的栈顶结点4出栈，指针指向结点4，并入栈2，由于结点4为叶子结点，跳过。</p>
+<pre><code class="text">栈1元素：2
+栈2元素：1 4
+</code></pre>
+<p>同循环里的步骤1，栈1的栈顶结点2出栈，指针指向结点2，并入栈2，将指针所指的结点2的左、右子结点3、5依次入栈1。</p>
+<p>同步骤2栈1的栈顶结点5出栈入栈2，由于结点5是叶子节点，跳过。结点3同理。</p>
+<pre><code class="text">栈1元素：3 5
+栈2元素：1 4 2
+
+↓
+
+栈1元素：
+栈2元素：1 4 2 5 3
+`
+</code></pre>
+<p>栈1空，遍历完毕，将栈2元素依次出栈输出即可。</p>
+<pre><code class="text">输出元素：3 5 2 4 1
+</code></pre>
+<h4 id="参考代码-3"><a href="#参考代码-3" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 后序 双栈
+ * @param root 树的根结点
+ * @return 后序遍历序列数组
+ */
+public static ArrayList&lt;Object&gt; postOrder(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+    if(root==null) return null;
+
+    //创建暂时存储结点的栈1，以及存储结点倒序的栈2
+    Stack&lt;Node&lt;Object&gt;&gt; stack = new Stack&lt;&gt;();
+    Stack&lt;Object&gt; stack2 = new Stack&lt;&gt;();
+
+    //创建后序遍历序列储存的列表
+    ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+    //创建指针
+    Node&lt;Object&gt; p;
+
+    //将根结点入栈1
+    stack.push(root);
+
+    //循环至栈1为空，即栈1结点数据均入栈2
+    while(!stack.isEmpty()){
+
+        /*
+         * 始终依据后序遍历的特点：左子节点→右子结点→p结点
+         * 由于栈是先入后出，入栈顺序，p结点→右子结点→左子节点
+         */
+
+        //弹出栈1顶端结点
+        p = stack.pop();
+
+        //根据是否存在左右子节点，按照p→右→左的顺序入栈2
+        stack2.push(p.data);
+        if( p.left != null) stack.push(p.left);
+        if( p.right != null) stack.push(p.right);
+    }
+
+    //将栈2里的元素依次输入至数组
+    while (!stack2.isEmpty()){
+        list.add(stack2.pop());
+    }
+
+    //返回后序遍历序列数组
+    return list;
+}
+``
+</code></pre>
+<h3 id="思想2——标记"><a href="#思想2——标记" class="headerlink" title="思想2——标记"></a>思想2——标记</h3><p>因后序遍历：左子树→后右子树→根结点，则需要判断上次访问的结点是位于左子树，还是右子树。</p>
+<p>若是位于左子树，则需跳过根结点，先进入右子树；若是位于右子树，则直接输出根结点。</p>
+<p>因此，可通过设置标志位，标明上次访问的结点是位于左子树，还是右子树。</p>
+<h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>指针指向根结点，将左子树结点1、2、3循环依次入结点栈，标记栈中入“左”的标记，直至没有左子树结点，指针为null。</p>
+<pre><code class="text">结点栈元素：1  2  3
+标记栈元素：左 左 左
+
+输出元素：
+</code></pre>
+<p>查看结点栈的栈顶结点3，查看栈栈顶标记，标记为“左”，指针指向结点3的右子结点（为null），标记栈入“右”标记。</p>
+<pre><code class="text">结点栈元素：1  2  3 
+标记栈元素：左 左 右
+
+输出元素：
+</code></pre>
+<p>由于指针为null，跳过循环，查看标记栈栈顶标记，标记为“右”，结点栈栈顶结点3出栈并输出，标记栈栈顶标记出栈。</p>
+<pre><code class="text">结点栈元素：1  2 
+标记栈元素：左 左
+
+输出元素：3
+</code></pre>
+<p>查看结点栈的栈顶结点2，查看栈栈顶标记，标记为“左”，指针指向结点2的右子结点5，标记栈入“右”标记。</p>
+<pre><code class="text">结点栈元素：1  2 
+标记栈元素：左 右
+
+输出元素：3
+</code></pre>
+<p>指针不为null，将结点5入结点栈，“左”标记入标记栈。</p>
+<pre><code class="text">结点栈元素：1  2  5
+标记栈元素：左 右 左
+
+输出元素：3
+</code></pre>
+<p>同理，查看结点栈的栈顶结点5，查看栈栈顶标记，标记为“左”，指针指向结点3的右子结点（为null），标记栈入“右”标记。</p>
+<pre><code class="text">结点栈元素：1  2  5
+标记栈元素：左 右 右
+
+输出元素：3
+</code></pre>
+<p>同理，由于指针为null，跳过循环，查看标记栈栈顶标记，标记为“右”，结点栈栈顶结点5出栈并输出，标记栈栈顶标记出栈。之后同上</p>
+<pre><code class="text">结点栈元素：1  2 
+标记栈元素：左 右
+
+输出元素：3 5
+
+↓
+
+结点栈元素：1 
+标记栈元素：左
+
+输出元素：3 5 2
+
+↓
+
+结点栈元素：1  4 
+标记栈元素：右 左
+
+输出元素：3 5 2
+
+↓
+
+结点栈元素：1  4
+标记栈元素：右 右
+
+输出元素：3 5 2
+
+↓
+
+结点栈元素：1  
+标记栈元素：右
+
+输出元素：3 5 2 4
+
+↓
+
+结点栈元素： 
+标记栈元素：
+
+输出元素：3 5 2 4 1
+</code></pre>
+<h4 id="参考代码-4"><a href="#参考代码-4" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
+ * 后序 标记
+ * @param root 树的根结点
+ * @return 后序遍历序列数组
+ */
+public static ArrayList&lt;Object&gt; postOrder2(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+        if(root==null) return null;
+
+        //创建储存结点和左右子树的标记的栈，此处左子树记为-1，右为1.
+        Stack&lt;Node&lt;Object&gt;&gt; stack = new Stack&lt;&gt;();
+        Stack&lt;Integer&gt; stack2 = new Stack&lt;&gt;();
+
+        //创建后序遍历序列储存的列表
+        ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+        //创建指针
+        Node&lt;Object&gt; p = root;
+
+    //循环直至结点栈为空和指针为null
+    while( p != null || !stack.isEmpty()){
+
+        //若指针不为null，将结点入栈，并标记为左子树（-1），循环至p指向null
+        while (p!=null){
+            stack.push(p);
+            stack2.push(-1);
+            p = p.left;
+        }
+
+        //若p指针为null,栈中为空，则已遍历完成，跳出循环。
+        if(stack.isEmpty()) break;
+
+        /*
+         * 指针上一个指向的结点，即结点栈顶端的结点若在右子树，
+         * 则该节点左右结点结点均已遍历（当然也有可能为空），弹出右标记，并将该结点入表
+         */
+        if(stack2.peek() == 1){
+            stack2.pop();
+            list.add(stack.pop().data);
+        }
+
+        /* 
+         * 指针上一个指向的结点，即结点栈顶端的结点若在左子树，
+         * 则弹出左标记，指针指向该节点的右结点，并标记为右子树（1）。
+         * 
+         * 这里需要注意，指向右结点后有可能该节点存在左子树，
+         * 所以需要再次利用前方添加左节点的循环，
+         * 所以需要在循环最后。
+         */    
+        else if(stack2.peek() == -1){
+            stack2.pop();
+            p = stack.peek().right;
+            stack2.push(1);
+        }
+    }
+
+    //循环结束，返回后序遍历序列数组
+    return list;
+}
+`
+</code></pre>
+<h2 id="层次遍历（从上向下）"><a href="#层次遍历（从上向下）" class="headerlink" title="层次遍历（从上向下）"></a>层次遍历（从上向下）</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>层次遍历：从上往下，从左往右。</p>
+<p>先将根结点入队，指针指向队首，将根结点的左、右子结点依次入队，如果没有就跳过。之后指针向后移动，队首结点出队输出，再次重复将指针所指结点的左、右子结点依次入队。直至队空。</p>
+<h3 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h3><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<p>先将根结点入队，指针指向根结点，之后将指针所指结点1的左、右子结点2、4依次入队。</p>
+<pre><code class="text">队列元素：1 2 4
+输出元素：
+</code></pre>
+<p>指针向后移动，队首结点出队输出，再将指针所指结点2的左、右子结点3、5依次入队。</p>
+<pre><code class="text">队列元素：2 4 3 5
+输出元素：1
+</code></pre>
+<p>指针向后移动，队首结点出队输出，指针所指结点4为叶子结点，跳过。</p>
+<pre><code class="text">队列元素：4 3 5
+输出元素：1 2
+</code></pre>
+<p>之后同理，直至队列元素为空。</p>
+<pre><code class="text">队列元素：
+输出元素：1 2 4 3 5
+`
+</code></pre>
+<h3 id="参考代码-5"><a href="#参考代码-5" class="headerlink" title="参考代码"></a>参考代码</h3><pre><code class="java">/**
+ * 层次
+ */
+@SuppressWarnings(&quot;unchecked&quot;)
+public static ArrayList&lt;Object&gt; levelOrder(Node&lt;Object&gt; root){
+
+    //判断以root为根的树是否为空
+    if(root==null) return null;
+
+    //创建储存结点的队列
+    QueueArray&lt;Node&lt;Object&gt;&gt; quearr = new QueueArray&lt;&gt;();
+
+    //创建后序遍历序列储存的数组
+    ArrayList&lt;Object&gt; list = new ArrayList&lt;&gt;();
+
+    //将根结点入队
+    quearr.In(root);
+
+    //创建当前结点和指针,指针指向队首结点
+    int flag = 0;
+    Node&lt;Object&gt; p = (Node&lt;Object&gt;) quearr.que_arr[flag];
+
+    //循环至队列为空
+    while (quearr.count != 0){
+
+        /*
+         * 指针从队首依次向后移动，依次将该节点的左右子节点入队
+         * 若指针向后移动，之前的结点出队
+         */
+        if(p.left!=null) quearr.In(p.left);
+        if(p.right!=null) quearr.In(p.right);
+
+        //出队入组
+        list.add(((Node&lt;Object&gt;)quearr.Out()).data);
+
+        //flag标号的增加
+        if (flag+1 &gt;= quearr.size){
+            flag = 0;
+        }else{
+            ++flag;
+        }
+
+        //指针向后移动
+        p = (Node&lt;Object&gt;) quearr.que_arr[flag];
+    }
+
+    //返回层次遍历序列数组
+    return list;
+}
+`
+</code></pre>
+<h2 id="所有方法的主函数测试"><a href="#所有方法的主函数测试" class="headerlink" title="所有方法的主函数测试"></a>所有方法的主函数测试</h2><p><img src="https://s1.ax1x.com/2020/04/23/Jd4b9A.jpg" alt></p>
+<pre><code class="java">public static void main(String[] args){
+    LinkedTree&lt;Object&gt; tree = new LinkedTree&lt;&gt;(&quot;A&quot;);
+
+    Node&lt;Object&gt; A = tree.root;
+    Node&lt;Object&gt; B = tree.add(&#39;B&#39;, A, true);
+    Node&lt;Object&gt; C = tree.add(&#39;C&#39;, A, false);
+    Node&lt;Object&gt; D = tree.add(&#39;D&#39;, B, true);
+    Node&lt;Object&gt; E = tree.add(&#39;E&#39;, B, false);
+    Node&lt;Object&gt; F = tree.add(&#39;F&#39;, C, false);
+    Node&lt;Object&gt; G = tree.add(&#39;G&#39;, D, true);
+    Node&lt;Object&gt; H = tree.add(&#39;H&#39;, E, true);
+    Node&lt;Object&gt; I = tree.add(&#39;I&#39;, E, false);
+    Node&lt;Object&gt; J = tree.add(&#39;J&#39;, I, false);
+
+    System.out.print(&quot;先序遍历序列，法一：&quot;);
+    print(preOrder(A));
+
+    System.out.print(&quot;先序遍历序列，法二：&quot;);
+    print(preOrder2(A));
+
+    System.out.print(&quot;中序遍历序列：&quot;);
+    print(inOrder(A));
+
+    System.out.print(&quot;后序遍历序列，双栈：&quot;);
+    print(postOrder(A));
+
+    System.out.print(&quot;后序遍历序列，标记：&quot;);
+    print(postOrder2(A));
+
+    System.out.print(&quot;层次遍历序列：&quot;);
+    print(levelOrder(A));
+
+}
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code class="java">先序遍历序列，法一：A B D G E H I J C F 
+先序遍历序列，法二：A B D G E H I J C F 
+中序遍历序列 ：G D B H E I J A C F 
+后序遍历序列，双栈：G D H J I E B F C A 
+后序遍历序列，标记：G D H J I E B F C A 
+层次遍历序列：A B C D E F G H I J 
+`
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/04/24/数据结构笔记8.4.1/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/25/Jy1HQs.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/25/Jy1HQs.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记(8.4.1)——二叉树的应用：哈夫曼树</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/04/14/数据结构笔记8.2/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                《数据结构》笔记（8.2）——二叉树的遍历</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "zBCQxAHWMPlHCRIfdR3MhIhL-gzGzoHsz",
+        appKey: "Pl2GbdLqzzxnrJ8cAbj6UXPq",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="/" class="profile gravatar"><img src="/images/avatar.jpg" itemprop="image" alt="MoStone" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="/" itemprop="url" rel="author">MoStone</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>注意力涣散</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Mo_Stone<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+
+<div id="colophon" class="site-footer" role="contentinfo">
+  <!-- the gif -->
+  <div class="footer_img">
+    <img src="/images/gif/Magallan_move.gif"></img>
+
+  </div>
+
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</div>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "/movies","name":"movie.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "/movies","name":"movie.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+
+
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="/images/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">MoStone'sBasic</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5653209092" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1181615474&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/技术/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/日常/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  日常
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/笔记/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  笔记
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/other/">
+                  <i class="fa fa-th" aria-hidden="true"></i>
+                  碎片
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-user-o" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+  <div id="theGif">
+
+  <div id="move_space">
+  
+  <div id="gif_div" style="position: absolute;width:135px;bottom: 0;">
+  <img id="gif" style="" src="/images/gif/Ptilopsis_relax.gif" onclick="special()">
+  </div>
+
+  </div>
+  
+  <div id="hidden_button" onclick="theGif_disappear()" >
+  <div id="hide_content" style="font-size:20px;text-align: center; width:50px" onmouseover="display_button()" onmouseout="none_button()">HIDE</div>
+  </div>
+
+
+<script>
+  
+  /*
+
+  let stop;
+  let move;
+  let special;
+  let interact;
+  let ctx;
+  
+  function init(){
+    stop = new Image();
+    move = new Image();
+    special = new Image();
+    interact = new Image();
+
+    stop.src = "/images/gif/Ptilopsis_relax.gif";
+    interact.src = "/images/gif/Ptilopsis_Interact.gif";
+ 
+    let canvas = document.getElementById("move_space");
+    ctx = canvas.getContext("2d");
+ 
+    stop.onload = function (){
+        draw()
+    }
+  }
+
+  init();
+  
+  function draw(){
+    ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+    
+    ctx.drawImage(stop, 0, 0, 300, 300);
+ 
+    ctx.save();
+    ctx.translate(150, 150);
+ 
+    //绘制earth轨道
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(255,255,0,0.5)";
+    ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+    ctx.stroke()
+ 
+    let time = new Date();
+    //绘制地球
+    ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+    ctx.translate(100, 0);
+    ctx.drawImage(earth, -12, -12)
+ 
+    //绘制月球轨道
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(255,255,255,.3)";
+    ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+ 
+    //绘制月球
+    ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+    ctx.translate(40, 0);
+    ctx.drawImage(moon, -3.5, -3.5);
+    ctx.restore();
+    requestAnimationFrame(draw);
+  }
+
+  */
+
+
+
+  function back_relax(){
+    document.getElementById("gif").src = "/images/gif/Ptilopsis_relax.gif"
+  }
+
+  function special(){
+
+    var gif = document.getElementById("gif");
+
+    gif.src = "/images/gif/Ptilopsis_Interact.gif";
+
+    setTimeout("back_relax()","520"); 
+
+  }
+
+  function none_button(){
+
+    var Btn = document.getElementById("hidden_button");
+
+    $(Btn).animate({left:-25},"swing")
+
+  }
+
+  function display_button(){
+
+    var Btn = document.getElementById("hidden_button");
+
+    $(Btn).animate({left:-10},"swing");
+
+  }
+
+  function theGif_disappear(){
+
+    var gif_div = document.getElementById("gif_div");
+    var hide_content = document.getElementById("hide_content");
+
+    if(hide_content.innerHTML == "HIDE"){
+      gif_div.style.display = "none";
+      hide_content.innerHTML = "SHOW";
+    }else{
+      gif_div.style.display = "block";
+      hide_content.innerHTML = "HIDE";
+    }
+
+    
+
+  }
+
+</script>
+
+  
+
+</div>
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+
+
+
+
+<meting-js
+
+    meting="true"
+
+    id="5075972651"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+
+
+</body>
+</html>

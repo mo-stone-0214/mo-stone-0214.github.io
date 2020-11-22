@@ -1,0 +1,37 @@
+@media screen and (max-width: 1160px){
+	#theGif{
+	    display: none;
+	}
+    #hidden_button{
+	    display:none ; 
+	}
+}
+
+#theGif{
+	position:fixed;
+    bottom: 210px;
+    width: 20%;
+    height: 200px;
+    z-index: 1;
+}
+
+#hidden_button{
+    margin: 0 auto;
+    background-color: cornflowerblue;
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    left: -25px;
+    color: white;
+
+    writing-mode: vertical-rl;
+}
+
+#move_space{
+	position: absolute;
+	/*left: 15px;
+    width: 90%;*/
+    width: 150px;
+	left: 30px;
+	height: 100%;
+}
