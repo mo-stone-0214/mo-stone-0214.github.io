@@ -26,12 +26,3 @@
 
     writing-mode: vertical-rl;
 }
-
-#move_space{
-	position: absolute;
-	/*left: 15px;
-    width: 90%;*/
-    width: 150px;
-	left: 30px;
-	height: 100%;
-}
