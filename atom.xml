@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-09-07T02:53:38.205Z</updated>
+  <updated>2021-03-14T13:06:25.172Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【转】中文文案排版指北</title>
+    <link href="/2021/03/14/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%88%E6%8E%92%E7%89%88%E6%8C%87%E5%8C%97/"/>
+    <id>/2021/03/14/中文文案排版指北/</id>
+    <published>2021-03-14T09:50:00.000Z</published>
+    <updated>2021-03-14T13:06:25.172Z</updated>
+    
+    <summary type="html">
+    
+      网站内容和日常编辑用。
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="收藏" scheme="/tags/%E6%94%B6%E8%97%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>《数据结构》笔记（续）——尝试&amp;Test代码</title>
@@ -507,28 +527,6 @@
     
     
       <category term="数据结构" scheme="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《决战中途岛》观后感</title>
-    <link href="/2020/02/20/%E5%86%B3%E6%88%98%E4%B8%AD%E9%80%94%E5%B2%9B%E8%A7%82%E5%90%8E%E6%84%9F/"/>
-    <id>/2020/02/20/决战中途岛观后感/</id>
-    <published>2020-02-20T05:33:00.000Z</published>
-    <updated>2020-06-10T03:52:24.498Z</updated>
-    
-    <summary type="html">
-    
-      难得的太平洋海战的电影。
-    
-    </summary>
-    
-      <category term="日常" scheme="/categories/%E6%97%A5%E5%B8%B8/"/>
-    
-    
-      <category term="随想" scheme="/tags/%E9%9A%8F%E6%83%B3/"/>
-    
-      <category term="电影" scheme="/tags/%E7%94%B5%E5%BD%B1/"/>
     
   </entry>
   
