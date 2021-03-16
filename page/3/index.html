@@ -826,53 +826,47 @@ $(document).ready(function() {
   
   <div id="theGif">
 
-
-  
-  <div id="gif_div" style="position: absolute;width:175px;bottom: 0;    margin-left: 20px;">
-  <img id="gif" style="" src="/images/gif/Ptilopsis_relax.gif" onclick="interact()">
+  <div id="gif_div" style="position: absolute; width: 200px; bottom: 0; left: 20px;">
+    <img id="gif" style="width: 100%; height: 100%" src="" onclick="interact(); clearTimeout(spe)">
   </div>
 
-
-  
   <div id="hidden_button" onclick="theGif_disappear()" >
   <div id="hide_content" style="font-size:20px;text-align: center; width:50px" onmouseover="display_button()" onmouseout="none_button()">HIDE</div>
   </div>
-
 
 <script>
 
 animate_gif();
 
-  function animate_gif(){
-    var img = document.getElementById("gif");
-    var gif_relax = "/images/gif/Ptilopsis_relax.gif";
-    img.src = gif_relax;
-    setTimeout("special()",6000);
-  }
+    function animate_gif(){
+		var img = document.getElementById("gif");
+		var gif_relax = "/images/gif/Ptilopsis_relax.gif";
+		img.src = gif_relax;
+		spe = setTimeout("special()",6000);
+	}
 
-  function back_relax(){
-      var img = document.getElementById("gif");
-    img.src = "/images/gif/Ptilopsis_relax.gif";
-  }
+	function back_relax(){
+	   	var img = document.getElementById("gif");
+		img.src = "/images/gif/Ptilopsis_relax.gif";
+	}
 
     function special(){
-        var img = document.getElementById("gif");
-    img.src = "/images/gif/Ptilopsis_Special.gif";
-    setTimeout("back_relax()",5500)
-    setTimeout("special()",15000)
+       	var img = document.getElementById("gif");
+		img.src = "/images/gif/Ptilopsis_Special.gif";
+		setTimeout("back_relax()",5500)
+		setTimeout("special()",15000)
     }
 
     function interact(){
-        var img = document.getElementById("gif");
+       	var img = document.getElementById("gif");
         img.src = "/images/gif/Ptilopsis_Interact.gif";
         setTimeout("back_relax()",900); 
     
     }
     function back_relax(){
-      var img = document.getElementById("gif");
+    	var img = document.getElementById("gif");
         img.src = "/images/gif/Ptilopsis_relax.gif"
     }
-
 
 
   function none_button(){
