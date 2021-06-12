@@ -72,11 +72,11 @@ function bot_ui_ini() {
                     }).then(function () {
                         botui.message.add({
                             delay: 1000,
-                            content: "空闲时间也喜欢玩各种游戏，包括手游和单机（主机没钱）。"
+                            content: "空闲时间也喜欢玩各种游戏，包括手游和单机，希望尽快经济独立买个主机。"
                         }).then(function () {
                             botui.message.add({
                                 delay: 1000,
-                                content: "（主要玩）担任wows魔法舰船指挥官，兼任舰c、b提督，失智博士，窑子指挥官。"
+                                content: "（主要玩）担任 wows 魔法舰船指挥官，兼任舰c、b提督，失智博士，窑子指挥官。"
                             }).then(function () {
                                 botui.message.add({
                                     delay: 1000,
@@ -84,7 +84,7 @@ function bot_ui_ini() {
                                 }).then(function () {
                                 	botui.message.add({
                                         delay: 1000,
-                                        content: "希望有一天能够参与制作一款自己满意的游戏。"
+                                        content: "希望有一天能够参与制作一款自己认同的游戏。"
                                 	}).then(function (){
                                         selection_part()
                                     })
@@ -102,8 +102,8 @@ function bot_ui_ini() {
                     text: "为什么叫 MoStone ？ 🤔",
                     value: "why-mostone"
                 },{
-                	text: "为什么是 Base ？ 🤔",
-                    value: "why-Base"
+                	text: "为什么是 Lab ？ 🤔",
+                    value: "why-Lab"
                 },{
                 	text: "关于 New Game！ 😀",
                     value: "about_newgame"
@@ -113,7 +113,7 @@ function bot_ui_ini() {
                 }]
         	}).then(function (a) {
                 "why-mostone" == a.value && why_mostone();
-                "why-Base" == a.value && why_base();
+                "why-Lab" == a.value && why_lab();
                 "about_newgame" == a.value && about_newgame();
                 "byebye" == a.value && byebye()
             })
@@ -131,18 +131,18 @@ function bot_ui_ini() {
                 })
             })
         }
-        why_base = function () {
+        why_lab = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "因为在现实中对军事比较感兴趣。"
+                content: "从主题中就可以看出我比较喜欢方舟里的“莱茵生命”。"
             }).then(function () {
                 botui.message.add({
                     delay: 1000,
-                    content: "而且玩的大多数游戏有一个类似于 Base 的基建系统。"
+                    content: "而且以前确实是想在实验室搞实验的。"
                 }).then(function () {
                     botui.message.add({
                     delay: 1000,
-                    content: "所以就直接沿用了。"
+                    content: "所以算是对 Lab 有一种执着吧。"
                     }).then(function (a) {
                         selection_part()
                     })

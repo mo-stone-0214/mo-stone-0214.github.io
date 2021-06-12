@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">《数据结构》笔记（9）——排序 | Mo_Stone&#39;s Lab</title>
+  <title itemprop="name">Unity 笔记（2） | Mo_Stone&#39;s Lab</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -326,11 +326,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/05/22/YLzzHP.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/22/YLzzHP.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      《数据结构》笔记（9）——排序</h1>
+      Unity 笔记（2）</h1>
       <p class="entry-census">
         <span>
           <a href="/">
@@ -342,7 +342,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-5-19<span class="bull">
+        2021-6-12<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -356,453 +356,483 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>在学习过程中，断断续续写了一个月。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br>    <dt>选取排序方法时需要考虑的因素</dt><br>    <dd><br>        <ul><br>            <li>待排序的记录数目</li><br>            <li>记录本身信息量的大小</li><br>            <li>关键字的结构及其分布情况</li><br>            <li>对排序稳定性的要求</li><br>            <li>语言工具的条件、辅助空间的大小</li><br>        </ul><br>    </dd><br></dd></dl>
+          <p>书籍依旧为 <strong>[日] 北村爱实/著，罗水东/译</strong> <font color="red"><strong><em>《Unity 2018 入门与实战——2D&amp;3D 游戏开发入门指南》</em></strong></font></p>
+<h2 id="每隔一定时间生成-GameObject-的方法"><a href="#每隔一定时间生成-GameObject-的方法" class="headerlink" title="每隔一定时间生成 GameObject 的方法"></a>每隔一定时间生成 GameObject 的方法</h2><p><strong>当需要创建大量相同对象时，一般都会使用 Prefab</strong>。在将作为 Prefab 的对象从层级窗口拖拽到工程窗口后，创建生成器（Generator）脚本。</p>
+<p>以下以每隔 1s 随机在一定区域内生成 GameObject 为例。</p>
+<pre><code class="c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><p>均以升序为例。</p>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
-<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>插入第i个对象时，前面的V[0],V[1], …,V[i-1]已排好序，此时，用v[i]的关键字与V[i-1], V[i-2],…的关键字顺序进行比较，找到插入位置即将V[i]插入，原来位置上对象向后顺移。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOqRHS.jpg" alt></p>
-<h4 id="希尔排序-缩小增量排序"><a href="#希尔排序-缩小增量排序" class="headerlink" title="希尔排序(缩小增量排序)"></a>希尔排序(缩小增量排序)</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<h5 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h5><p>先取一个正整数 d1 &lt; n，把所有相隔 d1 的记录放一组，组内进行直接插入排序；然后取 d2 &lt; d1，重复上述分组和排序操作；直至di=1，即将所有记录放进一个组中排序为止。</p>
-<font color="red">当d = 1 是与直接插入排序相同，但由于之前关键字较小的记录已跳跃式前移，在进行最后一趟增量为1的插入排序时，序列已基本有序，所以能够节省运算时间。</font>
+public class Generator:MonoBehaviour{
+  public GameObject prefab;
 
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOxwAf.jpg" alt></p>
-<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
- * 直接插入算法（升序）
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] insertSort(int[] arr){
+  //间隔时间为 1s
+  float span = 1.0f;
+  float delta = 0;
 
-    //如果数组中没有或只有一个元素，无需排序，直接返回。
-    if (arr.length == 0 || arr.length == 1) return arr;
+  void Update(){
+    delta += Time.deltaTime;
+    if(delta &gt; span){
+      delta = 0;
+      GameObject go = Instantiate(prefab) as GameObject;
 
-    int j;
-
-    //从数组中位置为1的数据开始，循环至最后一个
-    for (int i = 1 ; i&lt;arr.length ; i++){
-
-        //储存当前所选数据
-        int theNum = arr[i];
-
-        //从当前数据往前读取，依次向后移动并判断，直至循环完毕或遇到比其更小的数据，储存当前位置j
-        for (j = i-1 ; j&gt;=0 ; j--){
-            arr[j+1] = arr[j];
-            if (arr[j]&lt;theNum)break;
-        }
-
-        //将数据输入至j位置
-        arr[j+1] = theNum;
-
+      //生成对象的位置
+      go.transform.position = new Vector(Random.Range(-1,2),7,0);
     }
-
-    //返回已排好序的数组
-    return arr;
+  }
 }
-
-/**
- * 希尔算法（升序）
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] shellSort(int[] arr){
-
-    //如果数组中没有或只有一个元素，无需排序，直接返回。
-    if (arr.length == 0 || arr.length == 1) return arr;
-
-    int n;
-
-    //将步长n取为当前数组长度一半，向下取整，之后依次循环/2，直至n=1
-    for(n = (int)(Math.floor(arr.length / 2));n&gt;=1;n = (int)(Math.floor(n / 2))){
-
-        //与直接插入排序类似，只是步长从1改为n
-        for(int i = n ; i &lt; arr.length ; i+=n){
-
-            int theNum = arr[i];
-            int j;
-
-            for (j = i-n ; j &gt;= 0 ; j-=n){
-
-                arr[j+n] = arr[j];
-
-                if (theNum&gt;arr[j]) break;
-
-            }
-            arr[j+n]= theNum;
-        }
-    }
-
-    //返回已排好序的数组
-    return arr;
-}
-
-/**
- * 输出用
- * @param arr int数组
- */
-public static void print(int[] arr) {
-    // TODO Auto-generated method stub
-
-    if(arr == null)System.out.println(&quot;列表为null&quot;);
-
-    System.out.print(&quot;[&quot;);
-    for (int i = 0 ; i &lt; arr.length ; i++){
-        if(i == arr.length -1 ) {
-            System.out.println(arr[i]+&quot;]&quot;);
-            break;
-        }
-        System.out.print(arr[i]+&quot;,&quot;);
-    }
-}
-`
 </code></pre>
-<h5 id="测试主函数"><a href="#测试主函数" class="headerlink" title="测试主函数"></a>测试主函数</h5><pre><code class="java">public static void main(String[] args){
+<p>之后为一个空对象挂载生成器脚本后，它就变成了 “工厂对象” ，并将 Prefab 实体通过 outlet 连接传给生成器脚本即可实现。</p>
+<h2 id="3D-游戏中获取鼠标点击位置"><a href="#3D-游戏中获取鼠标点击位置" class="headerlink" title="3D 游戏中获取鼠标点击位置"></a>3D 游戏中获取鼠标点击位置</h2><p>前面提到 3d 游戏中世界坐标系和本地坐标系间的区别，以及使用 <font color="red">ScreenPointToRay</font> 方法处理。<strong>如果将本地坐标传给该方法，那么可以获得一个世界坐标系中从 “摄像机” 指向将 “本地坐标” 的向量</strong>。</p>
+<p>以下以在 3d 空间中获取鼠标点击的世界坐标为例（默认点击位置存在拥有碰撞体 Collider 组件的物体）。</p>
+<pre><code class="c#">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-    int[] arr = {1,3,6,4,2,5,0,7};
-    System.out.print(&quot;排序前：&quot;);
-    print(arr);
-
-    System.out.println(&quot;排序后：&quot;);
-    print(insertSort(arr));
-    print(shellSort(arr));
-}
-``
-</code></pre>
-<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><pre><code class="text">排序前：[1,3,6,4,2,5,0,7]
-排序后：
-[0,1,2,3,4,5,6,7]
-[0,1,2,3,4,5,6,7]
-`
-</code></pre>
-<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><font size="5px" face="黑体">一、空间复杂度：</font>
-
-<p>只需要一个记录的辅助空间。</p>
-<font size="5px" face="黑体">二、时间复杂度：</font>
-
-<dl><br>    <dt>直接插入排序</dt><br>    <dd><img src="https://s1.ax1x.com/2020/05/22/YX9bRO.jpg" alt></dd><br>    <dt>希尔排序</dt><br>    <dd>平均比较次数和对象平均移动次数在 n^1.25 与 1.6*n^1.25 之间。</dd><br></dl>
-
-
-<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p>两两比较待排序的对象的关键字，如果发生逆序，则交换之，直到全部对象都排好序为止。</p>
-<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>将第一个记录的关键字与第二个记录的关键字进行比较，若为逆序r[1].key&gt;r[2].key，则交换；然后比较第二个记录与第三个记录；依次类推，直至第n-1个记录和第n个记录比较为止。此时为第一趟冒泡排序，结果关键字最大的记录被安置在最后一个记录上。</li><br>    <li>对前n-1个记录进行第二趟冒泡排序，结果使关键字次大的记录被安置在第n-1个记录位置。</li><br>    <li>重复上述过程，直到“在一趟排序过程中没有进行过交换记录的操作”为止。</li><br></ol>
-
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQacnJ.jpg" alt></p>
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<font color="red">若基准值比重复的关键字大的时候，后面的数据会移动到前面，因而该排序方法不稳定。</font>
-
-<h5 id="思想-3"><a href="#思想-3" class="headerlink" title="思想"></a>思想</h5><p>通过一趟排序将待排序列分成两部分，使其中一部分记录的关键字均比另一部分小，再分别对这两部分排序，以达到整个序列有序。</p>
-<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQwMz8.jpg" alt></p>
-<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
- * 冒泡排序，升序
- * @param arr 需排列的int数组
- * @return 已排列的int数组
- */
-public static int[] bubbleSort(int[] arr){
-
-    if (arr.length == 0 || arr.length == 1) return arr;
-
-    int j,midNum;
-
-    //添加一个判定是否交换的标志，如果在循环过程中某一次循环的所有元素没有交换，则说明已经排好序，并且可以提前结束循环
-    boolean isExchange;
-
-    for (int i = 0 ; i&lt;arr.length-1 ; i++){
-
-        isExchange=false;
-
-        for ( j=0 ; j &lt; arr.length-1-i; j++){
-
-            if (arr[j]&gt;arr[j+1]){
-                midNum = arr[j+1];
-                arr[j+1] = arr [j];
-                arr[j] = midNum;
-
-                isExchange = true;
+public class GetPosition:MonoBehaviour{
+    void Update(){
+        if(Input.GetMouseButtonDown(0)){
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray,out hit,Mathf.Infinity)){
+                Debug.Log(hit.point);
             }
         }
-
-        if(!isExchange) break;
-
     }
-    midNum = -1;
-
-    return arr;
 }
-
-/**
- * 快速排序，递归，升序
- * @param arr 所需排序的数组(需保证输入符合规范)
- * @param start 开始位置
- * @param end 结束位置
- * @return 已部分或完全排好序的数组
- */
-public static int[] quickSort(int[] arr , int start , int end){
-
-    //如果起始位置和终止位置相同，直接返回
-    if(start == end) return arr ;
-
-    //如果满足开始位置和结束位置在0~数组长度-1的返回内，并且开始位置小于结束位置时
-    if(start&lt;end &amp;&amp; start&gt;=0 &amp;&amp; start&lt;=arr.length-1 &amp;&amp; end&gt;=0 &amp;&amp; end&lt;=arr.length-1){
-
-        //创建首尾指针
-        int i = start;
-        int j = end;
-
-        //取出基准值
-        int theNum = arr[i];
-
-        //循环至首尾指针相等
-        while(i!=j){
-
-            //首指针不动，尾指针循环从右往左寻找比基准值小的数据，并将尾指针所指数据赋予首指针所指位置
-            while(i&lt;j &amp;&amp; arr[j]&gt;=theNum) j-=1;
-            if(i&lt;j) {arr[i]=arr[j];i+=1;}
-
-            //尾指针不动，首指针循环从左往右寻找比基准值大的数据，并将首指针所指数据赋予尾指针所指位置
-            while(i&lt;j &amp;&amp; arr[i]&lt;=theNum) i+=1;
-            if(i&lt;j) {arr[j]=arr[i];j-=1;}
-
-        }
-
-        //此时首尾指针相等，将基准值赋予该位置
-        arr[i] = theNum;
-
-        //递归运算
-        quickSort(arr,start,i-1);
-        quickSort(arr,i+1,end);
-    }
-
-    //返回部分或完全已排序好的数组
-    return arr;
-}
-```
 </code></pre>
-<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><dl><br>    <dt>冒泡排序</dt><br>    <dd>总共要进行 n-1 趟，对 i 个记录的表进行一趟冒泡需要 i-1 次关键码比较，所以：<br><img src="https://s1.ax1x.com/2020/05/30/tQdDUI.jpg" alt></dd><br>    <dt>快速排序</dt><br>    <dd><br>        <ul>时间复杂度：<br><br>            <li>最好情况（每次总是选到中间值作枢轴）:T(n)=O(nlog2n)</li><br>            <li>最坏情况（每次总是选到最小或最大元素作枢轴）:T(n)=O(n²)</li><br>        </ul><br>        <ul>空间复杂度：<br><br>            <li>最坏情况：S(n)=O(n)</li><br>            <li>一般情况：S(n)=O(log2n)</li><br>        </ul><br>    </dd><br></dl>
-
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>将待排序的结点分为已排序(初始为空)和为未排序两组，依次将未排序的结点中值最小的结点插入已排序的组中。</p>
-<h4 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<font color="red">若第二个重复关键字之后存在比其小的关键字，那么在排序中第一个重复关键字会与后面更小的关键字交换，从而导致该算法不稳定。</font>
-
-<p>比如：49 50 49* 13</p>
-<h5 id="思想-4"><a href="#思想-4" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>通过 n-1 次关键字比较，从n个记录中找出关键字最小的记录，将它与第一个记录交换。</li><br>    <li>再通过 n-2 ，n-3 ，…… 次共 n-1 次排序后，排序结束。</li><br></ol>
-
-<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQcDaD.jpg" alt></p>
-<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<h5 id="思想-5"><a href="#思想-5" class="headerlink" title="思想"></a>思想</h5><p>先将无序序列建成一个堆，得到关键字最小（或最大）的记录；输出堆顶的最小（大）值后，使剩余的n-1个元素重又建成一个堆，则可得到n个元素的次小值；重复执行，得到一个有序序列。</p>
-<p>整个排序过程可分为以下三步：</p>
-<ol><br>    <li>将一个无序序列建成一个堆。</li><br>    <li>输出堆顶元素。</li><br>    <li>调整剩余元素，使之成为一个新的堆。</li><br>    <li>重复2、3步骤，直至输出完毕。</li><br></ol>
-
-<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h5><p>以将{49 38 65 97 76 13 27 50}按升序排列为例。</p>
-<p>将该序列建成一个最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcGXjK.jpg" alt></p>
-<p>输出堆顶元素，并调整剩余元素，使之成为一个新的最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcJkgP.jpg" alt></p>
-<p>同理，重复上一步，直至清空堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcYGRI.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcYJzt.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcY8JA.jpg" alt></p>
-<h4 id="参考代码-2"><a href="#参考代码-2" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：在堆排序算法中构建的堆优先用顺序储存；若升序排列则需要构建最大堆，降序排列需构建最小堆，可降低空间复杂度。</font>
-
-<pre><code class="java">/**
- * 直接选择排序，升序
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] straight_selectSort(int[] arr){
-
-    //如果数组长度为0或1，直接返回
-    if(arr.length == 0 || arr.length == 1) return arr;
-
-    int midNum;
-
-    //循环（数组长度-2）次排序
-    for (int i = 0 ; i&lt;arr.length-1 ; i++){
-
-        //创建未排序部分最小数据位置
-        int min_index = i;
-
-        //循环寻找未排序部分的最小数据
-        for (int j = i+1 ; j&lt;arr.length ; j++){
-
-            if(arr[j]&lt;arr[min_index]) min_index = j;
-
-        }
-
-        //未排序部分的最前端数据与最小数据调换，并并入已排序部分
-        midNum = arr[i];
-        arr[i] = arr[min_index];
-        arr[min_index] = midNum;
-    }
-
-    //返回已排好序的数组
-    return arr;
-}
-
-/**
- * 堆排序，升序
- * @param arr 需排列的int数组
- * @return 已排好列的int数组
- */
-public static int[] heapSort(int[] arr){
-
-    //将拥有n个数据的数组创建为最大堆
-    //注：在循环过程中始终保证根结点为arr[i]的堆为最大堆，下方同理
-    for(int i = arr.length/2-1 ; i&gt;=0 ; i--){
-        to_maxheap(arr,i,arr.length-1);
-    }
-
-    int midNum;
-
-    //每次将n个数据的最大堆的最大值（根结点，第0位置）与数组最后一个数调换，并将前n-1个重新排为最大堆。
-    //依次类推，共循环n次
-    for(int i = arr.length-1 ; i&gt;=1 ; i--){
-        midNum = arr[i];
-        arr[i] = arr[0];
-        arr[0] = midNum;
-
-        to_maxheap(arr,0,i-1);
-    }
-
-    //数据初始化并返回
-    midNum = 0;
-    return arr;
-
-}
-
-/**
- * 创建最大堆
- * @param arr int数组
- * @param root 堆的根结点
- * @param end 范围
- */
-private static void to_maxheap(int[] arr,int root,int end) {
-    // TODO Auto-generated method stub
-
-    //寻找根结点最大子结点，初始化为左子结点
-    int max_child = root * 2 + 1;
-    int maxNum;
-
-    //当最大子结点在root~end范围内时循环
-    while(max_child&lt;=end){
-
-        //如果根结点右子结点比左子结点大，最大子变更为右子结点
-        if(max_child&lt;end &amp;&amp; arr[max_child]&lt;arr[max_child+1]/*如果需要为降序，此处为&gt;符号*/) max_child+=1;
-
-        //如果子结点数据比根结点数据大，结点数据交换，并将root、max_child指针向下层移动
-        if(arr[root]&lt;arr[max_child]/*如果需要为降序，此处为&gt;符号*/){
-            maxNum = arr[root];
-            arr[root] = arr[max_child];
-            arr[max_child] = maxNum;
-
-            root = max_child;
-            max_child = 2*root+1;
-
-        //否则，跳出循环
-        }else{
-            break;
-        }
-    }
-    //数据初始化
-    maxNum = 0;
-}
-```
-</code></pre>
-<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul><br>    <li>直接选择排序：<br>        <ul><br>            <li>时间复杂度：<br>                <ul><br>                    <li>移动次数：<br>最好情况：0<br>最坏情况：3(n-1)</li><br>                    <li>比较次数：<br><img src="https://s1.ax1x.com/2020/06/07/tgqF9U.jpg" alt></li><br>                </ul><br>            </li><br>        </ul><br>    </li><br>    <li>堆排序:<br>        <ul><br>            <li>时间复杂度：O(n log2(n))</li><br>            <li>空间复杂度：O(1)</li><br>        </ul><br>    </li><br></ul>
-
-<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想-6"><a href="#思想-6" class="headerlink" title="思想"></a>思想</h5><p>设有两个有序表A和B，对象个数分别为al 和 bl ，变量i和j分别是两表的当前指针。</p>
-<p>设表C是归并后的新有序表，变量k是它的当前指针。</p>
-<p>i和j对A和B遍历时，依次将关键字小的对象放到C中，当A或B遍历结束时，将另一个表的剩余部分照抄到新表中。</p>
-<h5 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h5><p>以将{8 4 5 6 3 2 9 7}按升序排列为例。</p>
-<p><img src="https://s1.ax1x.com/2020/06/07/t2ZyfU.jpg" alt></p>
-<h4 id="参考代码-3"><a href="#参考代码-3" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：此参考代码与思想有一定出入。</font>
-
-<p><del>但能成功排序。。</del></p>
-<pre><code class="java">/**
- * 归并排序，数组中的一段
- * @param arr 数组
- * @param start1 第1开始位置
- * @param start2 第2开始位置
- * @param n 需排序的数组总长度
- * @return 已排序的数组
- */
-private static int[] mergeSort_1(int[] arr,int start1,int start2,int n){
-
-    //创建过渡数组
-    int[] arr2 =new int[n];
-
-    //将数组看成两个部分，并创建指针
-    int p = start1,q = start2;
-    int k = 0;
-
-    //循环至p，q指针其中一个指到各部分末尾
-    while(p&lt;start2 &amp;&amp; q&lt;start1+n){
-
-        //取指针所指数据大的添加入过渡数组中，并取出数据的指针向后移动
-        if(arr[p]&lt;arr[q]){
-            arr2[k++]=arr[p++];
-        }else{
-            arr2[k++]=arr[q++];
-        }
-    }
-
-    //如果各部分还有未添加入过渡数组的数据，直接按顺序加入
-    if(p!=start2){
-        for (int i = p ; i&lt;start2 ; i++) arr2[k++] = arr[i];
-    }
-    if(q!=start1+n){
-        for (int i = q ; i&lt;start1+n ; i++) arr2[k++] = arr[i];
-    }
-
-    //将过渡数组中已排好序的数据添加回原来需排序数组的位置
-    p = start1;
-    for(int i = 0 ; i&lt;n ; i++) arr[start1++]=arr2[i];
-
-    //返回已部分排好序的数组
-    return arr;
-}
-
-/**
- * 归并排序，升序
- * @param arr 需排列的int序列
- * @return 已排列的int序列
- */
-public static int[] mergeSort(int[] arr){
-
-    //如果长度为0或1，直接返回输出
-    if(arr.length==0 || arr.length==1) return arr;
-
-    //将需排序的序列分为元素数为n的子序列，i为子序列开始位置
-    int n = 1,i = 0;
-
-    //循环至子序列元素数n大于需排序序列
-    while(n&lt;arr.length){
-
-        //依次取两个子序列进行归并，结束后取之后的两个子序列
-        for(i = 0; i&lt;arr.length ; i+=2*n) {
-
-            //若第一个子序列能取n个元素，而第二个不能取，则这两个长度不等的子序列进行归并
-            if(n&lt;(arr.length-i) &amp;&amp; 2*n&gt;(arr.length-i)){
-                mergeSort_1(arr,i,i+n,arr.length%(2*n));
-
-            //若两个子序列均完整有n个数据，则直接归并
-            }else if(i+2*n&lt;=arr.length){
-                mergeSort_1(arr,i,i+n,2*n);
-            }
-            //若第一个子序列无法取完整的n个元素，则跳过
-        }
-
-        //子序列元素数×2
-        n*=2;
-    }
-
-    //返回已排好序的序列
-    return arr;
-}
-`
-</code></pre>
-<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>归并排序在第 i 趟归并后，有序子序列长度为 2i 。对于具有 n 个记录的序列来说，必须做 log2(n) 趟归并，每趟归并所花的时间为 O(n)。</p>
-<p>所以，二路归并排序算法的时间复杂度为 O(n log2(n))，空间复杂度为 O(n)。</p>
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><ul><br>    <li>基本原理<br>        <ul><br>            <li>采用“分配”和“收集”的办法，用对多关键字进行排序的思想实现对单关键字进行排序的方法。</li><br>        </ul><br>    </li><br>    <li>多关键字排序原理<br>        <ul>以扑克牌为例<br><br>            <li>每张扑克牌有两个“关键字”：花色和面值，它们之间有次序的优先。</li><br>            <li>对以上排序，可以先对花色排序，或先对面值排序，之后再对另一个关键字排序。</li><br>        </ul><br>    </li><br></ul>
-
-
+<p>此处使用了 <font color="red">ScreenPointToRay</font> 方法，从而计算出一条从摄像机位置射向画面深处的射线（Ray）。该射线可以检测到其与某碰撞器发生了碰撞。Physics.Raycast 的 hit 变量前加的 out 关键字，在这个方法中表示射线与某碰撞器发生碰撞时的坐标将会被存放到 hit.point 变量中。</p>
+<h2 id="Unity-中-C-常用的类和方法"><a href="#Unity-中-C-常用的类和方法" class="headerlink" title="Unity 中 C# 常用的类和方法"></a>Unity 中 C# 常用的类和方法</h2><p>以 <a href="https://docs.unity.cn/cn/2019.4/ScriptReference/index.html" target="_blank" rel="noopener">Unity 官方文档：脚本 API</a> 为准。</p>
+<h3 id="Vector2-Vector3"><a href="#Vector2-Vector3" class="headerlink" title="Vector2 / Vector3"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Vector2.html" target="_blank" rel="noopener">Vector2</a> / <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Vector3.html" target="_blank" rel="noopener">Vector3</a></h3><p>以下以 Vector2 为例。</p>
+<p>用于表示 2D 向量和点。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">静态变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">down</td>
+<td style="text-align:left">用于编写 Vector2(0, -1) 的简便方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">用于编写 Vector2(-1, 0) 的简便方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">one</td>
+<td style="text-align:left">用于编写 Vector2(1, 1) 的简便方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">right</td>
+<td style="text-align:left">用于编写 Vector2(1, 0) 的简便方法。</td>
+</tr>
+<tr>
+<td style="text-align:left">up</td>
+<td style="text-align:left">用于编写 Vector2(0, 1) 的简便方法。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">magnitude</td>
+<td style="text-align:left">返回该向量的长度。（只读）</td>
+</tr>
+<tr>
+<td style="text-align:left">normalized</td>
+<td style="text-align:left">返回 magnitude 为 1 时的该向量。（只读）</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">向量的 X 分量。</td>
+</tr>
+<tr>
+<td style="text-align:left">y</td>
+<td style="text-align:left">向量的 Y 分量。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">构造函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Vector2</td>
+<td style="text-align:left">使用给定的 x、y 分量构造新向量。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">公共函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Equals</td>
+<td style="text-align:left">如果给定向量与该向量完全相等，则返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">Normalize</td>
+<td style="text-align:left">使该向量的 magnitude 为 1。</td>
+</tr>
+<tr>
+<td style="text-align:left">Set</td>
+<td style="text-align:left">设置现有 Vector2 的 x 和 y 分量。</td>
+</tr>
+<tr>
+<td style="text-align:left">ToString</td>
+<td style="text-align:left">对于该向量，返回整齐格式化的字符串。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/GameObject.html" target="_blank" rel="noopener">GameObject</a></h3><p>Unity 场景中所有实体的基类。</p>
+<p>等价于 GameObject.GetComponent &lt; Transform &gt;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">position</td>
+<td style="text-align:left">世界空间中的变换位置。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">公共函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rotate</td>
+<td style="text-align:left">使用 Transform.Rotate 以各种方式旋转 GameObjects。通常以欧拉角而不是四元数提供旋转。</td>
+</tr>
+<tr>
+<td style="text-align:left">Translate</td>
+<td style="text-align:left">根据 translation 的方向和距离移动变换。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="GameObject-Find"><a href="#GameObject-Find" class="headerlink" title="GameObject.Find"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/GameObject.Find.html" target="_blank" rel="noopener">GameObject.Find</a></h4><p>public static GameObject <strong>Find</strong> (string <strong>name</strong>);</p>
+<p>按 <code>name</code> 查找 GameObject，然后返回它。</p>
+<p>此函数仅返回活动 GameObject。如果未找到具有 <code>name</code> 的 GameObject，则返回 null。如果 <code>name</code> 包含“/”字符，则会向路径名称那样遍历此层级视图。</p>
+<p>出于性能原因，建议不要每帧都使用此函数，而是在启动时将结果缓存到成员变量中，或者使用 GameObject.FindWithTag。</p>
+<p><strong>注意：</strong>如果您要查找子 GameObject，使用 Transform.Find 通常会更加轻松。</p>
+<h4 id="GameObject-GetComponent"><a href="#GameObject-GetComponent" class="headerlink" title="GameObject.GetComponent"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/GameObject.GetComponent.html" target="_blank" rel="noopener">GameObject.GetComponent</a></h4><p>public Component <strong>GetComponent</strong> (Type <strong>type</strong>);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">要检索的组件的类型。</td>
+</tr>
+</tbody>
+</table>
+<p>如果游戏对象附加了类型为 <code>type</code> 的组件，则将其返回，否则返回 null。</p>
+<p>使用 gameObject.GetComponent 将返回找到的第一个组件，并且未定义顺序。</p>
+<h4 id="GameObject-SetActive"><a href="#GameObject-SetActive" class="headerlink" title="GameObject.SetActive"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/GameObject.SetActive.html" target="_blank" rel="noopener">GameObject.SetActive</a></h4><p>public void <strong>SetActive</strong> (bool <strong>value</strong>);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">激活或停用对象：<code>true</code> 可激活 GameObject，而 <code>false</code> 可停用 GameObject。</td>
+</tr>
+</tbody>
+</table>
+<p>根据给定的值 <code>true</code> 或 <code>false</code>，激活/停用 GameObject。</p>
+<p>GameObject 可能因为父项未处于活动状态而处于非活动状态。在这种情况下，调用 SetActive 不会激活它，而是仅设置此 GameObject 的本地状态，该状态可使用 GameObject.activeSelf 加以检查。当所有父项均处于活动状态时，Unity 便可以使用此状态。</p>
+<p>停用 GameObject 将禁用每个组件，包括附加的渲染器、碰撞体、刚体和脚本。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.html" target="_blank" rel="noopener">Input</a></h3><p>访问输入系统的接口。</p>
+<p>使用该类来读取传统游戏输入中设置的轴，以及访问移动设备上的多点触控/加速度计数据。</p>
+<p>若要使用输入来进行任何类型的移动行为，请使用 <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetAxis.html" target="_blank" rel="noopener">Input.GetAxis</a>。 它为您提供平滑且可配置的输入 - 可以映射到键盘、游戏杆或鼠标。 请将 <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetButton.html" target="_blank" rel="noopener">Input.GetButton</a> 仅用于事件等操作。不要将它用于移动操作。<a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetAxis.html" target="_blank" rel="noopener">Input.GetAxis</a> 将使脚本代码更简洁。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">静态函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GetKey</td>
+<td style="text-align:left">在用户按下 name 标识的键时返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">GetKeyDown</td>
+<td style="text-align:left">在用户开始按下 name 标识的键的帧期间返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">GetKeyUp</td>
+<td style="text-align:left">在用户释放 name 标识的键的帧期间返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">GetMouseButton</td>
+<td style="text-align:left">返回是否按下了给定的鼠标按钮。</td>
+</tr>
+<tr>
+<td style="text-align:left">GetMouseButtonDown</td>
+<td style="text-align:left">在用户按下给定鼠标按钮的帧期间返回 true。</td>
+</tr>
+<tr>
+<td style="text-align:left">GetMouseButtonUp</td>
+<td style="text-align:left">在用户释放给定鼠标按钮的帧期间返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Input-GetMouse…"><a href="#Input-GetMouse…" class="headerlink" title="Input.GetMouse…"></a>Input.GetMouse…</h4><p><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetMouseButtonDown.html" target="_blank" rel="noopener">Input.GetMouseButtonDown</a>  / <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetMouseButton.html" target="_blank" rel="noopener">Input.GetMouseButton</a>  / <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetMouseButtonUp.html" target="_blank" rel="noopener">Input.GetMouseButtonUp</a></p>
+<p>以 <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetMouseButton.html" target="_blank" rel="noopener">Input.GetMouseButton</a> 为例。</p>
+<p>public static bool <strong>GetMouseButton</strong> (int <strong>button</strong>);</p>
+<p>返回是否按下了给定的鼠标按钮。</p>
+<p><em>button</em> 值为 0 表示左按钮，1 表示右按钮，2 表示中间按钮。按下鼠标按钮时返回 <code>true</code>，释放时返回 <code>false</code>。</p>
+<h4 id="Input-GetKey…"><a href="#Input-GetKey…" class="headerlink" title="Input.GetKey…"></a>Input.GetKey…</h4><p><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetKeyDown.html" target="_blank" rel="noopener">Input.GetKeyDown</a> / <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetKey.html" target="_blank" rel="noopener">Input.GetKey</a> / <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetKeyUp.html" target="_blank" rel="noopener">Input.GetKeyUp</a></p>
+<p>以 <a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Input.GetKey.html" target="_blank" rel="noopener">Input.GetKey</a> 为例。</p>
+<p>public static bool <strong>GetKey</strong> (string <strong>name</strong>);</p>
+<p>在用户按下 <code>name</code> 标识的键时返回 true。</p>
+<p>GetKey 将报告指定键的状态。 可以使用该函数确认用于自动开火的键。有关键标识符的列表， 请参阅 <a href="https://docs.unity3d.com/cn/2019.4/Manual/ConventionalGameInput.html" target="_blank" rel="noopener">输入管理器</a>。</p>
+<p>处理输入时，建议改用 Input.GetAxis 和 Input.GetButton，因为 这允许最终用户对键进行配置。</p>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Time.html" target="_blank" rel="noopener">Time</a></h3><p>从 Unity 获取时间信息的接口。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">静态变量</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">deltaTime</td>
+<td style="text-align:left">完成上一帧所用的时间（以秒为单位）（只读）。</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">timeScale</td>
+<td style="text-align:left">时间流逝的标度。可用于慢动作效果。</td>
+<td style="text-align:left">当 timeScale 为 1.0 时，时间流逝的速度与实时一样快。 当 timeScale 为 0.5 时，时间流逝的速度比实时慢 2x。<br>当 timeScale 设置为 0 时，如果您的所有函数都是独立于帧率的， 则游戏基本上处于暂停状态。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Object.html" target="_blank" rel="noopener">Object</a></h3><p>Unity 可以引用的所有对象的基类。</p>
+<p>您从 Object 派生的任何公共变量都将在 Inspector 中显示为放置目标， 让您能够从 GUI 设置其值。UnityEngine.Object 是所有 Unity 内置对象的基类。</p>
+<p>虽然 Object 是一个类，但其本意不是为了在脚本中广泛使用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">静态函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Destroy</td>
+<td style="text-align:left">移除 GameObject、组件或资源。</td>
+</tr>
+<tr>
+<td style="text-align:left">Instantiate</td>
+<td style="text-align:left">克隆 original 对象并返回克隆对象。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Rigidbody"><a href="#Rigidbody" class="headerlink" title="Rigidbody"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Rigidbody.html" target="_blank" rel="noopener">Rigidbody</a></h3><p>通过物理模拟控制对象的位置。</p>
+<p>向对象添加 Rigidbody 组件后，其运动将受到 Unity 物理引擎的控制。即使不添加任何代码，Rigidbody 对象也受到向下的重力，并在与其他对象碰撞时作出反应（如果也存在适当的 Collider 组件）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">isKinematic</td>
+<td style="text-align:left">控制物理是否影响刚体。</td>
+</tr>
+<tr>
+<td style="text-align:left">velocity</td>
+<td style="text-align:left">刚体的速度矢量。它表示刚体位置的变化率。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">公共函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AddForce</td>
+<td style="text-align:left">向 Rigidbody 添加力。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Rigidbody-addForce"><a href="#Rigidbody-addForce" class="headerlink" title="Rigidbody.addForce"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Rigidbody.AddForce.html" target="_blank" rel="noopener">Rigidbody.addForce</a></h4><p>public void AddForce (Vector3 force, ForceMode mode= ForceMode.Force);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">force</td>
+<td style="text-align:left">力矢量（世界坐标）。</td>
+</tr>
+<tr>
+<td style="text-align:left">mode</td>
+<td style="text-align:left">要施加的力的类型。</td>
+</tr>
+</tbody>
+</table>
+<p>向 Rigidbody 添加力。</p>
+<p>沿 force 矢量的方向连续施加力。可以指定 ForceMode /mode/，以将力的类型更改为 Acceleration、Impulse 或 Velocity Change。</p>
+<h3 id="Random"><a href="#Random" class="headerlink" title="Random"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Random.html" target="_blank" rel="noopener">Random</a></h3><p>用于生成随机数据的类。</p>
+<h4 id="Random-Range"><a href="#Random-Range" class="headerlink" title="Random.Range"></a><a href="https://docs.unity3d.com/cn/2019.4/ScriptReference/Random.Range.html" target="_blank" rel="noopener">Random.Range</a></h4><p>public static float <strong>Range</strong> (float <strong>min</strong>, float <strong>max</strong>);</p>
+<p>返回介于 <code>min</code> [含] 与 <code>max</code> [含] 之间的随机浮点数（只读）。</p>
+<p>请注意，<code>max</code> 包含在内。<code>Random.Range(0.0f, 1.0f)</code> 可能会返回 <code>1.0</code> 作为值 Random.Range 分布是均匀的。Range 是一个随机数生成器。</p>
+<hr>
+<p>public static int <strong>Range</strong> (int <strong>min</strong>, int <strong>max</strong>);</p>
+<p>返回介于 <code>min</code> [含] 与 <code>max</code> [不含] 之间的随机整数（只读）。</p>
+<p>请注意，<code>max</code> 不包含在内。<code>Random.Range(0, 10)</code> 可以返回介于 0 与 9 之间的值。如果 <code>max</code> 等于 /min/，则返回 /min/。Random.Range 分布是均匀的。Range 是一个随机数生成器。</p>
+<h3 id="SceneManager"><a href="#SceneManager" class="headerlink" title="SceneManager"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.SceneManager.html" target="_blank" rel="noopener">SceneManager</a></h3><p>运行时的场景管理。</p>
+<h4 id="SceneManager-LoadScene"><a href="#SceneManager-LoadScene" class="headerlink" title="SceneManager.LoadScene"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.SceneManager.LoadScene.html" target="_blank" rel="noopener">SceneManager.LoadScene</a></h4><p>public static void <strong>LoadScene</strong> (int <strong>sceneBuildIndex</strong>, <a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.LoadSceneMode.html" target="_blank" rel="noopener">SceneManagement.LoadSceneMode</a> <strong>mode</strong>= LoadSceneMode.Single);<br>public static void <strong>LoadScene</strong> (string <strong>sceneName</strong>, <a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.LoadSceneMode.html" target="_blank" rel="noopener">SceneManagement.LoadSceneMode</a> <strong>mode</strong>= LoadSceneMode.Single);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sceneName</td>
+<td style="text-align:left">要加载的场景的名称或路径。</td>
+</tr>
+<tr>
+<td style="text-align:left">sceneBuildIndex</td>
+<td style="text-align:left">Build Settings 中要加载场景的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">mode</td>
+<td style="text-align:left">允许您指定是否以累加方式加载场景。有关选项的更多信息，请参阅 <a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.LoadSceneMode.html" target="_blank" rel="noopener">LoadSceneMode</a>。</td>
+</tr>
+</tbody>
+</table>
+<p>按照 Build Settings 中的名称或索引加载场景。</p>
+<p><strong>注意：</strong>在大多数情况下，为了避免在加载时出现暂停或性能中断现象， 您应该使用此命令的异步版，即： <a href="https://docs.unity3d.com/cn/current/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html" target="_blank" rel="noopener">LoadSceneAsync</a>。</p>
+<p>使用 SceneManager.LoadScene 时，系统将不会立即加载场景，而是会在下一帧完成加载。这种半异步的行为可能会导致帧卡顿，并可能令人困惑，因为加载无法立即完成。</p>
+<h3 id="Animator"><a href="#Animator" class="headerlink" title="Animator"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/Animator.html" target="_blank" rel="noopener">Animator</a></h3><p>用于控制 Mecanim 动画系统的接口。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">speed</td>
+<td style="text-align:left">动画器的播放速度。1 为正常播放速度。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">公共函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SetTrigger</td>
+<td style="text-align:left">设置给定触发器参数的值。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Camera"><a href="#Camera" class="headerlink" title="Camera"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/Camera.html" target="_blank" rel="noopener">Camera</a></h3><p>摄像机 (Camera) 是供玩家观看世界的设备。</p>
+<p>屏幕空间的点以像素定义。屏幕的左下角为 (0,0)，右上角 为 (pixelWidth,pixelHeight)。z 位置为与摄像机的距离，采用世界单位。</p>
+<p>视口空间的点是标准化的、相对于摄像机的点。摄像机左下角为 (0,0)，右上角为 (1,1)。z 位置为与摄像机的距离，采用世界单位。</p>
+<p>在全球坐标中定义一个世界空间点（例如，Transform.position）。</p>
+<h4 id="Camera-ScreenPointToRay"><a href="#Camera-ScreenPointToRay" class="headerlink" title="Camera.ScreenPointToRay"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/Camera.ScreenPointToRay.html" target="_blank" rel="noopener">Camera.ScreenPointToRay</a></h4><p>public Ray ScreenPointToRay (Vector3 pos);<br>public Ray ScreenPointToRay (Vector3 pos, Camera.MonoOrStereoscopicEye eye);</p>
+<p>返回从摄像机通过屏幕点的光线。</p>
+<p>产生的光线位于世界空间中，从摄像机的近平面开始，并通过屏幕上 位置的 (x,y) 像素坐标（忽略 position.z）。</p>
+<hr>
+<p><strong><a href="https://docs.unity3d.com/cn/current/ScriptReference/Ray.html" target="_blank" rel="noopener">Ray</a></strong></p>
+<p>射线表示形式。</p>
+<p>射线是从 origin 开始并按照某个 direction 行进的无限长的线。</p>
+<h3 id="Physics"><a href="#Physics" class="headerlink" title="Physics"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/Physics.html" target="_blank" rel="noopener">Physics</a></h3><p>全局物理属性和 Helper 方法。</p>
+<h4 id="Physics-Raycast"><a href="#Physics-Raycast" class="headerlink" title="Physics.Raycast"></a><a href="https://docs.unity3d.com/cn/current/ScriptReference/Physics.Raycast.html" target="_blank" rel="noopener">Physics.Raycast</a></h4><p>public static bool <strong>Raycast</strong> (Vector3 <strong>origin</strong>, Vector3 <strong>direction</strong>, float <strong>maxDistance</strong>= Mathf.Infinity, int <strong>layerMask</strong>= DefaultRaycastLayers, QueryTriggerInteraction <strong>queryTriggerInteraction</strong>= QueryTriggerInteraction.UseGlobal);</p>
+<p>public static bool <strong>Raycast</strong> (Ray <strong>ray</strong>, float <strong>maxDistance</strong>= Mathf.Infinity);</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">origin</td>
+<td style="text-align:left">射线在世界坐标系中的起点。</td>
+</tr>
+<tr>
+<td style="text-align:left">direction</td>
+<td style="text-align:left">射线的方向。</td>
+</tr>
+<tr>
+<td style="text-align:left">maxDistance</td>
+<td style="text-align:left">射线应检查碰撞的最大距离。</td>
+</tr>
+<tr>
+<td style="text-align:left">layerMask</td>
+<td style="text-align:left"><a href="https://docs.unity3d.com/cn/current/Manual/Layers.html" target="_blank" rel="noopener">层遮罩</a>，用于在投射射线时有选择地忽略碰撞体。</td>
+</tr>
+<tr>
+<td style="text-align:left">queryTriggerInteraction</td>
+<td style="text-align:left">指定该查询是否应该命中触发器。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回</strong></p>
+<p><strong>bool</strong> 如果射线与任何碰撞体相交，返回 true，否则为 false。</p>
+<p><strong>描述</strong></p>
+<p>向场景中的所有碰撞体投射一条射线，该射线起点为 /origin/，朝向 /direction/，长度为 /maxDistance/。<br>您可以选择提供一个 <a href="https://docs.unity3d.com/cn/current/ScriptReference/LayerMask.html" target="_blank" rel="noopener">LayerMask</a>，以过滤掉不想生成与其碰撞的碰撞体。</p>
 
         </div>
         <!-- .entry-content -->
@@ -822,36 +852,19 @@ public static int[] mergeSort(int[] arr){
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/05/30/数据结构笔记10/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                《数据结构》笔记（10）——查找</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/05/12/数据结构笔记8.4.2/" rel="next">
+            <a href="/2021/06/11/Unity 笔记/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                《数据结构》笔记(8.4.2)——二叉树的应用：二叉排列树，线索二叉树</h3>
+                Unity 笔记</h3>
                 <hr>
               </div>
             </a>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">《数据结构》笔记（9）——排序 | Mo_Stone&#39;s Lab</title>
+  <title itemprop="name">Unity 笔记 | Mo_Stone&#39;s Lab</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -326,11 +326,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/05/22/YLzzHP.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/22/YLzzHP.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      《数据结构》笔记（9）——排序</h1>
+      Unity 笔记</h1>
       <p class="entry-census">
         <span>
           <a href="/">
@@ -342,7 +342,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-5-19<span class="bull">
+        2021-6-11<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -356,453 +356,259 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>在学习过程中，断断续续写了一个月。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><dl><br>    <dt>排序</dt><br>    <dd>将一组杂乱无章的数据按一定的规律排列起来（递增或递减）。</dd><br>    <dt>排序的分类(按待排序涉及的存储器不同)</dt><br>    <dd>内排序：待排序记录存放在内存<br>外排序：排序过程中需对外存进行访问。</dd><br>    <dt>排序的分类(按排序依据的原则)</dt><br>    <dd>插入排序：直接插入排序、希尔排序。<br>交换排序：冒泡排序、快速排序。<br>选择排序：直接选择排序、堆排序。<br>归并排序：2-路归并排序。<br>基数排序。<br>    <dt>排序的特性</dt><br>    <dd>关键字相同的记录在排序过程中是否保持前后次序不变。<br><br><font color="red">注：以下例子中数据“2”没有任何区别，只是在此对其先后顺序进行标记。</font><br><img src="https://s1.ax1x.com/2020/05/22/YOpPVx.jpg" alt><br><br><font color="red"><del>关于判别是否是稳定排序的方法：如果算法中关键字是依次比较的，那么几乎可以确定这个排序是稳定的。</del></font></dd><br>    <dt>排序的基本操作</dt><br>    <dd>1、比较两个关键字大小<br>2、将记录从一个位置移动到另一个位置</dd><br>    <dt>排序的时间开销</dt><br>    <dd>是衡量算法好坏的最重要的标志。通常用算法执行中的关键字<font color="red">比较次数</font>和关键字<font color="red">移动次数</font>来衡量。</dd><br>    <dt>选取排序方法时需要考虑的因素</dt><br>    <dd><br>        <ul><br>            <li>待排序的记录数目</li><br>            <li>记录本身信息量的大小</li><br>            <li>关键字的结构及其分布情况</li><br>            <li>对排序稳定性的要求</li><br>            <li>语言工具的条件、辅助空间的大小</li><br>        </ul><br>    </dd><br></dd></dl>
-
-<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><p>均以升序为例。</p>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>每步将一个待排序的对象，按其关键字大小，插入到前面已经排好序的一组对象适当位置上，直到对象全部插入为止。</p>
-<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h5><p>插入第i个对象时，前面的V[0],V[1], …,V[i-1]已排好序，此时，用v[i]的关键字与V[i-1], V[i-2],…的关键字顺序进行比较，找到插入位置即将V[i]插入，原来位置上对象向后顺移。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOqRHS.jpg" alt></p>
-<h4 id="希尔排序-缩小增量排序"><a href="#希尔排序-缩小增量排序" class="headerlink" title="希尔排序(缩小增量排序)"></a>希尔排序(缩小增量排序)</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<h5 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h5><p>先取一个正整数 d1 &lt; n，把所有相隔 d1 的记录放一组，组内进行直接插入排序；然后取 d2 &lt; d1，重复上述分组和排序操作；直至di=1，即将所有记录放进一个组中排序为止。</p>
-<font color="red">当d = 1 是与直接插入排序相同，但由于之前关键字较小的记录已跳跃式前移，在进行最后一趟增量为1的插入排序时，序列已基本有序，所以能够节省运算时间。</font>
-
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/22/YOxwAf.jpg" alt></p>
-<h4 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
- * 直接插入算法（升序）
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] insertSort(int[] arr){
-
-    //如果数组中没有或只有一个元素，无需排序，直接返回。
-    if (arr.length == 0 || arr.length == 1) return arr;
-
-    int j;
-
-    //从数组中位置为1的数据开始，循环至最后一个
-    for (int i = 1 ; i&lt;arr.length ; i++){
-
-        //储存当前所选数据
-        int theNum = arr[i];
-
-        //从当前数据往前读取，依次向后移动并判断，直至循环完毕或遇到比其更小的数据，储存当前位置j
-        for (j = i-1 ; j&gt;=0 ; j--){
-            arr[j+1] = arr[j];
-            if (arr[j]&lt;theNum)break;
-        }
-
-        //将数据输入至j位置
-        arr[j+1] = theNum;
-
-    }
-
-    //返回已排好序的数组
-    return arr;
-}
-
-/**
- * 希尔算法（升序）
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] shellSort(int[] arr){
-
-    //如果数组中没有或只有一个元素，无需排序，直接返回。
-    if (arr.length == 0 || arr.length == 1) return arr;
-
-    int n;
-
-    //将步长n取为当前数组长度一半，向下取整，之后依次循环/2，直至n=1
-    for(n = (int)(Math.floor(arr.length / 2));n&gt;=1;n = (int)(Math.floor(n / 2))){
-
-        //与直接插入排序类似，只是步长从1改为n
-        for(int i = n ; i &lt; arr.length ; i+=n){
-
-            int theNum = arr[i];
-            int j;
-
-            for (j = i-n ; j &gt;= 0 ; j-=n){
-
-                arr[j+n] = arr[j];
-
-                if (theNum&gt;arr[j]) break;
-
-            }
-            arr[j+n]= theNum;
-        }
-    }
-
-    //返回已排好序的数组
-    return arr;
-}
-
-/**
- * 输出用
- * @param arr int数组
- */
-public static void print(int[] arr) {
-    // TODO Auto-generated method stub
-
-    if(arr == null)System.out.println(&quot;列表为null&quot;);
-
-    System.out.print(&quot;[&quot;);
-    for (int i = 0 ; i &lt; arr.length ; i++){
-        if(i == arr.length -1 ) {
-            System.out.println(arr[i]+&quot;]&quot;);
-            break;
-        }
-        System.out.print(arr[i]+&quot;,&quot;);
-    }
-}
-`
-</code></pre>
-<h5 id="测试主函数"><a href="#测试主函数" class="headerlink" title="测试主函数"></a>测试主函数</h5><pre><code class="java">public static void main(String[] args){
-
-    int[] arr = {1,3,6,4,2,5,0,7};
-    System.out.print(&quot;排序前：&quot;);
-    print(arr);
-
-    System.out.println(&quot;排序后：&quot;);
-    print(insertSort(arr));
-    print(shellSort(arr));
-}
-``
-</code></pre>
-<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><pre><code class="text">排序前：[1,3,6,4,2,5,0,7]
-排序后：
-[0,1,2,3,4,5,6,7]
-[0,1,2,3,4,5,6,7]
-`
-</code></pre>
-<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><font size="5px" face="黑体">一、空间复杂度：</font>
-
-<p>只需要一个记录的辅助空间。</p>
-<font size="5px" face="黑体">二、时间复杂度：</font>
-
-<dl><br>    <dt>直接插入排序</dt><br>    <dd><img src="https://s1.ax1x.com/2020/05/22/YX9bRO.jpg" alt></dd><br>    <dt>希尔排序</dt><br>    <dd>平均比较次数和对象平均移动次数在 n^1.25 与 1.6*n^1.25 之间。</dd><br></dl>
-
-
-<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p>两两比较待排序的对象的关键字，如果发生逆序，则交换之，直到全部对象都排好序为止。</p>
-<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>将第一个记录的关键字与第二个记录的关键字进行比较，若为逆序r[1].key&gt;r[2].key，则交换；然后比较第二个记录与第三个记录；依次类推，直至第n-1个记录和第n个记录比较为止。此时为第一趟冒泡排序，结果关键字最大的记录被安置在最后一个记录上。</li><br>    <li>对前n-1个记录进行第二趟冒泡排序，结果使关键字次大的记录被安置在第n-1个记录位置。</li><br>    <li>重复上述过程，直到“在一趟排序过程中没有进行过交换记录的操作”为止。</li><br></ol>
-
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQacnJ.jpg" alt></p>
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<font color="red">若基准值比重复的关键字大的时候，后面的数据会移动到前面，因而该排序方法不稳定。</font>
-
-<h5 id="思想-3"><a href="#思想-3" class="headerlink" title="思想"></a>思想</h5><p>通过一趟排序将待排序列分成两部分，使其中一部分记录的关键字均比另一部分小，再分别对这两部分排序，以达到整个序列有序。</p>
-<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQwMz8.jpg" alt></p>
-<h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><pre><code class="java">/**
- * 冒泡排序，升序
- * @param arr 需排列的int数组
- * @return 已排列的int数组
- */
-public static int[] bubbleSort(int[] arr){
-
-    if (arr.length == 0 || arr.length == 1) return arr;
-
-    int j,midNum;
-
-    //添加一个判定是否交换的标志，如果在循环过程中某一次循环的所有元素没有交换，则说明已经排好序，并且可以提前结束循环
-    boolean isExchange;
-
-    for (int i = 0 ; i&lt;arr.length-1 ; i++){
-
-        isExchange=false;
-
-        for ( j=0 ; j &lt; arr.length-1-i; j++){
-
-            if (arr[j]&gt;arr[j+1]){
-                midNum = arr[j+1];
-                arr[j+1] = arr [j];
-                arr[j] = midNum;
-
-                isExchange = true;
-            }
-        }
-
-        if(!isExchange) break;
-
-    }
-    midNum = -1;
-
-    return arr;
-}
-
-/**
- * 快速排序，递归，升序
- * @param arr 所需排序的数组(需保证输入符合规范)
- * @param start 开始位置
- * @param end 结束位置
- * @return 已部分或完全排好序的数组
- */
-public static int[] quickSort(int[] arr , int start , int end){
-
-    //如果起始位置和终止位置相同，直接返回
-    if(start == end) return arr ;
-
-    //如果满足开始位置和结束位置在0~数组长度-1的返回内，并且开始位置小于结束位置时
-    if(start&lt;end &amp;&amp; start&gt;=0 &amp;&amp; start&lt;=arr.length-1 &amp;&amp; end&gt;=0 &amp;&amp; end&lt;=arr.length-1){
-
-        //创建首尾指针
-        int i = start;
-        int j = end;
-
-        //取出基准值
-        int theNum = arr[i];
-
-        //循环至首尾指针相等
-        while(i!=j){
-
-            //首指针不动，尾指针循环从右往左寻找比基准值小的数据，并将尾指针所指数据赋予首指针所指位置
-            while(i&lt;j &amp;&amp; arr[j]&gt;=theNum) j-=1;
-            if(i&lt;j) {arr[i]=arr[j];i+=1;}
-
-            //尾指针不动，首指针循环从左往右寻找比基准值大的数据，并将首指针所指数据赋予尾指针所指位置
-            while(i&lt;j &amp;&amp; arr[i]&lt;=theNum) i+=1;
-            if(i&lt;j) {arr[j]=arr[i];j-=1;}
-
-        }
-
-        //此时首尾指针相等，将基准值赋予该位置
-        arr[i] = theNum;
-
-        //递归运算
-        quickSort(arr,start,i-1);
-        quickSort(arr,i+1,end);
-    }
-
-    //返回部分或完全已排序好的数组
-    return arr;
-}
-```
-</code></pre>
-<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><dl><br>    <dt>冒泡排序</dt><br>    <dd>总共要进行 n-1 趟，对 i 个记录的表进行一趟冒泡需要 i-1 次关键码比较，所以：<br><img src="https://s1.ax1x.com/2020/05/30/tQdDUI.jpg" alt></dd><br>    <dt>快速排序</dt><br>    <dd><br>        <ul>时间复杂度：<br><br>            <li>最好情况（每次总是选到中间值作枢轴）:T(n)=O(nlog2n)</li><br>            <li>最坏情况（每次总是选到最小或最大元素作枢轴）:T(n)=O(n²)</li><br>        </ul><br>        <ul>空间复杂度：<br><br>            <li>最坏情况：S(n)=O(n)</li><br>            <li>一般情况：S(n)=O(log2n)</li><br>        </ul><br>    </dd><br></dl>
-
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>将待排序的结点分为已排序(初始为空)和为未排序两组，依次将未排序的结点中值最小的结点插入已排序的组中。</p>
-<h4 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<font color="red">若第二个重复关键字之后存在比其小的关键字，那么在排序中第一个重复关键字会与后面更小的关键字交换，从而导致该算法不稳定。</font>
-
-<p>比如：49 50 49* 13</p>
-<h5 id="思想-4"><a href="#思想-4" class="headerlink" title="思想"></a>思想</h5><ol><br>    <li>通过 n-1 次关键字比较，从n个记录中找出关键字最小的记录，将它与第一个记录交换。</li><br>    <li>再通过 n-2 ，n-3 ，…… 次共 n-1 次排序后，排序结束。</li><br></ol>
-
-<h5 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h5><p><img src="https://s1.ax1x.com/2020/05/30/tQcDaD.jpg" alt></p>
-<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><p>此方法为<font color="red">不稳定排序</font>。</p>
-<h5 id="思想-5"><a href="#思想-5" class="headerlink" title="思想"></a>思想</h5><p>先将无序序列建成一个堆，得到关键字最小（或最大）的记录；输出堆顶的最小（大）值后，使剩余的n-1个元素重又建成一个堆，则可得到n个元素的次小值；重复执行，得到一个有序序列。</p>
-<p>整个排序过程可分为以下三步：</p>
-<ol><br>    <li>将一个无序序列建成一个堆。</li><br>    <li>输出堆顶元素。</li><br>    <li>调整剩余元素，使之成为一个新的堆。</li><br>    <li>重复2、3步骤，直至输出完毕。</li><br></ol>
-
-<h5 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h5><p>以将{49 38 65 97 76 13 27 50}按升序排列为例。</p>
-<p>将该序列建成一个最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcGXjK.jpg" alt></p>
-<p>输出堆顶元素，并调整剩余元素，使之成为一个新的最小堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcJkgP.jpg" alt></p>
-<p>同理，重复上一步，直至清空堆。<br><img src="https://s1.ax1x.com/2020/06/06/tcYGRI.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcYJzt.jpg" alt><br><img src="https://s1.ax1x.com/2020/06/06/tcY8JA.jpg" alt></p>
-<h4 id="参考代码-2"><a href="#参考代码-2" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：在堆排序算法中构建的堆优先用顺序储存；若升序排列则需要构建最大堆，降序排列需构建最小堆，可降低空间复杂度。</font>
-
-<pre><code class="java">/**
- * 直接选择排序，升序
- * @param arr 需要排序的int数组
- * @return 排好序的int数组
- */
-public static int[] straight_selectSort(int[] arr){
-
-    //如果数组长度为0或1，直接返回
-    if(arr.length == 0 || arr.length == 1) return arr;
-
-    int midNum;
-
-    //循环（数组长度-2）次排序
-    for (int i = 0 ; i&lt;arr.length-1 ; i++){
-
-        //创建未排序部分最小数据位置
-        int min_index = i;
-
-        //循环寻找未排序部分的最小数据
-        for (int j = i+1 ; j&lt;arr.length ; j++){
-
-            if(arr[j]&lt;arr[min_index]) min_index = j;
-
-        }
-
-        //未排序部分的最前端数据与最小数据调换，并并入已排序部分
-        midNum = arr[i];
-        arr[i] = arr[min_index];
-        arr[min_index] = midNum;
-    }
-
-    //返回已排好序的数组
-    return arr;
-}
-
-/**
- * 堆排序，升序
- * @param arr 需排列的int数组
- * @return 已排好列的int数组
- */
-public static int[] heapSort(int[] arr){
-
-    //将拥有n个数据的数组创建为最大堆
-    //注：在循环过程中始终保证根结点为arr[i]的堆为最大堆，下方同理
-    for(int i = arr.length/2-1 ; i&gt;=0 ; i--){
-        to_maxheap(arr,i,arr.length-1);
-    }
-
-    int midNum;
-
-    //每次将n个数据的最大堆的最大值（根结点，第0位置）与数组最后一个数调换，并将前n-1个重新排为最大堆。
-    //依次类推，共循环n次
-    for(int i = arr.length-1 ; i&gt;=1 ; i--){
-        midNum = arr[i];
-        arr[i] = arr[0];
-        arr[0] = midNum;
-
-        to_maxheap(arr,0,i-1);
-    }
-
-    //数据初始化并返回
-    midNum = 0;
-    return arr;
-
-}
-
-/**
- * 创建最大堆
- * @param arr int数组
- * @param root 堆的根结点
- * @param end 范围
- */
-private static void to_maxheap(int[] arr,int root,int end) {
-    // TODO Auto-generated method stub
-
-    //寻找根结点最大子结点，初始化为左子结点
-    int max_child = root * 2 + 1;
-    int maxNum;
-
-    //当最大子结点在root~end范围内时循环
-    while(max_child&lt;=end){
-
-        //如果根结点右子结点比左子结点大，最大子变更为右子结点
-        if(max_child&lt;end &amp;&amp; arr[max_child]&lt;arr[max_child+1]/*如果需要为降序，此处为&gt;符号*/) max_child+=1;
-
-        //如果子结点数据比根结点数据大，结点数据交换，并将root、max_child指针向下层移动
-        if(arr[root]&lt;arr[max_child]/*如果需要为降序，此处为&gt;符号*/){
-            maxNum = arr[root];
-            arr[root] = arr[max_child];
-            arr[max_child] = maxNum;
-
-            root = max_child;
-            max_child = 2*root+1;
-
-        //否则，跳出循环
-        }else{
-            break;
-        }
-    }
-    //数据初始化
-    maxNum = 0;
-}
-```
-</code></pre>
-<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul><br>    <li>直接选择排序：<br>        <ul><br>            <li>时间复杂度：<br>                <ul><br>                    <li>移动次数：<br>最好情况：0<br>最坏情况：3(n-1)</li><br>                    <li>比较次数：<br><img src="https://s1.ax1x.com/2020/06/07/tgqF9U.jpg" alt></li><br>                </ul><br>            </li><br>        </ul><br>    </li><br>    <li>堆排序:<br>        <ul><br>            <li>时间复杂度：O(n log2(n))</li><br>            <li>空间复杂度：O(1)</li><br>        </ul><br>    </li><br></ul>
-
-<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>此方法为<font color="red">稳定排序</font>。</p>
-<h5 id="思想-6"><a href="#思想-6" class="headerlink" title="思想"></a>思想</h5><p>设有两个有序表A和B，对象个数分别为al 和 bl ，变量i和j分别是两表的当前指针。</p>
-<p>设表C是归并后的新有序表，变量k是它的当前指针。</p>
-<p>i和j对A和B遍历时，依次将关键字小的对象放到C中，当A或B遍历结束时，将另一个表的剩余部分照抄到新表中。</p>
-<h5 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h5><p>以将{8 4 5 6 3 2 9 7}按升序排列为例。</p>
-<p><img src="https://s1.ax1x.com/2020/06/07/t2ZyfU.jpg" alt></p>
-<h4 id="参考代码-3"><a href="#参考代码-3" class="headerlink" title="参考代码"></a>参考代码</h4><font color="red">需要注意的是：此参考代码与思想有一定出入。</font>
-
-<p><del>但能成功排序。。</del></p>
-<pre><code class="java">/**
- * 归并排序，数组中的一段
- * @param arr 数组
- * @param start1 第1开始位置
- * @param start2 第2开始位置
- * @param n 需排序的数组总长度
- * @return 已排序的数组
- */
-private static int[] mergeSort_1(int[] arr,int start1,int start2,int n){
-
-    //创建过渡数组
-    int[] arr2 =new int[n];
-
-    //将数组看成两个部分，并创建指针
-    int p = start1,q = start2;
-    int k = 0;
-
-    //循环至p，q指针其中一个指到各部分末尾
-    while(p&lt;start2 &amp;&amp; q&lt;start1+n){
-
-        //取指针所指数据大的添加入过渡数组中，并取出数据的指针向后移动
-        if(arr[p]&lt;arr[q]){
-            arr2[k++]=arr[p++];
-        }else{
-            arr2[k++]=arr[q++];
-        }
-    }
-
-    //如果各部分还有未添加入过渡数组的数据，直接按顺序加入
-    if(p!=start2){
-        for (int i = p ; i&lt;start2 ; i++) arr2[k++] = arr[i];
-    }
-    if(q!=start1+n){
-        for (int i = q ; i&lt;start1+n ; i++) arr2[k++] = arr[i];
-    }
-
-    //将过渡数组中已排好序的数据添加回原来需排序数组的位置
-    p = start1;
-    for(int i = 0 ; i&lt;n ; i++) arr[start1++]=arr2[i];
-
-    //返回已部分排好序的数组
-    return arr;
-}
-
-/**
- * 归并排序，升序
- * @param arr 需排列的int序列
- * @return 已排列的int序列
- */
-public static int[] mergeSort(int[] arr){
-
-    //如果长度为0或1，直接返回输出
-    if(arr.length==0 || arr.length==1) return arr;
-
-    //将需排序的序列分为元素数为n的子序列，i为子序列开始位置
-    int n = 1,i = 0;
-
-    //循环至子序列元素数n大于需排序序列
-    while(n&lt;arr.length){
-
-        //依次取两个子序列进行归并，结束后取之后的两个子序列
-        for(i = 0; i&lt;arr.length ; i+=2*n) {
-
-            //若第一个子序列能取n个元素，而第二个不能取，则这两个长度不等的子序列进行归并
-            if(n&lt;(arr.length-i) &amp;&amp; 2*n&gt;(arr.length-i)){
-                mergeSort_1(arr,i,i+n,arr.length%(2*n));
-
-            //若两个子序列均完整有n个数据，则直接归并
-            }else if(i+2*n&lt;=arr.length){
-                mergeSort_1(arr,i,i+n,2*n);
-            }
-            //若第一个子序列无法取完整的n个元素，则跳过
-        }
-
-        //子序列元素数×2
-        n*=2;
-    }
-
-    //返回已排好序的序列
-    return arr;
-}
-`
-</code></pre>
-<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>归并排序在第 i 趟归并后，有序子序列长度为 2i 。对于具有 n 个记录的序列来说，必须做 log2(n) 趟归并，每趟归并所花的时间为 O(n)。</p>
-<p>所以，二路归并排序算法的时间复杂度为 O(n log2(n))，空间复杂度为 O(n)。</p>
-<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><ul><br>    <li>基本原理<br>        <ul><br>            <li>采用“分配”和“收集”的办法，用对多关键字进行排序的思想实现对单关键字进行排序的方法。</li><br>        </ul><br>    </li><br>    <li>多关键字排序原理<br>        <ul>以扑克牌为例<br><br>            <li>每张扑克牌有两个“关键字”：花色和面值，它们之间有次序的优先。</li><br>            <li>对以上排序，可以先对花色排序，或先对面值排序，之后再对另一个关键字排序。</li><br>        </ul><br>    </li><br></ul>
-
-
+          <p>断断续续写了一个月左右。</p>
+<p>书籍为 <strong>[日] 北村爱实/著，罗水东/译</strong> <font color="red"><strong><em>《Unity 2018 入门与实战——2D&amp;3D 游戏开发入门指南》</em></strong></font></p>
+<hr>
+<h2 id="第一章：开发前准备"><a href="#第一章：开发前准备" class="headerlink" title="第一章：开发前准备"></a>第一章：开发前准备</h2><h3 id="游戏制作步骤"><a href="#游戏制作步骤" class="headerlink" title="游戏制作步骤"></a>游戏制作步骤</h3><ul>
+<li><p>Step1：罗列出画面上所有对象。</p>
+</li>
+<li><p>Step2：确定游戏对象运行需要哪些控制器脚本。</p>
+<p>这个步骤需要找出 Step1 列出的所有对象中<font color="red">“会动”的游戏对象</font>。  </p>
+<p><b>对于”会动“的游戏对象，需要用脚本来控制其行动，这种脚本可被称为<font color="red">控制器脚本</font></b>。</p>
+</li>
+<li><p>Step3：确定自动生成游戏对象需要哪些生成器脚本。</p>
+<p>这个步骤需要找出<font color="red">游戏过程中被生成的对象</font>。敌人角色和舞台场景等 <b>根据玩家移动情况和时间变化将会出现的对象</b> 都属于此类。</p>
+<p>在游戏过程中用来创建各个游戏对象的脚本，可被称为 <b><font color="red">生成器脚本</font></b> 。生成器脚本相当于一个专门<font color="red">创建游戏对象的工厂</font>。</p>
+</li>
+<li><p>Step4：准备好用于更新 UI 的调度器脚本。</p>
+<p>为了使玩家能 <b>通过游戏 <font color="red">UI</font>（用户界面）来操作游戏并能够及时了解游戏进度</b>，还需要一个能够”总揽全局“的脚本，可被称作 <b><font color="red">调度器脚本</font></b>。</p>
+</li>
+<li><p>Step5：思考脚本的编写流程。</p>
+<p>大体按照 <b>”控制器脚本“ → ”生成器脚本“ → ”调度器脚本“</b> 的顺序。</p>
+</li>
+</ul>
+<p>开发 <b>最重要的是先从整体上弄清楚”需要什么脚本“”按什么步骤完成制作“这些问题</b>，后续再针对各个脚本思考具体的实现方式。</p>
+<h2 id="第四章：UI和调度器"><a href="#第四章：UI和调度器" class="headerlink" title="第四章：UI和调度器"></a>第四章：UI和调度器</h2><h3 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h3><p>UI 用于<strong>表示游戏的状态和进度</strong>，对增强用户的游戏体验有非常重要的作用。</p>
+<h4 id="UI-的制作方法"><a href="#UI-的制作方法" class="headerlink" title="UI 的制作方法"></a>UI 的制作方法</h4><ul>
+<li>把 UI 组件配置到场景视图中。</li>
+<li>编写用于切换 UI 的调度器脚本。</li>
+<li>创建调度器对象（空对象），为其挂载编写好的脚本。</li>
+</ul>
+<p><strong>由于 UI 的设计画面比通常的游戏设计画面要大很多</strong>，所以有时可能无法在场景试图中看到新添加的内容，但它的<strong>实际大小和游戏画面是对应的</strong>。实际运行后并不存在 UI 溢出画面的情况。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p><strong>Unity 的对象就像一个叫做 GameObject 的 “空箱子”，用户可以通过往里面添加各种设置（相当于挂载各种组件）来丰富它的功能</strong>。例如，要让对象具有物理特性，可以为它挂载 <font color="red">Rigidbody</font> 组件；要让它发出声音，可以为它挂载 <font color="red">AudioSource</font> 组件。如果想添加其他特殊的功能，还可以挂载脚本组件（包括控制器脚本和调度器脚本）。</p>
+<p>此外，还有一个用于管理对象坐标与旋转的组件，即 <font color="red">Transform</font> 组件。如果说 AudioSource 组件相当于 CD 播放器，那么 Transform 组件就相当于方向盘，负责提供坐标数据和移动等功能。例如 <font color="CornflowerBlue"> car.transform.position.x </font> 访问被挂载到小车对象（car）上的 Transform 组件所持有的坐标（position）信息。</p>
+<p>除 Transform 组件外，当对象访问组件时需要用到 <font color="red">GetComponent</font> 方法。GetComponent 方法会向游戏对象发起 “请给我某某组件”的请求，然后返回相应的组件。例如，需要 AudioSource 组件，就调用<font color="CornflowerBlue"> GetComponent&lt; Audio Sorce &gt;() </font>；如果需要 Text 组件，则调用<font color="CornflowerBlue"> GetComponent&lt; Text &gt;() </font>。</p>
+<p>如果只是为了获取坐标，每次都编写 “GetComponent&lt; Transform &gt;()” 语句太过繁琐。因此，对于常用的 Transform 组件，可以直接用 transform 来替代 “GetComponent&lt; Transform &gt;()”。也就是说，<font color="CornflowerBlue"> trasform</font> 相当于<font color="CornflowerBlue"> GetComponent&lt; Transform &gt;() </font>。</p>
+<p>此外，自行编写的脚本也属于一种组件，它也能通过 GetComponent 方法调用。例如，在 CarController 脚本中编写了 Run 方法，那么通过 <font color="CornflowerBlue">car.GetComponent&lt; CarController &gt;().Run()</font> 语句，就可以调用小车对象上挂载的 CarController 脚本中的 Run 方法。</p>
+<h4 id="访问非自身所在对象的组件的方法"><a href="#访问非自身所在对象的组件的方法" class="headerlink" title="访问非自身所在对象的组件的方法"></a>访问非自身所在对象的组件的方法</h4><ul>
+<li>用 Find 方法找到该对象。</li>
+<li>用 GetComponent 方法获取该对象挂载的组件。</li>
+<li>访问该组件持有的数据。</li>
+</ul>
+<h2 id="第五章：Prefab-与碰撞检测"><a href="#第五章：Prefab-与碰撞检测" class="headerlink" title="第五章：Prefab 与碰撞检测"></a>第五章：Prefab 与碰撞检测</h2><h3 id="Prefab-和-工厂"><a href="#Prefab-和-工厂" class="headerlink" title="Prefab 和 工厂"></a>Prefab 和 工厂</h3><p>工厂（Generator）<strong>相当于一台能够按照 “设计图” 生产相应 “产品” 的 “加工机器”</strong>。</p>
+<p>设计图相当于一份描述了 “产品规格” 的说明书。Unity 中将这个设计图称为 Prefab。将设计图（<font color="red">Prefab</font>）传给加工机器（生成器脚本）后，就可以按照设计图生成相应的产品（游戏对象实例）。</p>
+<p>在 Unity 中，当<strong>需要创建大量相同对象时，一般都会使用 Prefab</strong>。这样做的优势是：<strong>如果使用了 Prefab，那么在改变游戏对象时只需要修改 Prefab 文件就可以了</strong>。</p>
+<h4 id="工厂的创建方法"><a href="#工厂的创建方法" class="headerlink" title="工厂的创建方法"></a>工厂的创建方法</h4><ul>
+<li>通过已经存在的对象生成 Prefab。</li>
+<li>创建生成器脚本。</li>
+<li>在空对象上挂在生成器脚本。</li>
+<li>将 Prefab 传给生成器脚本。</li>
+</ul>
+<h4 id="outlet-连接"><a href="#outlet-连接" class="headerlink" title="outlet 连接"></a>outlet 连接</h4><p>outlet 连接可以非常方便地将实体对象带入脚本内的变量。</p>
+<ul>
+<li>要在脚本中创建 outlet “插口”，就必须在变量前添加 public 关键字。</li>
+<li>添加了 public 关键字的变量都会显示在检视器窗口中。</li>
+<li>通过检视器窗口中的 “插口” 将希望代入的对象 “插入”（拖拽操作）。</li>
+</ul>
+<h3 id="非-Physics-碰撞检测"><a href="#非-Physics-碰撞检测" class="headerlink" title="非 Physics 碰撞检测"></a>非 Physics 碰撞检测</h3><p>以将两个 GameObject ：A 和 B 的轮廓视为圆形，并利用圆的圆心坐标和半径，使用勾股定理来完成碰撞检测为例。</p>
+<p>假定 A 的半径为 r1 ，圆心位置向量为 p1，B 的半径为 r2 ，圆心位置为 p2，从 B 指向 A 的向量 dir = p1 - p2 = A.transform.position - B.transform.position，dir 的距离 d 为 dir.magnitude。当 d = r1 + r2 时认为 A、B 两物体发生了碰撞。</p>
+<h3 id="Button-按钮"><a href="#Button-按钮" class="headerlink" title="Button 按钮"></a>Button 按钮</h3><p>在 UI 添加按钮后：</p>
+<ul>
+<li><p>创建按钮按下后控制的 GameObject 的方法。</p>
+</li>
+<li><p>为各个按钮指派相应的方法。</p>
+<p>在层级窗口中选择相应按钮，在检视器窗口中的 Button（Script）项中单击 <font color="Aquamarine">OnClick</font> 中的 + 按钮。将 控制的 GameObject 从层级窗口中拖拽到写有 <font color="Aquamarine">None(Object)</font> 的那一栏。这样就可以将该 GameObject 上挂载的脚本中包含的方法指派给按钮。单击打开写有 No Function 的下拉列表，选择 <font color="Aquamarine">该 GameObject 的脚本 → 想要触发的相应方法</font>。</p>
+</li>
+</ul>
+<p><strong>如果列表中找不到该方法，确认该方法是否添加了关键字 public 。</strong></p>
+<h2 id="第六章：Physics-和动画"><a href="#第六章：Physics-和动画" class="headerlink" title="第六章：Physics 和动画"></a>第六章：Physics 和动画</h2><h3 id="Physics"><a href="#Physics" class="headerlink" title="Physics"></a>Physics</h3><p>Physics 是 Unity 提供的物理引擎，可以用来使游戏对象模拟物理规律运动（下落和碰撞等）。使用物理引擎时，程序将会结合游戏对象的质量、摩擦系数以及重力等因素进行综合计算，从而使其实现仿真物理运动。</p>
+<p><strong>Physics 需要 <font color="red">Rigidbody</font> 组件和 <font color="red">Collider</font> 组件的配合才能发挥功能</strong>，即<strong>要使用 Physics 来让对象按物理规律运动，必须在对象上挂载 Rigidbody 和 Collider 两个组件</strong>。</p>
+<p><strong>Rigidbody（刚体）</strong>是实现游戏对象的物理行为的主要组件，负责 <strong>“受力计算（作用于对象上的重力和摩擦力等力的计算）”</strong>，而 <strong>Collider（碰撞体）</strong> 组件负责 <strong>“对象的碰撞检测”</strong>。</p>
+<p>由于刚体组件会接管附加到的游戏对象的运动，因此不应试图借助脚本通过更改 “Transform”（变换） 属性（如位置和旋转）来移动游戏对象。相反，应该施加 <strong>力</strong> 来推动游戏对象并让物理引擎计算结果。</p>
+<p>在某些情况下，可能 <strong>希望游戏对象具有刚体，并让刚体的运动摆脱物理引擎的控制</strong>。例如，可能希望直接从脚本代码控制角色，但仍允许触发器检测角色。脚本产生的这种非物理运动称为 <strong>运动学运动</strong>。刚体组件有一个名为 <strong>Is Kinematic</strong> 的属性，该属性可以让刚体摆脱物理引擎的控制，并允许通过脚本以运动学方式来移动刚体。可以通过脚本来更改 <strong>Is Kinematic</strong> 的值，从而为某个对象开启和关闭物理引擎，但这会产生性能开销，应谨慎使用。</p>
+<h3 id="Mecanim"><a href="#Mecanim" class="headerlink" title="Mecanim"></a>Mecanim</h3><p>借助 Mecanim，动画的创建到动画的播放都可以在 Unity 编辑器中完成。使用 Mecanim <strong>可以在游戏设计过程中分别制作各种动画，然后指定各动画间切换的时机</strong>，游戏运行时会<strong>根据 Mecanim 对象的状态进行判断，从而自动播放相应的动画</strong>。</p>
+<p>使用 Mecanim 时需要理解其组成 “sprite” “Animation Clip” “Animator Controller” “Animator 组件” 之间的关系。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sprite</th>
+<th style="text-align:center">→</th>
+<th style="text-align:center">Animation Clip</th>
+<th style="text-align:center">→</th>
+<th style="text-align:center">Animator Controller</th>
+<th style="text-align:center">→</th>
+<th style="text-align:center">Animator 组件</th>
+<th style="text-align:center">一挂载→</th>
+<th style="text-align:center">对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>Animation Clip 相当于一个将零散的序列帧图片整合到一起的文件。例如 “行走动画” 和 “跳跃动画”，都分别对应一个 Animation Clip。动画的序列帧信息以及播放速度、播放时长等信息都在 Animation Clip 中设置。</p>
+<p>Animator Controller 负责将上述的 Animation Clip 整合到一起。Animator Controller 可以指定 <strong>在什么时刻播放什么  Animation Clip</strong>。例如，“当角色位于地面上时播放行走动画” “跳跃时播放跳跃动画” “在水中则播放游泳动画” 这些条件都可以在 Unity 编辑器中设置。</p>
+<h5 id="创建动画"><a href="#创建动画" class="headerlink" title="创建动画"></a>创建动画</h5><p>在动画的 Animation Clip 准备好后，如果存在多个动画间的切换，则需要 <strong>使用 Animator Controller 来切换动画</strong>。Animator Controller 中需要考虑以下两个问题。</p>
+<ul>
+<li>从哪个 Animation Clip 跳转到哪个 Animation Clip？</li>
+<li>在什么时机跳转到目标 Animation Clip？</li>
+</ul>
+<p><strong>设置动画跳转</strong></p>
+<p>打开工程窗口中的 Animator Controller 可以看到动画结点，以及自动生成的 Entry、Any State、Exit（Exit 结点在画面外）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">结点名</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Entry</td>
+<td style="text-align:left">动画开始时都是从 Entry 结点跳转过去的。</td>
+</tr>
+<tr>
+<td style="text-align:left">Any State</td>
+<td style="text-align:left">在任意时刻希望跳转到某状态时会用到。</td>
+</tr>
+<tr>
+<td style="text-align:left">Exit</td>
+<td style="text-align:left">结束动画时将先跳转到 Exit 结点。</td>
+</tr>
+</tbody>
+</table>
+<p>在希望跳转的结点上右键，选择 <font color="Aquamarine">Make Transition</font> ，并点击希望跳转到的结点即可实现跳转。</p>
+<p><strong>设置跳转时机</strong></p>
+<p>选择动画跳转的箭头，在右侧检视器中根据具体需求和条件，设置跳转时动画播放效果。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Has Exit Time</td>
+<td style="text-align:left">动画播放结束后，是否自动跳转到其他动画。</td>
+</tr>
+<tr>
+<td style="text-align:left">Exit Time</td>
+<td style="text-align:left">用归一化（0.0~1.0）处理后的值设置动画的结束时间。</td>
+</tr>
+<tr>
+<td style="text-align:left">Transition Duration</td>
+<td style="text-align:left">用归一化（0.0~1.0）处理后的值设置跳转到下一个动画的时间。</td>
+</tr>
+<tr>
+<td style="text-align:left">Transition Offset</td>
+<td style="text-align:left">用归一化（0.0~1.0）处理后的值设置下一个动画开始播放的时间。</td>
+</tr>
+</tbody>
+</table>
+<p>之后设置动画跳转的时机，需要在跳转箭头上设置 <strong>Trigger</strong>。例如 <strong>在按下某个按钮时 Trigger 将被打开，动画将实现跳转</strong>。</p>
+<p>首先在 Animator Controller 中创建 Trigger。单击 Animator 窗口左上的 <font color="Aquamarine">Parameters</font> 标签，单击 + 按钮，然后在下拉菜单中选择 <font color="Aquamarine">Trigger</font>。</p>
+<p>跳转条件的各种参数如表。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">使用浮点小数作为跳转条件。</td>
+</tr>
+<tr>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">使用整数作为跳转条件。</td>
+</tr>
+<tr>
+<td style="text-align:left">Bool</td>
+<td style="text-align:left">使用布尔值作为跳转条件。</td>
+</tr>
+<tr>
+<td style="text-align:left">Trigger</td>
+<td style="text-align:left">使用触发器作为跳转条件。</td>
+</tr>
+</tbody>
+</table>
+<p>创建 Trigger 后，再对跳转箭头进行设置。选择相应的箭头，在检视器窗口中设置跳转条件的具体信息。单击 <font color="Aquamarine">Conditions</font> 的 + 按钮，在下拉列表选择相应 Trigger。</p>
+<p>最后，添加满足一定条件（例如按下某个按钮）时打开 Trigger 的脚本，可以使用 Animator 组件持有的 <font color="red">SetTrigger</font> 方法。SetTrigger 方法会打开参数所指定的 Trigger ，从而使动画跳转。</p>
+<h2 id="第七章：3D-游戏的开发方法"><a href="#第七章：3D-游戏的开发方法" class="headerlink" title="第七章：3D 游戏的开发方法"></a>第七章：3D 游戏的开发方法</h2><h3 id="Terrain"><a href="#Terrain" class="headerlink" title="Terrain"></a>Terrain</h3><p>Terrain 是 Unity 提供的用于创建地形的工具，<strong>使用 Terrain 不仅可以很容易地创建出山川河流等地形</strong>，而且还可以方便地在地面铺设纹理。更为强大的是，除了铺设简单纹理，<strong>它还支持通过涂抹操作在地面创建出 3D 的树木和草地等对象</strong>。</p>
+<h3 id="粒子系统（Particle-System）"><a href="#粒子系统（Particle-System）" class="headerlink" title="粒子系统（Particle System）"></a>粒子系统（Particle System）</h3><p>粒子系统<strong>可以创建大量的例子，并且可以通过控制各个粒子的行为、颜色以及大小</strong>模拟出水、烟、火等效果。</p>
+<p><strong>使用粒子来呈现不同特效时，必须按一定的策略来调整各个粒子的颜色、大小以及速度等参数</strong>。粒子系统的主要参数如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Duration</td>
+<td style="text-align:left">粒子的持续生成时长。</td>
+</tr>
+<tr>
+<td style="text-align:left">Looping</td>
+<td style="text-align:left">是否持续生成粒子。</td>
+</tr>
+<tr>
+<td style="text-align:left">Start Delay</td>
+<td style="text-align:left">创建粒子的延迟时间。</td>
+</tr>
+<tr>
+<td style="text-align:left">Start Lifetime</td>
+<td style="text-align:left">粒子的存活时长。</td>
+</tr>
+<tr>
+<td style="text-align:left">Start Speed</td>
+<td style="text-align:left">粒子的初始速度。</td>
+</tr>
+<tr>
+<td style="text-align:left">Start Size</td>
+<td style="text-align:left">粒子的初始大小。</td>
+</tr>
+<tr>
+<td style="text-align:left">Start Color</td>
+<td style="text-align:left">粒子的初始颜色。</td>
+</tr>
+<tr>
+<td style="text-align:left">Gravity Modifier</td>
+<td style="text-align:left">粒子受到的重力。</td>
+</tr>
+<tr>
+<td style="text-align:left">Max Particles</td>
+<td style="text-align:left">粒子数量上限。</td>
+</tr>
+<tr>
+<td style="text-align:left">Rate over Time</td>
+<td style="text-align:left">每秒生成的粒子数。</td>
+</tr>
+<tr>
+<td style="text-align:left">Bursts</td>
+<td style="text-align:left">指定时间内的生成粒子数。</td>
+</tr>
+<tr>
+<td style="text-align:left">Shape</td>
+<td style="text-align:left">生成粒子的排列形状。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="显示粒子特效的方法"><a href="#显示粒子特效的方法" class="headerlink" title="显示粒子特效的方法"></a>显示粒子特效的方法</h4><ul>
+<li>给对象挂在 ParticleSystem 组件。</li>
+<li>调整 ParticleSystem 组件的参数以创建特效。</li>
+<li>通过脚本播放相应的粒子特效。</li>
+</ul>
+<h3 id="世界坐标系和本地坐标系"><a href="#世界坐标系和本地坐标系" class="headerlink" title="世界坐标系和本地坐标系"></a>世界坐标系和本地坐标系</h3><p><font color="red">Input.mousePosition</font> 方法能够获取单击位置的坐标，但在 3D 游戏中无法直接使用 mousePosition 的坐标，<strong>因为 mousePosition 表示的不是世界坐标系的值而是本地坐标系的值</strong>。</p>
+<p>世界坐标系是用于表示对象在 “游戏世界” 中具体位置的坐标系。而本地坐标系只是用来表示 “游戏画面上” 具体位置的坐标系。</p>
+<p>世界坐标系和本地坐标系的定义完全不同。例如，在世界坐标系中，GameObject 的坐标为（2,1,2）；而在本地坐标系中，GameObject 的坐标为（400,150）。</p>
+<p>事实上 Unity 提供了 <font color="red">ScreenPointToRay</font> 方法。<strong>如果将本地坐标传给该方法，那么可以获得一个世界坐标系中从 “摄像机” 指向将 “本地坐标” 的向量</strong>。</p>
 
         </div>
         <!-- .entry-content -->
@@ -825,15 +631,15 @@ public static int[] mergeSort(int[] arr){
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/05/30/数据结构笔记10/" rel="prev">
+            <a href="/2021/06/12/Unity 的一些技巧和常用的方法/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/06/10/toB6SA.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/60c36f18844ef46bb246c1db.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                《数据结构》笔记（10）——查找</h3>
+                Unity 笔记（2）</h3>
                 <hr>
               </div>
             </a>
@@ -843,15 +649,15 @@ public static int[] mergeSort(int[] arr){
           
             <div class="post-nepre half next">
           
-            <a href="/2020/05/12/数据结构笔记8.4.2/" rel="next">
+            <a href="/2021/03/14/中文文案排版指北/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/05/15/Yytx2j.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://img.imgdb.cn/item/604e0a405aedab222c17e6e4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://img.imgdb.cn/item/604e0a405aedab222c17e6e4.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                《数据结构》笔记(8.4.2)——二叉树的应用：二叉排列树，线索二叉树</h3>
+                【转】中文文案排版指北</h3>
                 <hr>
               </div>
             </a>
