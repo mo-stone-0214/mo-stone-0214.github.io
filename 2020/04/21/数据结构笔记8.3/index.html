@@ -248,13 +248,6 @@
                       </li>
                     
                       <li>
-                        <a href="/bangumi/">
-                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                          番组
-                        </a>
-                      </li>
-                    
-                      <li>
                         <a href="/music/">
                           <i class="fa fa-headphones" aria-hidden="true"></i>
                           歌单
@@ -326,7 +319,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/04/23/JaataD.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/23/JaataD.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pic.imgdb.cn/item/611cb3474907e2d39c012929.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb3474907e2d39c012929.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -489,7 +482,7 @@ public static void print(ArrayList&lt;Object&gt; list){
 </code></pre>
 <h2 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h2><h3 id="思想1"><a href="#思想1" class="headerlink" title="思想1"></a>思想1</h3><p>循环控制：</p>
 <p>1、入栈前，指向本结点；<br>2、先左子树一次入栈并输出（入栈前先指向该结点），直到没有左子树的结点为止；<br>3、出栈顶元素，然后找到右子树，继续1、2操作，直到栈为空且结点为空。</p>
-<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>指针指向根结点，将左子树结点1、2、3循环依次入栈并输出，直至没有左子树结点，指针为null。</p>
 <pre><code class="text">栈中元素：1 2 3
 输出元素：1 2 3
@@ -554,7 +547,7 @@ public static ArrayList&lt;Object&gt; preOrder(Node&lt;Object&gt; root){
 </code></pre>
 <h3 id="思想2"><a href="#思想2" class="headerlink" title="思想2"></a>思想2</h3><p>使用一个栈，首先将根结点入栈，开始循环：</p>
 <p>从栈中退出当前结点p，先访问它，然后将其右孩子入栈，再将其左孩子入栈，如此直到栈为空。<br>（因为对左孩子的访问先序遍历先于右孩子，后入栈的先访问）</p>
-<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>结点1入栈。</p>
 <pre><code class="text">栈中元素：1
 输出元素：
@@ -627,7 +620,7 @@ public static ArrayList&lt;Object&gt; preOrder2(Node&lt;Object&gt; root){
 </code></pre>
 <h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>与先序的循环控制类似：</p>
 <p>1、入栈前，先指向本结点；<br>2、先左子树一次入栈（入栈前先指向该结点），直到没有左子树的结点为止；<br>3、出栈顶元素并输出，若有右子树，找到右子树，继续1、2操作，直到栈为空且结点为空。</p>
-<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h3 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h3><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>指针指向根结点，将左子树结点1、2、3循环依次入栈，直至没有左子树结点，指针为null。</p>
 <pre><code class="text">栈中元素：1 2 3
 输出元素：
@@ -690,7 +683,7 @@ public static ArrayList&lt;Object&gt; inOrder(Node&lt;Object&gt; root){
 </code></pre>
 <h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><h3 id="思想1——双栈"><a href="#思想1——双栈" class="headerlink" title="思想1——双栈"></a>思想1——双栈</h3><p>实际上我觉得这个方法很神奇。实际上它做的是一个反向的预排序遍历。</p>
 <p>由于后序序列的顺序是：左子结点→右子结点→根结点，所以入栈1的顺序是正常顺序，入栈2的顺序是：根结点→右子结点→左子结点，之后再将栈2的结点依次出栈输出。</p>
-<h4 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h4 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h4><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>先将根结点入栈1，在循环中将栈1的栈顶结点1出栈，指针指向结点1，并将其入栈2，将指针所指的结点1的左、右子结点2、4按顺序依次入栈1.</p>
 <pre><code class="text">栈1元素：2 4
 栈2元素：1
@@ -766,7 +759,7 @@ public static ArrayList&lt;Object&gt; postOrder(Node&lt;Object&gt; root){
 <h3 id="思想2——标记"><a href="#思想2——标记" class="headerlink" title="思想2——标记"></a>思想2——标记</h3><p>因后序遍历：左子树→后右子树→根结点，则需要判断上次访问的结点是位于左子树，还是右子树。</p>
 <p>若是位于左子树，则需跳过根结点，先进入右子树；若是位于右子树，则直接输出根结点。</p>
 <p>因此，可通过设置标志位，标明上次访问的结点是位于左子树，还是右子树。</p>
-<h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h4><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h4><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>指针指向根结点，将左子树结点1、2、3循环依次入结点栈，标记栈中入“左”的标记，直至没有左子树结点，指针为null。</p>
 <pre><code class="text">结点栈元素：1  2  3
 标记栈元素：左 左 左
@@ -908,7 +901,7 @@ public static ArrayList&lt;Object&gt; postOrder2(Node&lt;Object&gt; root){
 </code></pre>
 <h2 id="层次遍历（从上向下）"><a href="#层次遍历（从上向下）" class="headerlink" title="层次遍历（从上向下）"></a>层次遍历（从上向下）</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>层次遍历：从上往下，从左往右。</p>
 <p>先将根结点入队，指针指向队首，将根结点的左、右子结点依次入队，如果没有就跳过。之后指针向后移动，队首结点出队输出，再次重复将指针所指结点的左、右子结点依次入队。直至队空。</p>
-<h3 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h3><p><img src="https://s1.ax1x.com/2020/04/23/JaUwuV.jpg" alt></p>
+<h3 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h3><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c0128f6.jpg" alt></p>
 <p>先将根结点入队，指针指向根结点，之后将指针所指结点1的左、右子结点2、4依次入队。</p>
 <pre><code class="text">队列元素：1 2 4
 输出元素：
@@ -977,7 +970,7 @@ public static ArrayList&lt;Object&gt; levelOrder(Node&lt;Object&gt; root){
 }
 `
 </code></pre>
-<h2 id="所有方法的主函数测试"><a href="#所有方法的主函数测试" class="headerlink" title="所有方法的主函数测试"></a>所有方法的主函数测试</h2><p><img src="https://s1.ax1x.com/2020/04/23/Jd4b9A.jpg" alt></p>
+<h2 id="所有方法的主函数测试"><a href="#所有方法的主函数测试" class="headerlink" title="所有方法的主函数测试"></a>所有方法的主函数测试</h2><p><img src="https://pic.imgdb.cn/item/611cb3474907e2d39c012902.jpg" alt></p>
 <pre><code class="java">public static void main(String[] args){
     LinkedTree&lt;Object&gt; tree = new LinkedTree&lt;&gt;(&quot;A&quot;);
 
@@ -1044,7 +1037,7 @@ public static ArrayList&lt;Object&gt; levelOrder(Node&lt;Object&gt; root){
           
             <a href="/2020/04/24/数据结构笔记8.4.1/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/25/Jy1HQs.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/25/Jy1HQs.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb2604907e2d39cfca7b1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb2604907e2d39cfca7b1.jpg">
               </div>
               <span class="label">
               Previous Post</span>
@@ -1062,7 +1055,7 @@ public static ArrayList&lt;Object&gt; levelOrder(Node&lt;Object&gt; root){
           
             <a href="/2020/04/14/数据结构笔记8.2/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549d3.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549d3.jpg">
               </div>
               <span class="label">
               Next Post</span>
@@ -1325,13 +1318,6 @@ $(document).ready(function() {
                 <a href="/other/">
                   <i class="fa fa-th" aria-hidden="true"></i>
                   碎片
-                </a>
-              </li>
-            
-              <li>
-                <a href="/bangumi/">
-                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                  番组
                 </a>
               </li>
             

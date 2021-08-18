@@ -248,13 +248,6 @@
                       </li>
                     
                       <li>
-                        <a href="/bangumi/">
-                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                          番组
-                        </a>
-                      </li>
-                    
-                      <li>
                         <a href="/music/">
                           <i class="fa fa-headphones" aria-hidden="true"></i>
                           歌单
@@ -326,7 +319,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/04/15/J9GABQ.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/15/J9GABQ.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pic.imgdb.cn/item/611cb4254907e2d39c0549d3.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549d3.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -358,10 +351,10 @@
         <div class="entry-content">
           <h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><p>遍历（Traversing）是树形结构的一种重要运算，即按一定的次序系统地访问结构中的所有结点，使每个结点只被访问一次。</p>
 <p>常用方法：<br>先序法；中序法；后序法；层次法。</p>
-<h3 id="先序法（PreOrder）"><a href="#先序法（PreOrder）" class="headerlink" title="先序法（PreOrder）"></a>先序法（PreOrder）</h3><p>从根结点a开始访问，接着访问左子结点b，最后访问右子结点c。<br>即：根结点 → 左子树 → 右子树<br><img src="https://s1.ax1x.com/2020/04/15/J9GL80.jpg" alt></p>
-<h3 id="中序法（InOrder）"><a href="#中序法（InOrder）" class="headerlink" title="中序法（InOrder）"></a>中序法（InOrder）</h3><p>从左子结点b开始访问，接着访问根结点a，最后访问右子结点c。<br>即：左子树 → 根结点 → 右子树<br><img src="https://s1.ax1x.com/2020/04/15/J9J6LF.jpg" alt></p>
-<p><del>偷懒的</del>简单转换方法：<br><img src="https://s1.ax1x.com/2020/04/15/J9YVWq.jpg" alt></p>
-<h3 id="后序法（PostOrder）"><a href="#后序法（PostOrder）" class="headerlink" title="后序法（PostOrder）"></a>后序法（PostOrder）</h3><p>从左子结点b开始访问，接着访问右子结点c，最后访问根结点a。<br>即：左子树 → 右子树 → 根结点<br><img src="https://s1.ax1x.com/2020/04/15/J9YEYn.jpg" alt></p>
+<h3 id="先序法（PreOrder）"><a href="#先序法（PreOrder）" class="headerlink" title="先序法（PreOrder）"></a>先序法（PreOrder）</h3><p>从根结点a开始访问，接着访问左子结点b，最后访问右子结点c。<br>即：根结点 → 左子树 → 右子树<br><img src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549dd.jpg" alt></p>
+<h3 id="中序法（InOrder）"><a href="#中序法（InOrder）" class="headerlink" title="中序法（InOrder）"></a>中序法（InOrder）</h3><p>从左子结点b开始访问，接着访问根结点a，最后访问右子结点c。<br>即：左子树 → 根结点 → 右子树<br><img src="https://pic.imgdb.cn/item/611cb4254907e2d39c054996.jpg" alt></p>
+<p><del>偷懒的</del>简单转换方法：<br><img src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549a9.jpg" alt></p>
+<h3 id="后序法（PostOrder）"><a href="#后序法（PostOrder）" class="headerlink" title="后序法（PostOrder）"></a>后序法（PostOrder）</h3><p>从左子结点b开始访问，接着访问右子结点c，最后访问根结点a。<br>即：左子树 → 右子树 → 根结点<br><img src="https://pic.imgdb.cn/item/611cb4254907e2d39c0549b8.jpg" alt></p>
 <h3 id="层次法"><a href="#层次法" class="headerlink" title="层次法"></a>层次法</h3><p>从上往下，从左往右依次读出结点。</p>
 <h2 id="依据序列构建二叉树"><a href="#依据序列构建二叉树" class="headerlink" title="依据序列构建二叉树"></a>依据序列构建二叉树</h2><p>若仅已知先序序列、中序序列、后序序列其中任意一个，无法唯一确定二叉树。</p>
 <p>若知先序和后序序列，同样无法唯一确定二叉树。</p>
@@ -371,28 +364,28 @@
 </code></pre><p>对于先序序列，根结点在第一个位置。对于中序序列，根结点大多数情况在中序序列的中间某一位置（也可能存在位于首尾的情况），左边部分是根结点的左子树的中序遍历序列，右边部分是根结点的右子树的中序遍历序列。</p>
 <pre><code>先序：A BHFD ECKG
 中序：HBDF A EKCG
-</code></pre><p>结论：A是根结点，HBDF结点在左侧，ECKG结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J9hkWt.jpg" alt></p>
+</code></pre><p>结论：A是根结点，HBDF结点在左侧，ECKG结点在右侧。<br><img src="https://pic.imgdb.cn/item/611cb46f4907e2d39c06ab49.jpg" alt></p>
 <pre><code>先序：B H FD
 中序：H B DF
-</code></pre><p>结论：B是左子树根结点，H结点在左侧，FD结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J94OKK.jpg" alt></p>
-<p>根据先序和中序的特点，F位于D的上一层，且D在以F为根结点的子树的左子树中，F无右子树。<br><img src="https://s1.ax1x.com/2020/04/15/J95wxx.jpg" alt></p>
+</code></pre><p>结论：B是左子树根结点，H结点在左侧，FD结点在右侧。<br><img src="https://pic.imgdb.cn/item/611cb46f4907e2d39c06aaf7.jpg" alt></p>
+<p>根据先序和中序的特点，F位于D的上一层，且D在以F为根结点的子树的左子树中，F无右子树。<br><img src="https://pic.imgdb.cn/item/611cb46f4907e2d39c06ab08.jpg" alt></p>
 <pre><code>先序：E CKG
 中序：E KCG
-</code></pre><p>结论：E是右子树根结点，左侧无结点，CKG结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J9owDK.jpg" alt></p>
+</code></pre><p>结论：E是右子树根结点，左侧无结点，CKG结点在右侧。<br><img src="https://pic.imgdb.cn/item/611cb46f4907e2d39c06ab11.jpg" alt></p>
 <pre><code>先序：C KG
 中序：K C G
-</code></pre><p>同样的，根据先序和中序的特点，C位于KG的上一层，且K在以C为根结点的子树的左子树中，G在右子树中。<br><img src="https://s1.ax1x.com/2020/04/15/J9TP2R.jpg" alt></p>
+</code></pre><p>同样的，根据先序和中序的特点，C位于KG的上一层，且K在以C为根结点的子树的左子树中，G在右子树中。<br><img src="https://pic.imgdb.cn/item/611cb46f4907e2d39c06ab2e.jpg" alt></p>
 <h3 id="中序、后序序列"><a href="#中序、后序序列" class="headerlink" title="中序、后序序列"></a>中序、后序序列</h3><p>实际上，已知中序、后序序列来构建二叉树与已知先序、中序来构建方法类似，均是利用遍历序列特性。</p>
 <pre><code>例：若已知某二叉树的后序序列 [ DGEBFCA ] 和中序序列 [ DBGEACF ] ，构建该二叉树。
 </code></pre><p>对于后序序列，根结点在最后一个位置。中序序列<a href="/2020/04/14/数据结构笔记8.2/#先序、中序序列">同上</a></p>
 <pre><code>后序：DGEB FC A
 中序：DBGE A CF
-</code></pre><p>结论：A是根结点，DBGE结点在左侧，CF结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J9OTeI.jpg" alt></p>
+</code></pre><p>结论：A是根结点，DBGE结点在左侧，CF结点在右侧。<br><img src="https://pic.imgdb.cn/item/611cb4dd4907e2d39c08a52c.jpg" alt></p>
 <pre><code>后序：D GE B
 中序：D B GE
-</code></pre><p>结论：B是左子树根结点，D结点在左侧，GE结点在右侧。<br><img src="https://s1.ax1x.com/2020/04/15/J9Xu01.jpg" alt></p>
-<p>根据后序和中序的特点，E位于G的上一层，且G在以E为根结点的子树的左子树中，E无右子树。<br><img src="https://s1.ax1x.com/2020/04/15/J9jG5V.jpg" alt></p>
-<p>同理，右子树中，C位于F的上一层，且F在以C为根结点的子树的右子树中，C无左子树。<br><img src="https://s1.ax1x.com/2020/04/15/J9jhqA.jpg" alt></p>
+</code></pre><p>结论：B是左子树根结点，D结点在左侧，GE结点在右侧。<br><img src="https://pic.imgdb.cn/item/611cb4dd4907e2d39c08a53d.jpg" alt></p>
+<p>根据后序和中序的特点，E位于G的上一层，且G在以E为根结点的子树的左子树中，E无右子树。<br><img src="https://pic.imgdb.cn/item/611cb4dd4907e2d39c08a553.jpg" alt></p>
+<p>同理，右子树中，C位于F的上一层，且F在以C为根结点的子树的右子树中，C无左子树。<br><img src="https://pic.imgdb.cn/item/611cb4dd4907e2d39c08a562.jpg" alt></p>
 <h2 id="二叉树递归遍历算法"><a href="#二叉树递归遍历算法" class="headerlink" title="二叉树递归遍历算法"></a>二叉树递归遍历算法</h2><p>二叉树以用链表构建的为例，每个结点中包含：该节点的数据，左、右子结点的地址。</p>
 <p>实际上个人觉得二叉树遍历的递归算法虽容易理解，但写出来对于我来说可能会有点困难，因为找到进入和跳出的点可能对于我来说有些困难，所以个人的倾向还是使用<a href="/2020/04/21/数据结构笔记8.3/">非递归的算法</a>。</p>
 <h3 id="结点和树的创建及递归遍历"><a href="#结点和树的创建及递归遍历" class="headerlink" title="结点和树的创建及递归遍历"></a>结点和树的创建及递归遍历</h3><pre><code class="java">/**
@@ -545,7 +538,7 @@ public static void main(String[] args){
           
             <a href="/2020/04/21/数据结构笔记8.3/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/23/JaataD.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/23/JaataD.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb3474907e2d39c012929.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb3474907e2d39c012929.jpg">
               </div>
               <span class="label">
               Previous Post</span>
@@ -563,7 +556,7 @@ public static void main(String[] args){
           
             <a href="/2020/04/10/数据结构笔记8.1/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/12/Gqoa7V.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/12/Gqoa7V.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb5c64907e2d39c0cd6af.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb5c64907e2d39c0cd6af.jpg">
               </div>
               <span class="label">
               Next Post</span>
@@ -826,13 +819,6 @@ $(document).ready(function() {
                 <a href="/other/">
                   <i class="fa fa-th" aria-hidden="true"></i>
                   碎片
-                </a>
-              </li>
-            
-              <li>
-                <a href="/bangumi/">
-                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                  番组
                 </a>
               </li>
             

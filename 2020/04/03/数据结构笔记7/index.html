@@ -248,13 +248,6 @@
                       </li>
                     
                       <li>
-                        <a href="/bangumi/">
-                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                          番组
-                        </a>
-                      </li>
-                    
-                      <li>
                         <a href="/music/">
                           <i class="fa fa-headphones" aria-hidden="true"></i>
                           歌单
@@ -326,7 +319,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/04/04/GwfEc9.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/04/GwfEc9.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pic.imgdb.cn/item/611cb7464907e2d39c1392cc.jpg);" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb7464907e2d39c1392cc.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -362,29 +355,29 @@
 <p>数组一旦被定义，它的维数和维界就不再改变。因此，除了结构的初始化和销毁之外，数组只有存取元素和修改元素值的操作。</p>
 <h2 id="数组的顺序存储结构"><a href="#数组的顺序存储结构" class="headerlink" title="数组的顺序存储结构"></a>数组的顺序存储结构</h2><p>数组元素是连续存放的，因此采用顺序存储结构。无论几维数组,在计算机中都是按一维数组来存放。</p>
 <p>假定存在一个二维数组A m×n （m行n列） ，L是每个元素所占的存储单元。<br>按行优先顺序存储结构：LOC(a ij)=LOC(a 00)+(i×n+j)×L<br>按列优先顺序存储结构：LOC(a ij)=LOC(a 00)+(j×m+i)×L</p>
-<p>假定存在一个三维数组A m×n×p （m页n行p列），L是每个元素所占的存储单元。<br><img src="https://s1.ax1x.com/2020/04/04/GwfPtU.jpg" alt></p>
+<p>假定存在一个三维数组A m×n×p （m页n行p列），L是每个元素所占的存储单元。<br><img src="https://pic.imgdb.cn/item/611cb7464907e2d39c1392de.jpg" alt></p>
 <h2 id="数组的压缩存储"><a href="#数组的压缩存储" class="headerlink" title="数组的压缩存储"></a>数组的压缩存储</h2><p>相同值的多个元素占用一个存储单元，零元素不分配存储单元。以下例子的每个元素存储大小为1。</p>
 <h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>按行优先顺序存放对称矩阵的存储</p>
-<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUcb6.jpg" alt></p>
-<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgU6Dx.jpg" alt></p>
-<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgU2VK.jpg" alt></p>
+<p>示例矩阵<br><img src="https://pic.imgdb.cn/item/611cb7464907e2d39c1392f5.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://pic.imgdb.cn/item/611cb7464907e2d39c139312.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://pic.imgdb.cn/item/611cb7464907e2d39c139333.jpg" alt></p>
 <h3 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h3><p>以主对角线划分，三角矩阵有上三角和下三角两种。<br>上三角矩阵的下三角(不包括主对角线)中的元素均为常数。下三角矩阵正好相反，它的主对角线上方均为常数。<br>大多数情况下，常数为0。</p>
 <h4 id="下三角矩阵"><a href="#下三角矩阵" class="headerlink" title="下三角矩阵"></a>下三角矩阵</h4><p>按行优先顺序存放下三角矩阵的存储。</p>
-<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUyK1.jpg" alt></p>
-<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUrvR.jpg" alt></p>
-<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgURUO.jpg" alt></p>
+<p>示例矩阵<br><img src="https://pic.imgdb.cn/item/611cb78d4907e2d39c14c7d0.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://pic.imgdb.cn/item/611cb78d4907e2d39c14c7f1.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://pic.imgdb.cn/item/611cb78d4907e2d39c14c7ff.jpg" alt></p>
 <h4 id="上三角矩阵"><a href="#上三角矩阵" class="headerlink" title="上三角矩阵"></a>上三角矩阵</h4><p>按行优先顺序存放上三角矩阵的存储</p>
-<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUW5D.jpg" alt></p>
-<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUhPe.jpg" alt></p>
-<p>每个元素存储位置<br><img src="https://s1.ax1x.com/2020/04/07/GgU48H.jpg" alt></p>
+<p>示例矩阵<br><img src="https://pic.imgdb.cn/item/611cb78d4907e2d39c14c80b.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://pic.imgdb.cn/item/611cb78d4907e2d39c14c7c4.jpg" alt></p>
+<p>每个元素存储位置<br><img src="https://pic.imgdb.cn/item/611cb7f04907e2d39c1679a7.jpg" alt></p>
 <h3 id="带状矩阵"><a href="#带状矩阵" class="headerlink" title="带状矩阵"></a>带状矩阵</h3><p>对角矩阵中，所有的非零元素集中在以主对角线为中心的带状区域中，即除了主对角线和主对角线相邻两侧的若干条对角线上的元素之外，其余元素皆为零。</p>
 <p>按行优先顺序存放带状矩阵的存储。</p>
-<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUIxA.jpg" alt></p>
+<p>示例矩阵<br><img src="https://pic.imgdb.cn/item/611cb7f04907e2d39c1679bd.jpg" alt></p>
 <p>在 a ij 之前有 i 行，共有 （3×i-1）个非零元素，在第 i 行，有（j-i+1）个非零元素。这样，非零元素 a ij 的地址为：</p>
 <p>k=3×i-1+(j-i+1)=2i+j</p>
 <h3 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h3><p>稀疏矩阵中有s个非零元素，且s远远小于矩阵元素的总数（即s≦m×n）。</p>
-<p>示例矩阵<br><img src="https://s1.ax1x.com/2020/04/07/GgUTKI.jpg" alt></p>
-<p>在计算机中存储形式<br><img src="https://s1.ax1x.com/2020/04/07/GgUHqP.jpg" alt></p>
+<p>示例矩阵<br><img src="https://pic.imgdb.cn/item/611cb7f04907e2d39c1679d2.jpg" alt></p>
+<p>在计算机中存储形式<br><img src="https://pic.imgdb.cn/item/611cb80e4907e2d39c1701e2.jpg" alt></p>
 
         </div>
         <!-- .entry-content -->
@@ -409,7 +402,7 @@
           
             <a href="/2020/04/10/数据结构笔记8.1/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/04/12/Gqoa7V.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/04/12/Gqoa7V.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb5c64907e2d39c0cd6af.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb5c64907e2d39c0cd6af.jpg">
               </div>
               <span class="label">
               Previous Post</span>
@@ -427,7 +420,7 @@
           
             <a href="/2020/03/31/数据结构笔记6/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/2020-3-31.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/mo-stone-0214/blog_source@1.0.16/post_pic/after.20-3-10.cover/2020-3-31.jpg">
+                <img class="lazyload" src="/images/other/orange.progress-bar-stripe-loader.svg" data-src="https://pic.imgdb.cn/item/611cb8304907e2d39c17951a.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pic.imgdb.cn/item/611cb8304907e2d39c17951a.jpg">
               </div>
               <span class="label">
               Next Post</span>
@@ -690,13 +683,6 @@ $(document).ready(function() {
                 <a href="/other/">
                   <i class="fa fa-th" aria-hidden="true"></i>
                   碎片
-                </a>
-              </li>
-            
-              <li>
-                <a href="/bangumi/">
-                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                  番组
                 </a>
               </li>
             
